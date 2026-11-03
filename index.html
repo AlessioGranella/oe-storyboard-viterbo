@@ -135,9 +135,9 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,60px);lin
 .cap{font-family:var(--serif);font-weight:400;font-size:4.3cqw;line-height:1.14;color:var(--white)}
 .cap.s{font-size:3.6cqw}
 /* ombra neutra sfumata sotto i testi: non altera il colore dell'immagine */
-.shade{position:absolute;inset:0;background:radial-gradient(ellipse 85% 85% at 0% 100%,rgba(0,0,0,.74) 0%,rgba(0,0,0,.4) 50%,rgba(0,0,0,0) 80%)}
-/* blocco titoli in basso a sinistra: pad 5cqw, sopra il monogramma */
-.tblock{position:absolute;left:5cqw;bottom:10cqw;max-width:58cqw;display:flex;flex-direction:column}
+.shade{position:absolute;inset:0;background:radial-gradient(ellipse 85% 110% at 0% 55%,rgba(0,0,0,.74) 0%,rgba(0,0,0,.4) 50%,rgba(0,0,0,0) 80%)}
+/* blocco titoli a sinistra, centrato in verticale sul frame (revisione 3 novembre); il chip resta in alto */
+.tblock{position:absolute;left:5cqw;top:50%;transform:translateY(-50%);max-width:58cqw;display:flex;flex-direction:column}
 .tblock .k{margin-bottom:2cqw}
 .tblock .num{font-size:11cqw}
 .tblock .num + .cap{margin-top:1.6cqw}
@@ -173,7 +173,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,60px);lin
 /* ── Layout «duo»: numero a sinistra, grafico a destra (scene su fondo pieno) ── */
 .duo .tblock{max-width:46cqw}
 .duo .tblock .num{font-size:15cqw}
-.duo .side{position:absolute;right:5cqw;bottom:10cqw;width:38cqw;display:flex;flex-direction:column;gap:3cqw}
+.duo .side{position:absolute;right:5cqw;top:50%;transform:translateY(-50%);width:38cqw;display:flex;flex-direction:column;gap:3cqw}
 .duo .side .bars{--bw:32cqw;margin-top:0}
 
 /* ── Animazioni: senza .play il frame mostra lo stato finale ─────────── */
@@ -261,6 +261,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,60px);lin
 .waffle .limit b{position:absolute;left:27.6cqw;top:.5cqw;font-family:var(--mono);font-size:2.2cqw;font-weight:700;letter-spacing:-.01em;color:var(--white);white-space:nowrap}
 
 /* ── Scena 11: cerchi in linea d'aria ── */
+.s11 .tblock{max-width:41cqw}
 .s11 svg.rings{position:absolute;left:63%;top:35%;width:30cqw;height:30cqw;transform:translate(-50%,-50%);overflow:visible;z-index:1}
 
 /* ── Scena 13: fondo bianco, barra del finanziamento ── */
