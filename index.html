@@ -357,16 +357,13 @@ footer .fine{
 }
 .cmt textarea{min-height:88px;resize:vertical}
 .cmt textarea:focus,.cmt input:focus{outline:2px solid var(--bluette-700);outline-offset:-1px;border-color:var(--bluette-700)}
-.cmt .row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .cmt .saved{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-600)}
-.cmt button{
+.toolbar .pdf-all{
   font-family:var(--sans);font-size:14px;font-weight:700;line-height:1.3;
-  background:var(--bluette-700);color:var(--white);border:0;padding:8px 16px;cursor:pointer;transition:background .14s;
+  background:var(--bluette-700);color:var(--white);border:1px solid var(--bluette-700);padding:7px 15px;cursor:pointer;transition:background .14s;
 }
-.cmt button:hover,.cmt button:focus-visible{background:var(--bluette-900)}
-.cmt button:focus-visible{outline:2px solid var(--black);outline-offset:2px}
-.toolbar .who{display:flex;align-items:center;gap:8px;font-size:14px}
-.toolbar .who input{font-family:var(--sans);font-size:14px;border:1px solid var(--gray-300);padding:5px 8px;width:180px;background:var(--white)}
+.toolbar .pdf-all:hover,.toolbar .pdf-all:focus-visible{background:var(--bluette-900);border-color:var(--bluette-900)}
+.toolbar .pdf-all:focus-visible{outline:2px solid var(--black);outline-offset:2px}
 .toolbar .copy-all,.copy-out button{
   font-family:var(--sans);font-size:14px;font-weight:700;line-height:1.3;
   background:transparent;color:var(--bluette-700);border:1px solid var(--bluette-700);padding:7px 15px;cursor:pointer;transition:background .14s;
@@ -401,6 +398,7 @@ footer .fine{
   body.print-one .pdf-head b{color:var(--bluette-700)}
   body.print-one .info{margin-top:10px;padding-top:10px}
   body.print-one .info dd{font-size:9.5pt}
+  body.print-one .beat.printing:not(.pdf-first){break-before:page}
   body.print-one .pdf-note{display:block;margin-top:14px;padding:12px 14px;border-left:3px solid var(--bluette-700);background:var(--bluette-050);break-inside:avoid}
   body.print-one .pdf-note p:first-child{font-family:var(--mono);font-size:9pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bluette-700);margin-bottom:6px}
   body.print-one .pdf-note p + p{font-size:11pt;line-height:1.5;white-space:pre-wrap}
@@ -453,7 +451,8 @@ footer .fine{
     <label class="toggle"><input type="checkbox" id="safeToggle"> Mostra title safe 16:9</label>
     <label class="toggle"><input type="checkbox" id="bigToggle"> Frame grandi</label>
     <label class="who">Il tuo nome <input type="text" id="whoName" autocomplete="name" placeholder="per firmare i commenti"></label>
-    <button type="button" class="copy-all" id="copyAll">Copia tutti i commenti</button>
+    <button type="button" class="pdf-all" id="pdfAll">Scarica PDF dei commenti</button>
+    <button type="button" class="copy-all" id="copyAll">Copia il testo</button>
     <span class="copied" id="copied" aria-live="polite"></span>
     <span class="hint">Clic su un frame per rivedere l'animazione</span>
   </div>
@@ -1177,7 +1176,7 @@ footer .fine{
   document.getElementById('bigToggle').addEventListener('change', function(e){
     document.getElementById('grid').classList.toggle('big', e.target.checked);
   });
-  /* ── Commenti: uno per scena, salvati nel browser di chi scrive; «Scarica PDF» stampa solo quella scena ── */
+  /* ── Commenti: uno per scena, salvati nel browser di chi scrive; «Scarica PDF» li raccoglie tutti ── */
   var store = {
     get: function(k){ try { return localStorage.getItem(k) || ''; } catch(e){ return ''; } },
     set: function(k, v){ try { localStorage.setItem(k, v); return true; } catch(e){ return false; } }
@@ -1187,17 +1186,16 @@ footer .fine{
   who.value = store.get(PFX + 'nome');
   who.addEventListener('input', function(){ store.set(PFX + 'nome', who.value.trim()); });
   var today = function(){ return new Date().toLocaleDateString('it-IT', {day:'numeric', month:'long', year:'numeric'}); };
+  var beats = Array.prototype.slice.call(document.querySelectorAll('.beat'));
+  var sceneTitle = function(beat){ return beat.querySelector('.info .idx').firstChild.textContent.trim(); };  // «Scena 01 · Il cambio di regole»
 
-  document.querySelectorAll('.beat').forEach(function(beat, i){
-    var idx = beat.querySelector('.info .idx');
-    var title = (idx.firstChild.textContent || '').trim();              // «Scena 01 · Il cambio di regole»
-    var short = title.split('·')[0].trim();                             // «Scena 01» · «Cover» · «Codino»
+  beats.forEach(function(beat, i){
+    var short = sceneTitle(beat).split('·')[0].trim();                 // «Scena 01» · «Cover» · «Codino»
     var key = PFX + 'scena-' + i, id = 'cmt-' + i;
-
     var box = document.createElement('div'); box.className = 'cmt';
     box.innerHTML = '<label for="' + id + '">Commento · ' + short + '</label>' +
       '<textarea id="' + id + '" placeholder="Scrivi qui cosa cambiare in questa scena"></textarea>' +
-      '<div class="row"><span class="saved" aria-live="polite"></span><button type="button">Scarica PDF</button></div>';
+      '<span class="saved" aria-live="polite"></span>';
     beat.appendChild(box);
     var ta = box.querySelector('textarea'), saved = box.querySelector('.saved');
     ta.value = store.get(key);
@@ -1205,48 +1203,56 @@ footer .fine{
     ta.addEventListener('input', function(){
       saved.textContent = store.set(key, ta.value) ? 'Salvato in questo browser' : 'Non salvato: scarica il PDF prima di chiudere';
     });
+  });
+  var commented = function(){
+    return beats.filter(function(beat){ return beat.querySelector('.cmt textarea').value.trim(); });
+  };
+  var copied = document.getElementById('copied');
 
-    box.querySelector('button').addEventListener('click', function(){
+  // un solo PDF: una pagina per ogni scena commentata, con il frame, le schede e il commento
+  document.getElementById('pdfAll').addEventListener('click', function(){
+    var list = commented();
+    if (!list.length){ copied.textContent = 'Nessun commento da scaricare'; return; }
+    var name = who.value.trim(), added = [], waits = [];
+    list.forEach(function(beat, n){
       var f = beat.querySelector('.frame');
       stop(f);
-      // intestazione e commento del PDF
       var head = document.createElement('div'); head.className = 'pdf-head';
-      head.innerHTML = '<span>OpenEconomics · Storyboard Viterbo · Parte 1</span><span><b></b></span>';
-      head.querySelector('b').textContent = title;
+      head.innerHTML = '<span></span><span><b></b></span>';
+      head.firstChild.textContent = 'Storyboard Viterbo · Parte 1 · commenti' + (name ? ' di ' + name : '') + ' · ' + today();
+      head.querySelector('b').textContent = sceneTitle(beat) + ' · ' + (n + 1) + '/' + list.length;
       var note = document.createElement('div'); note.className = 'pdf-note';
-      note.innerHTML = '<p></p><p></p>';
-      var name = who.value.trim();
-      note.firstChild.textContent = 'Commento' + (name ? ' di ' + name : '') + ' · ' + today();
-      note.lastChild.textContent = ta.value.trim() || 'Nessun commento.';
-      beat.insertBefore(head, beat.firstChild);
-      beat.appendChild(note);
+      note.innerHTML = '<p>Commento</p><p></p>';
+      note.lastChild.textContent = beat.querySelector('.cmt textarea').value.trim();
+      beat.insertBefore(head, beat.firstChild); beat.appendChild(note);
+      added.push(head, note);
       // il video non si stampa: al suo posto il fotogramma
-      var v = f.querySelector('video.clip'), img = null;
+      var v = f.querySelector('video.clip');
       if (v){
-        img = document.createElement('img'); img.className = 'photo pdf-poster'; img.alt = '';
+        var img = document.createElement('img'); img.className = 'photo pdf-poster'; img.alt = '';
         img.src = v.getAttribute('poster'); v.parentNode.insertBefore(img, v.nextSibling);
+        added.push(img); if (img.decode) waits.push(img.decode().catch(function(){}));
       }
-      var oldTitle = document.title;
-      document.title = 'Viterbo-Parte-1-' + short.replace(/\s+/g, '-');   // nome del file PDF
-      document.body.classList.add('print-one'); beat.classList.add('printing');
-      var done = function(){
-        window.removeEventListener('afterprint', done);
-        document.body.classList.remove('print-one'); beat.classList.remove('printing');
-        head.remove(); note.remove(); if (img) img.remove();
-        document.title = oldTitle;
-      };
-      window.addEventListener('afterprint', done);
-      (img && img.decode ? img.decode().catch(function(){}) : Promise.resolve()).then(function(){ window.print(); });
+      beat.classList.add('printing'); if (n === 0) beat.classList.add('pdf-first');
     });
+    var oldTitle = document.title;
+    document.title = 'Viterbo-Parte-1-commenti' + (name ? '-' + name.replace(/\s+/g, '-') : '');   // nome del file PDF
+    document.body.classList.add('print-one');
+    var done = function(){
+      window.removeEventListener('afterprint', done);
+      document.body.classList.remove('print-one');
+      list.forEach(function(beat){ beat.classList.remove('printing', 'pdf-first'); });
+      added.forEach(function(n){ n.remove(); });
+      document.title = oldTitle;
+    };
+    window.addEventListener('afterprint', done);
+    Promise.all(waits).then(function(){ window.print(); });
   });
 
   // tutti i commenti in un testo solo, da incollare in una mail o in un documento
-  var copied = document.getElementById('copied');
   document.getElementById('copyAll').addEventListener('click', function(){
-    var name = who.value.trim(), parts = [];
-    document.querySelectorAll('.beat').forEach(function(beat){
-      var ta = beat.querySelector('.cmt textarea'), txt = ta ? ta.value.trim() : '';
-      if (txt) parts.push(beat.querySelector('.info .idx').firstChild.textContent.trim() + '\n' + txt);
+    var name = who.value.trim(), parts = commented().map(function(beat){
+      return sceneTitle(beat) + '\n' + beat.querySelector('.cmt textarea').value.trim();
     });
     if (!parts.length){ copied.textContent = 'Nessun commento da copiare'; return; }
     var text = 'Storyboard Viterbo · Parte 1 · commenti' + (name ? ' di ' + name : '') + ' · ' + today() +
