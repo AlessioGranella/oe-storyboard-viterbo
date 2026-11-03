@@ -348,10 +348,62 @@ footer .fine{
 @media (prefers-reduced-motion:reduce){
   .play *{animation:none!important}
 }
+/* ── Commento per scena + PDF ─────────────────────────────────────────── */
+.cmt{margin-top:16px;padding:14px 16px 16px;background:var(--gray-100);display:flex;flex-direction:column;gap:10px}
+.cmt label{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-700)}
+.cmt textarea,.cmt input{
+  font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--black);
+  background:var(--white);border:1px solid var(--gray-300);padding:9px 11px;width:100%;
+}
+.cmt textarea{min-height:88px;resize:vertical}
+.cmt textarea:focus,.cmt input:focus{outline:2px solid var(--bluette-700);outline-offset:-1px;border-color:var(--bluette-700)}
+.cmt .row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.cmt .saved{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-600)}
+.cmt button{
+  font-family:var(--sans);font-size:14px;font-weight:700;line-height:1.3;
+  background:var(--bluette-700);color:var(--white);border:0;padding:8px 16px;cursor:pointer;transition:background .14s;
+}
+.cmt button:hover,.cmt button:focus-visible{background:var(--bluette-900)}
+.cmt button:focus-visible{outline:2px solid var(--black);outline-offset:2px}
+.toolbar .who{display:flex;align-items:center;gap:8px;font-size:14px}
+.toolbar .who input{font-family:var(--sans);font-size:14px;border:1px solid var(--gray-300);padding:5px 8px;width:180px;background:var(--white)}
+.toolbar .copy-all,.copy-out button{
+  font-family:var(--sans);font-size:14px;font-weight:700;line-height:1.3;
+  background:transparent;color:var(--bluette-700);border:1px solid var(--bluette-700);padding:7px 15px;cursor:pointer;transition:background .14s;
+}
+.toolbar .copy-all:hover,.copy-out button:hover{background:var(--bluette-050)}
+.toolbar .copy-all:focus-visible,.copy-out button:focus-visible{outline:2px solid var(--black);outline-offset:2px}
+.toolbar .copied{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-600)}
+.copy-out{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:720px;margin:0 auto;background:var(--white);border:1px solid var(--black);padding:14px;display:flex;flex-direction:column;gap:10px}
+.copy-out textarea{font-family:var(--sans);font-size:14px;line-height:1.5;height:40vh;width:100%;border:1px solid var(--gray-300);padding:9px 11px}
+.copy-out button{align-self:flex-end}
+.pdf-head,.pdf-note,.pdf-poster{display:none}
+
 @media print{
   .toolbar{display:none}
   .grid{grid-template-columns:repeat(2,1fr)}
   .beat{break-inside:avoid}
+  .cmt{display:none}
+}
+/* stampa di una sola scena: è il «Scarica PDF» del commento */
+@page{size:A4 portrait;margin:12mm}
+@media print{
+  body.print-one{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body.print-one .masthead,body.print-one .phases,body.print-one .review,body.print-one footer,
+  body.print-one .sec-h,body.print-one .beat:not(.printing){display:none!important}
+  body.print-one .wrap{padding:0;max-width:none}
+  body.print-one .board{padding:0}
+  body.print-one .grid{display:block}
+  body.print-one .frame .replay,body.print-one .frame .safe{display:none}
+  body.print-one .printing video.clip{display:none}
+  body.print-one .printing .pdf-poster{display:block}
+  body.print-one .pdf-head{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--black);padding-bottom:8px;margin-bottom:12px;font-family:var(--mono);font-size:9pt;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+  body.print-one .pdf-head b{color:var(--bluette-700)}
+  body.print-one .info{margin-top:10px;padding-top:10px}
+  body.print-one .info dd{font-size:9.5pt}
+  body.print-one .pdf-note{display:block;margin-top:14px;padding:12px 14px;border-left:3px solid var(--bluette-700);background:var(--bluette-050);break-inside:avoid}
+  body.print-one .pdf-note p:first-child{font-family:var(--mono);font-size:9pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bluette-700);margin-bottom:6px}
+  body.print-one .pdf-note p + p{font-size:11pt;line-height:1.5;white-space:pre-wrap}
 }
 </style>
 </head>
@@ -400,6 +452,9 @@ footer .fine{
     <label class="toggle"><input type="checkbox" id="animToggle" checked> Anima i frame</label>
     <label class="toggle"><input type="checkbox" id="safeToggle"> Mostra title safe 16:9</label>
     <label class="toggle"><input type="checkbox" id="bigToggle"> Frame grandi</label>
+    <label class="who">Il tuo nome <input type="text" id="whoName" autocomplete="name" placeholder="per firmare i commenti"></label>
+    <button type="button" class="copy-all" id="copyAll">Copia tutti i commenti</button>
+    <span class="copied" id="copied" aria-live="polite"></span>
     <span class="hint">Clic su un frame per rivedere l'animazione</span>
   </div>
 </div>
@@ -1078,6 +1133,7 @@ footer .fine{
     f.querySelectorAll('.a-dim').forEach(function(n){ n.classList.add('is-dim'); });
   }
   function play(f){
+    if (document.body.classList.contains('print-one')) return;
     clearTimeout(timers.get(f));
     f.classList.remove('play');
     f.querySelectorAll('.is-out,.is-dim').forEach(function(n){ n.classList.remove('is-out','is-dim'); });
@@ -1121,6 +1177,96 @@ footer .fine{
   document.getElementById('bigToggle').addEventListener('change', function(e){
     document.getElementById('grid').classList.toggle('big', e.target.checked);
   });
+  /* ── Commenti: uno per scena, salvati nel browser di chi scrive; «Scarica PDF» stampa solo quella scena ── */
+  var store = {
+    get: function(k){ try { return localStorage.getItem(k) || ''; } catch(e){ return ''; } },
+    set: function(k, v){ try { localStorage.setItem(k, v); return true; } catch(e){ return false; } }
+  };
+  var PFX = 'oe-viterbo-p1:';
+  var who = document.getElementById('whoName');
+  who.value = store.get(PFX + 'nome');
+  who.addEventListener('input', function(){ store.set(PFX + 'nome', who.value.trim()); });
+  var today = function(){ return new Date().toLocaleDateString('it-IT', {day:'numeric', month:'long', year:'numeric'}); };
+
+  document.querySelectorAll('.beat').forEach(function(beat, i){
+    var idx = beat.querySelector('.info .idx');
+    var title = (idx.firstChild.textContent || '').trim();              // «Scena 01 · Il cambio di regole»
+    var short = title.split('·')[0].trim();                             // «Scena 01» · «Cover» · «Codino»
+    var key = PFX + 'scena-' + i, id = 'cmt-' + i;
+
+    var box = document.createElement('div'); box.className = 'cmt';
+    box.innerHTML = '<label for="' + id + '">Commento · ' + short + '</label>' +
+      '<textarea id="' + id + '" placeholder="Scrivi qui cosa cambiare in questa scena"></textarea>' +
+      '<div class="row"><span class="saved" aria-live="polite"></span><button type="button">Scarica PDF</button></div>';
+    beat.appendChild(box);
+    var ta = box.querySelector('textarea'), saved = box.querySelector('.saved');
+    ta.value = store.get(key);
+    if (ta.value) saved.textContent = 'Salvato in questo browser';
+    ta.addEventListener('input', function(){
+      saved.textContent = store.set(key, ta.value) ? 'Salvato in questo browser' : 'Non salvato: scarica il PDF prima di chiudere';
+    });
+
+    box.querySelector('button').addEventListener('click', function(){
+      var f = beat.querySelector('.frame');
+      stop(f);
+      // intestazione e commento del PDF
+      var head = document.createElement('div'); head.className = 'pdf-head';
+      head.innerHTML = '<span>OpenEconomics · Storyboard Viterbo · Parte 1</span><span><b></b></span>';
+      head.querySelector('b').textContent = title;
+      var note = document.createElement('div'); note.className = 'pdf-note';
+      note.innerHTML = '<p></p><p></p>';
+      var name = who.value.trim();
+      note.firstChild.textContent = 'Commento' + (name ? ' di ' + name : '') + ' · ' + today();
+      note.lastChild.textContent = ta.value.trim() || 'Nessun commento.';
+      beat.insertBefore(head, beat.firstChild);
+      beat.appendChild(note);
+      // il video non si stampa: al suo posto il fotogramma
+      var v = f.querySelector('video.clip'), img = null;
+      if (v){
+        img = document.createElement('img'); img.className = 'photo pdf-poster'; img.alt = '';
+        img.src = v.getAttribute('poster'); v.parentNode.insertBefore(img, v.nextSibling);
+      }
+      var oldTitle = document.title;
+      document.title = 'Viterbo-Parte-1-' + short.replace(/\s+/g, '-');   // nome del file PDF
+      document.body.classList.add('print-one'); beat.classList.add('printing');
+      var done = function(){
+        window.removeEventListener('afterprint', done);
+        document.body.classList.remove('print-one'); beat.classList.remove('printing');
+        head.remove(); note.remove(); if (img) img.remove();
+        document.title = oldTitle;
+      };
+      window.addEventListener('afterprint', done);
+      (img && img.decode ? img.decode().catch(function(){}) : Promise.resolve()).then(function(){ window.print(); });
+    });
+  });
+
+  // tutti i commenti in un testo solo, da incollare in una mail o in un documento
+  var copied = document.getElementById('copied');
+  document.getElementById('copyAll').addEventListener('click', function(){
+    var name = who.value.trim(), parts = [];
+    document.querySelectorAll('.beat').forEach(function(beat){
+      var ta = beat.querySelector('.cmt textarea'), txt = ta ? ta.value.trim() : '';
+      if (txt) parts.push(beat.querySelector('.info .idx').firstChild.textContent.trim() + '\n' + txt);
+    });
+    if (!parts.length){ copied.textContent = 'Nessun commento da copiare'; return; }
+    var text = 'Storyboard Viterbo · Parte 1 · commenti' + (name ? ' di ' + name : '') + ' · ' + today() +
+      '\n' + location.href.split('#')[0] + '\n\n' + parts.join('\n\n');
+    var fallback = function(){
+      var old = document.querySelector('.copy-out'); if (old) old.remove();
+      var p = document.createElement('div'); p.className = 'copy-out';
+      p.innerHTML = '<textarea readonly aria-label="Testo dei commenti"></textarea><button type="button">Chiudi</button>';
+      p.querySelector('textarea').value = text;
+      p.querySelector('button').addEventListener('click', function(){ p.remove(); });
+      document.body.appendChild(p); p.querySelector('textarea').select();
+      copied.textContent = 'Seleziona e copia il testo';
+    };
+    if (navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(function(){
+        copied.textContent = parts.length + (parts.length === 1 ? ' commento copiato' : ' commenti copiati');
+      }, fallback);
+    } else fallback();
+  });
+
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){
     document.getElementById('animToggle').checked = false; animOn = false; frames.forEach(stop);
   }
