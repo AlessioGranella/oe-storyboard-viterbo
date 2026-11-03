@@ -215,14 +215,12 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,60px);lin
 .cover .line1{color:rgba(255,255,255,.74)}
 .cover .big{position:absolute;right:-1.5cqw;bottom:-3.5cqw;font-family:var(--serif);font-size:26cqw;white-space:nowrap;line-height:1;color:rgba(255,255,255,.06);letter-spacing:-.04em;pointer-events:none}
 
-/* ── Scena 1: foto + pannello Bluette con 2028 ── */
-.s1 .tblock{max-width:60cqw}
+/* ── Scena 1: foto + le due righe del cambio di regole ── */
+.s1 .tblock{max-width:70cqw}
 .s1 .hl{font-size:3.9cqw}
 .s1 .swap{display:grid}
 .s1 .swap > div{grid-area:1/1;display:flex;flex-direction:column;justify-content:flex-end}
-.s1 .p2028{position:absolute;top:0;right:0;bottom:0;width:33cqw;background:var(--bluette-700);z-index:1;display:flex;flex-direction:column;justify-content:center;padding:0 4cqw}
-.s1 .p2028 .num{font-size:9.6cqw}
-.s1 .p2028 .k{margin-top:2.4cqw;font-size:1.5cqw}
+.s1 .neg{margin-top:2cqw;font-size:1.5cqw}
 
 /* ── Scena 2: mappa dei 60 comuni ── */
 .s2 .mapwrap{position:absolute;right:4cqw;top:3.5cqw;bottom:3.5cqw;width:52cqw;display:flex;align-items:center;justify-content:center}
@@ -234,7 +232,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,60px);lin
 .s2 .small .cap + .cap{margin-top:.6cqw;color:rgba(255,255,255,.74)}
 
 /* ── Scena 3: il filo dello studio ── */
-.s3 .tblock{max-width:84cqw;top:9cqw;bottom:auto}
+.s3 .tblock{max-width:84cqw;top:18cqw;bottom:auto;transform:translateY(-50%)}
 .s3 .hl{font-size:5.6cqw}
 .s3 .hl .lm{color:var(--lime-400)}
 .s3 .hl span{display:inline}
@@ -250,6 +248,17 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,60px);lin
 .months{display:grid;grid-template-columns:repeat(12,1fr);gap:.4cqw}
 .months span{font-family:var(--mono);font-size:1.3cqw;font-weight:700;text-align:center;padding:1.6cqw 0;background:rgba(255,255,255,.14);color:rgba(255,255,255,.74)}
 .months-k{font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.74);margin-bottom:.8cqw}
+
+/* ── Scena 10: 100 persone, 62 occupate; la soglia del resto del Lazio sotto le 60 ── */
+.s10 .side{gap:1.4cqw}
+.waffle{position:relative;width:24cqw}
+.waffle .cells{display:grid;grid-template-columns:repeat(10,1fr);gap:.4cqw}
+.waffle .cells span{aspect-ratio:1;background:rgba(255,255,255,.14)}
+.waffle .cells span.a-lit{background:var(--lime-400)}
+.play .waffle .cells span.a-lit{background:rgba(255,255,255,.14)}
+.waffle .limit{position:absolute;left:-1cqw;width:26cqw;bottom:calc(60% - .1cqw);border-top:.2cqw dashed var(--white)}
+.waffle .limit .bl{position:absolute;left:27.6cqw;bottom:.1cqw;font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;line-height:1.35;color:rgba(255,255,255,.74);white-space:nowrap}
+.waffle .limit b{position:absolute;left:27.6cqw;top:.5cqw;font-family:var(--mono);font-size:2.2cqw;font-weight:700;letter-spacing:-.01em;color:var(--white);white-space:nowrap}
 
 /* ── Scena 11: cerchi in linea d'aria ── */
 .s11 svg.rings{position:absolute;left:63%;top:35%;width:30cqw;height:30cqw;transform:translate(-50%,-50%);overflow:visible;z-index:1}
@@ -276,7 +285,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,60px);lin
 /* ── Codino ── */
 .end .stage{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3.4cqw}
 .end img.logo{width:34cqw;height:auto;display:block}
-.end .hl{font-size:3.6cqw;text-align:center}
+.end .hl{font-size:4.6cqw;text-align:center}
 .end .line{position:absolute;left:5cqw;bottom:4.4cqw;font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.74)}
 
 /* ── Metadati sotto il frame ──────────────────────────────────────────── */
@@ -422,7 +431,7 @@ footer .fine{
   <div class="wrap">
     <p class="eyebrow">OpenEconomics · Storyboard visivo · Bozza</p>
     <h1>Video analisi territoriale Viterbo · Parte 1</h1>
-    <p class="sub">La foto del territorio: cover e quattordici scene dalla sceneggiatura v3 del 2 novembre 2026, con il codino OpenEconomics in chiusura. Le sette foto sono diventate clip con movimento di camera, nel trattamento fotografico del video di Rieti. Mappe, numeri e grafici si animano a tempo con la voce stimata.</p>
+    <p class="sub">La foto del territorio: cover e quattordici scene dalla sceneggiatura v3 del 2 novembre 2026, con la chiusa «Per creare connessioni serve un metodo». Le sette foto sono diventate clip con movimento di camera, nel trattamento fotografico del video di Rieti. Mappe, numeri e grafici si animano a tempo con la voce stimata.</p>
     <dl class="meta">
       <div><dt>Durata in sceneggiatura</dt><dd>4:44</dd></div>
       <div><dt>Con cover e codino</dt><dd>circa 4:55</dd></div>
@@ -494,18 +503,15 @@ footer .fine{
             <video class="photo clip" src="assets/clips/01-viterbo-palazzo-papi.mp4" poster="assets/frames/01-viterbo-palazzo-papi.jpg" muted loop playsinline preload="none" aria-label="Il Palazzo dei Papi di Viterbo sopra la valle di Faul"></video>
             <div class="shade"></div>
             <div class="tblock on-photo">
-              <p class="k a-up" style="--d:1.6s">Programmazione 2028–2034</p>
+              <p class="k a-up" style="--d:2.2s">Programmazione 2028–2034</p>
               <div class="swap">
                 <div class="a-out" style="--d:18.2s">
-                  <div class="a-dim" style="--d:8.8s"><p class="hl a-up" style="--d:2.2s">Dalla rendicontazione dei costi</p></div>
-                  <p class="hl a-up" style="--d:8.8s">alla misurazione dei risultati</p>
+                  <div class="a-dim" style="--d:8.6s"><p class="hl a-up" style="--d:6.6s">Dalla rendicontazione dei costi</p></div>
+                  <p class="hl a-up" style="--d:8.6s">alla misurazione dei risultati</p>
+                  <p class="k neg a-up" style="--d:12.7s">Proposta in negoziazione</p>
                 </div>
                 <div><p class="hl a-up" style="--d:18.6s">E si parte dai <span class="a-lime" style="--d:21s">dati</span>.</p></div>
               </div>
-            </div>
-            <div class="p2028 a-panel" style="--d:5.2s">
-              <p class="num">2028</p>
-              <p class="k a-up" style="--d:12.7s">Proposta in negoziazione</p>
             </div>
           </div>
           <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 1 · 0:00 – 0:24</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
@@ -513,9 +519,9 @@ footer .fine{
         <div class="info">
           <p class="idx">Scena 01 · Il cambio di regole <span class="chip w">Clip AI · foto 1</span> <span class="chip">Motion graphic</span></p>
           <dl>
-            <div><dt>On-screen</dt><dd>Programmazione 2028–2034 · «Dalla rendicontazione dei costi» → «alla misurazione dei risultati» · numerone 2028 Lime su pannello Bluette · «Proposta in negoziazione» · chiusa «E si parte dai dati» con «dati» che si accende</dd></div>
+            <div><dt>On-screen</dt><dd>Programmazione 2028–2034 · «Dalla rendicontazione dei costi» → «alla misurazione dei risultati» · «Proposta in negoziazione» · chiusa «E si parte dai dati» con «dati» che si accende</dd></div>
             <div><dt>Voiceover · voce maschile</dt><dd class="vo">La proposta della Commissione europea prevede che dal duemilaventotto i fondi siano ancorati a risultati misurabili. Il testo è ancora in negoziazione, ma la direzione è chiara. Per programmare servono obiettivi con indicatori. E si parte dai dati.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Come da note del PPTX: la prima riga entra su «proposta della Commissione» (2,2 s), il pannello Bluette con il 2028 scorre da destra sulla parola «duemilaventotto» (5,2 s) e resta fino alla fine. Su «risultati misurabili» la prima riga si attenua ed entra la seconda (8,8 s); su «ancora in negoziazione» compare «Proposta in negoziazione» (12,7 s). Su «E si parte dai dati» le righe lasciano il posto alla chiusa; «dati» passa al Lime sulla parola (21 s).</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">«Programmazione 2028–2034» entra su «proposta della Commissione» (2,2 s). Le due frasi seguono la voce a due secondi l'una dall'altra: «Dalla rendicontazione dei costi» su «i fondi» (6,6 s), «alla misurazione dei risultati» su «ancorati a risultati misurabili» (8,6 s), mentre la prima si attenua. Su «ancora in negoziazione» compare «Proposta in negoziazione» (12,7 s). Su «E si parte dai dati» le righe lasciano il posto alla chiusa; «dati» passa al Lime sulla parola (21 s).</dd></div>
             <div><dt>Clip</dt><dd class="prompt">Palazzo dei Papi di Viterbo, foto di NikonZ7II (CC BY-SA 4.0). Clip AI di 12 s (Seedance 1.5 Pro) a partire dalla foto, con trattamento Rieti: zoom lento in avanti sul palazzo, come da sceneggiatura.</dd></div>
             <div><dt>Nota</dt><dd class="note">La chiusa «E si parte dai dati» è il testo stesso della voce: serve a dare una «riga finale» alla parola da evidenziare, come chiede la nota di regia.</dd></div>
           </dl>
@@ -592,7 +598,7 @@ footer .fine{
             <p class="chap a-up" style="--d:.4s">1 · Terra e filiere</p>
             <div class="tblock on-photo">
               <p class="num a-up" style="--d:7.1s"><span class="count" data-to="22.2" data-dec="1" data-d="7.1" data-t="1.3">22<span class="sep">,</span>2</span>%</p>
-              <p class="cap s a-up" style="--d:7.5s">delle esportazioni assorbita dall'agricoltura</p>
+              <p class="cap s a-up" style="--d:7.5s">% esportazioni assorbita dall'agricoltura</p>
               <div class="bars">
                 <div class="bar a-up" style="--d:7.9s"><span class="bl">Provincia di Viterbo</span><span class="row"><i class="a-growX" style="--w:1;--d:7.9s"></i><b>22<span class="sep">,</span>2%</b></span></div>
                 <div class="bar ot a-up" style="--d:16s"><span class="bl">Resto del Lazio, Roma esclusa</span><span class="row"><i class="a-growX" style="--w:.081;--d:16.2s"></i><b>1<span class="sep">,</span>8%</b></span></div>
@@ -604,7 +610,7 @@ footer .fine{
         <div class="info">
           <p class="idx">Scena 04 · Terra: il prodotto c'è <span class="chip w">Clip AI · foto 2</span> <span class="chip">Dati reali</span></p>
           <dl>
-            <div><dt>On-screen</dt><dd>Chip «1 · Terra e filiere» · 22,2% delle esportazioni assorbita dall'agricoltura · barre Viterbo 22,2% / resto del Lazio, Roma esclusa 1,8%</dd></div>
+            <div><dt>On-screen</dt><dd>Chip «1 · Terra e filiere» · 22,2% «% esportazioni assorbita dall'agricoltura» · barre Viterbo 22,2% / resto del Lazio, Roma esclusa 1,8%</dd></div>
             <div><dt>Voiceover · voce femminile</dt><dd class="vo">La prima risorsa è la terra. I prodotti agricoli sono il ventidue per cento dell'export di merci della provincia. Nel resto del Lazio, Roma esclusa, rappresentano meno del due per cento.</dd></div>
             <div><dt>Regia</dt><dd class="prompt">Foto velata di Bluette. Il numerone conta fino a 22,2 su «ventidue per cento»; il confronto entra su «meno del due per cento». Le due barre mostrano subito la distanza: dodici volte.</dd></div>
             <div><dt>Clip</dt><dd class="prompt">Coltivazioni ai piedi dei Monti Cimini, foto di Albarubescens (CC BY-SA 4.0). Clip AI di 12 s (Seedance 1.5 Pro) a partire dalla foto, con trattamento Rieti: carrello laterale lento sui filari.</dd></div>
@@ -621,7 +627,7 @@ footer .fine{
             <div class="shade"></div>
             <div class="tblock on-photo">
               <p class="num a-up" style="--d:9.9s"><span class="count" data-to="4.8" data-dec="1" data-d="9.9" data-t="1">4<span class="sep">,</span>8</span>%</p>
-              <p class="cap s a-up" style="--d:10.3s">addetti impiegati in trasporti e logistica</p>
+              <p class="cap s a-up" style="--d:10.3s">addetti impiegati<br>in trasporti e logistica</p>
               <div class="bars">
                 <div class="bar a-up" style="--d:10.7s"><span class="bl">Provincia di Viterbo</span><span class="row"><i class="a-growX" style="--w:.503;--d:10.7s"></i><b>4<span class="sep">,</span>8%</b></span></div>
                 <div class="bar ot a-up" style="--d:14.3s"><span class="bl">Resto del Lazio, Roma esclusa</span><span class="row"><i class="a-growX" style="--w:1;--d:14.5s"></i><b>9<span class="sep">,</span>5%</b></span></div>
@@ -676,7 +682,7 @@ footer .fine{
           <div class="stage">
             <div class="tblock">
               <p class="num a-up" style="--d:6.6s"><span class="count" data-to="27" data-d="6.6" data-t="1.2">27</span></p>
-              <p class="cap s a-up" style="--d:7s">presenze per posto letto in un anno</p>
+              <p class="cap s a-up" style="--d:7s">presenze per posto letto<br>in un anno</p>
             </div>
             <div class="side">
               <div class="bars">
@@ -772,12 +778,13 @@ footer .fine{
             <p class="chap a-up" style="--d:.4s">4 · Territorio e servizi</p>
             <div class="tblock">
               <p class="num a-up" style="--d:12.1s"><span class="count" data-to="62" data-d="12.1" data-t="1.4">62</span>%</p>
-              <p class="cap s a-up" style="--d:12.5s">tasso di occupazione tra 15 e 64 anni</p>
+              <p class="cap s a-up" style="--d:12.5s">tasso di occupazione<br>tra 15 e 64 anni</p>
             </div>
             <div class="side">
-              <div class="bars">
-                <div class="bar a-up" style="--d:12.9s"><span class="bl">Provincia di Viterbo</span><span class="row"><i class="a-growX" style="--w:.6235;--d:12.9s"></i><b>62%</b></span></div>
-                <div class="bar ot a-up" style="--d:16.5s"><span class="bl">Resto del Lazio, Roma esclusa</span><span class="row"><i class="a-growX" style="--w:.5977;--d:16.7s"></i><b>meno di 60%</b></span></div>
+              <p class="months-k a-up" style="--d:12.5s">Ogni 100 persone tra 15 e 64 anni</p>
+              <div class="waffle a-up" style="--d:12.7s">
+                <div class="cells" id="s10cells"></div>
+                <div class="limit a-fade" style="--d:16.5s"><span class="bl">Resto del Lazio,<br>Roma esclusa</span><b>meno di 60</b></div>
               </div>
             </div>
           </div>
@@ -786,9 +793,9 @@ footer .fine{
         <div class="info">
           <p class="idx">Scena 10 · Territorio: il lavoro <span class="chip">Dati reali</span> <span class="chip g">Voce da correggere</span></p>
           <dl>
-            <div><dt>On-screen</dt><dd>Chip «4 · Territorio e servizi» · 62% tasso di occupazione tra 15 e 64 anni · barre su scala 0–100: 62% / meno di 60%</dd></div>
+            <div><dt>On-screen</dt><dd>Chip «4 · Territorio e servizi» · 62% tasso di occupazione tra 15 e 64 anni · griglia di 100 caselle, una per persona: 62 in Lime · linea tratteggiata bianca sotto la sessantesima per il resto del Lazio, Roma esclusa: meno di 60</dd></div>
             <div><dt>Voiceover · voce femminile</dt><dd class="vo">Si lavora più che nel resto del Lazio. Il tasso di occupazione tra i quindici e i sessantaquattro anni supera il sessantadue per cento. Nel resto della regione non sia arriva al sessanta per cento.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Fondo Bluette. Il numerone entra su «sessantadue», il confronto su «sessanta». Le barre sono su scala intera (0–100): la differenza è piccola e deve sembrarlo.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Fondo Bluette. Il numerone entra su «sessantadue» e la griglia si accende dal basso, casella per casella, fino a 62. Su «sessanta» la linea tratteggiata si posa sopra la sesta fila: le due caselle in più restano sopra la linea. La differenza è piccola e deve sembrarlo.</dd></div>
             <div><dt>Nota</dt><dd class="note">Due correzioni alla voce: «non <del>sia</del> si arriva» e «nel resto <mark>della regione</mark>» → «nel resto del Lazio», perché la sceneggiatura stessa vieta «la regione».</dd></div>
           </dl>
         </div>
@@ -835,7 +842,7 @@ footer .fine{
             <p class="chap a-up" style="--d:.4s">5 · Comuni e spesa</p>
             <div class="tblock">
               <p class="num a-up" style="--d:12.7s"><span class="count" data-to="17" data-d="12.7" data-t="1.2">17</span>%</p>
-              <p class="cap s a-up" style="--d:13.1s">dell'importo del Piano nazionale di ripresa e resilienza attuato direttamente dai comuni</p>
+              <p class="cap s a-up" style="--d:13.1s">importo del PNRR attuato direttamente dai Comuni</p>
             </div>
             <div class="side">
               <div class="bars">
@@ -849,9 +856,9 @@ footer .fine{
         <div class="info">
           <p class="idx">Scena 12 · Comuni: pronti a gestire investimenti <span class="chip">Dati reali</span></p>
           <dl>
-            <div><dt>On-screen</dt><dd>Chip «5 · Comuni e spesa» · 17% dell'importo del Piano nazionale di ripresa e resilienza attuato direttamente dai comuni · barre 17% / 11%</dd></div>
+            <div><dt>On-screen</dt><dd>Chip «5 · Comuni e spesa» · 17% importo del PNRR attuato direttamente dai Comuni · barre 17% / 11%</dd></div>
             <div><dt>Voiceover · voce maschile</dt><dd class="vo">Chi può mettere a sistema queste risorse? Per primi, i comuni. Nel Piano nazionale di ripresa e resilienza attuano direttamente il diciassette per cento dell'importo. Nel resto del Lazio, Roma esclusa, l'undici.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Fondo Bluette. Il numerone entra su «diciassette», il confronto su «l'undici». «Piano nazionale di ripresa e resilienza» per esteso anche a schermo, come da nota del PPTX.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Fondo Bluette. Il numerone entra su «diciassette», il confronto su «l'undici». A schermo la sigla PNRR (revisione del 3 novembre); la voce lo dice per esteso.</dd></div>
           </dl>
         </div>
       </article>
@@ -902,9 +909,9 @@ footer .fine{
         <div class="info">
           <p class="idx">Scena 14 · Le connessioni da rafforzare <span class="chip">Motion graphic</span></p>
           <dl>
-            <div><dt>On-screen</dt><dd>Cinque icone dei capitoli in fila · cinque fili Lime verso il loro altro capo: i mercati · i visitatori, tutto l'anno · chi usa l'energia · chi vive lontano · i progetti da avviare · i fili si chiudono in un cerchio · «Le risorse ci sono. Le connessioni vanno costruite.»</dd></div>
-            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Le risorse ci sono. Che cosa manca? Le connessioni. Tra la terra e i mercati. Tra i posti letto e i visitatori, tutto l'anno. Tra l'energia e chi la usa. Tra i servizi e chi vive lontano. Tra i comuni e i progetti da avviare. Costruirle con metodo è il lavoro del prossimo ciclo.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Le icone restano in fila per tutta la scena. Su «Che cosa manca? Le connessioni» il fondo si scurisce e compare il filo Lime vuoto. A ogni «Tra» un filo scende da un'icona al suo altro capo (6,3 · 9,2 · 14 · 17,5 · 21 s). Su «Costruirle» le icone si dispongono sul cerchio e i cinque archi lo chiudono; poi il testo finale.</dd></div>
+            <div><dt>On-screen</dt><dd>Cinque icone dei capitoli in fila · cinque fili Lime verso il loro altro capo: mercati di sbocco · destagionalizzazione visitatori · ottimizzazione · accessibilità · progetti da avviare · i fili si chiudono in un cerchio · «Le risorse ci sono. Le connessioni vanno costruite.»</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Le risorse ci sono. Che cosa manca? Le connessioni. Tra la terra e i mercati. Tra i posti letto e i visitatori, tutto l'anno. Tra l'energia e chi la usa. Tra i servizi e chi vive lontano. Tra i comuni e i progetti da avviare. Ora è il momento di creare connessioni, con metodo.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Le icone restano in fila per tutta la scena. Su «Che cosa manca? Le connessioni» il fondo si scurisce e compare il filo Lime vuoto. A ogni «Tra» un filo scende da un'icona al suo altro capo (6,3 · 9,2 · 14 · 17,5 · 21 s). Su «Ora è il momento» le icone si dispongono sul cerchio e i cinque archi lo chiudono; poi il testo finale.</dd></div>
             <div><dt>Nota</dt><dd class="note">Testo finale della sceneggiatura in due righe, la seconda in Lime. Dopo questa scena la sceneggiatura prevede lo stacco: schermo Bluette fisso 5 secondi.</dd></div>
           </dl>
         </div>
@@ -914,18 +921,17 @@ footer .fine{
       <article class="beat">
         <div class="frame end deep" data-dur="6" tabindex="0" role="button" aria-label="Codino, rivedi animazione">
           <div class="stage">
-            <img class="logo a-fade" style="--d:.3s" src="assets/logo-white.svg" alt="OpenEconomics">
-            <p class="hl a-up" style="--d:1.4s">We measure what really matters</p>
+            <p class="hl a-up" style="--d:.4s">Per creare connessioni<br>serve un metodo</p>
             <p class="line a-fade" style="--d:2s">Provincia di Viterbo · Parte 1 · La foto del territorio</p>
           </div>
           <span class="tc">Codino · 6 s</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
-          <p class="idx">Codino · Chiusura <span class="chip g">Fisso per tutti i video</span></p>
+          <p class="idx">Codino · Chiusura <span class="chip g">Chiusura della Parte 1</span></p>
           <dl>
-            <div><dt>On-screen</dt><dd>Bluette 900, logo OpenEconomics bianco, «We measure what really matters» · in basso a sinistra, fuori dal codino, la riga del video in mono</dd></div>
+            <div><dt>On-screen</dt><dd>Bluette 900 · «Per creare connessioni / serve un metodo» in Hedvig, centrato su due righe · in basso a sinistra la riga del video in mono</dd></div>
             <div><dt>Voiceover</dt><dd class="vo">Nessuno: musica in chiusura.</dd></div>
-            <div><dt>Nota</dt><dd class="note">Se la Parte 1 diventa un video a sé, il codino prende il posto dello stacco Bluette di 5 secondi. Se resta un blocco del video unico con stop&amp;go, al suo posto va lo stacco e il codino resta solo in fondo alla conclusione (scena 40).</dd></div>
+            <div><dt>Nota</dt><dd class="note">Revisione del 3 novembre: tolti logo OpenEconomics e claim, al loro posto la frase di chiusura. Se la Parte 1 diventa un video a sé, questa chiusura prende il posto dello stacco Bluette di 5 secondi. Se resta un blocco del video unico con stop&amp;go, al suo posto va lo stacco e il codino resta solo in fondo alla conclusione (scena 40).</dd></div>
           </dl>
         </div>
       </article>
@@ -990,7 +996,7 @@ footer .fine{
         <ul class="fix">
           <li><span class="w">Scena 10</span>«non <del>sia</del> <ins>si</ins> arriva al sessanta» · «nel resto <del>della regione</del> <ins>del Lazio</ins>»</li>
           <li><span class="w">Scene 5, 7, 9, 10 · confronto</span>la regola della sceneggiatura vuole «il resto del Lazio, <ins>Roma esclusa</ins>» per esteso alla prima occorrenza di ogni scena: in queste quattro scene manca «Roma esclusa»</li>
-          <li><span class="w">Scena 4 · etichetta</span>«<del>% delle esportazioni assorbita dalla agricoltura</del>» → <ins>delle esportazioni assorbita dall'agricoltura</ins></li>
+          <li><span class="w">Scena 4 · etichetta</span>«<del>% delle esportazioni assorbita dalla agricoltura</del>» → <ins>% esportazioni assorbita dall'agricoltura</ins> (revisione del 3 novembre)</li>
           <li><span class="w">Scena 13 · etichetta</span>«<del>progetti non ancora partiti</del>» → <ins>del finanziamento della coesione su progetti non ancora partiti</ins></li>
         </ul>
         <h3 class="sec-h" style="margin-top:32px">Da verificare prima della produzione</h3>
@@ -1002,7 +1008,8 @@ footer .fine{
           <li><span class="w">Scena 2 · residenti</span>307.405 è la somma dei 60 comuni, anno non indicato</li>
           <li><span class="w">Cover · logo ANCI</span>confermare che l'evento di Viterbo sia con ANCI; il file è largo 234 px, per il 1080p serve un vettoriale</li>
           <li><span class="w">Scene 3 e 14 · icone</span>servono le icone della barra laterale dello studio; ora sono ridisegnate nello stile del DS</li>
-          <li><span class="w">Chiusura</span>codino o stacco Bluette, a seconda che la Parte 1 sia un video a sé o un blocco del video unico</li>
+          <li><span class="w">Chiusura</span>chiusa «Per creare connessioni serve un metodo» o stacco Bluette, a seconda che la Parte 1 sia un video a sé o un blocco del video unico</li>
+          <li><span class="w">Scene 5, 6 e 11 · clip</span>da rifare: camion ripreso dal basso (5), dentro i vicoli di Civita (6), un ospedale (11)</li>
         </ul>
       </div>
     </div>
@@ -1017,7 +1024,7 @@ footer .fine{
       <li><strong>Mappa della scena 2:</strong> confini ISTAT dei 60 comuni della provincia di Viterbo (openpolis, <code>geojson-italy</code>), ridisegnati in palette OE. <strong>Numeri</strong> dalla sceneggiatura v3 e dalle schede dello studio citate in ogni scena.</li>
       <li><strong>Foto:</strong> Wikimedia Commons, licenze libere con obbligo di citazione (tabella «Foto della Parte 1»). Il movimento è generato con AI (Seedance 1.5 Pro su Magnific) partendo dalla foto vera come primo fotogramma: i luoghi restano quelli reali, ma alcuni dettagli che entrano in campo durante il movimento sono inventati. Originali in <code>assets/clips/raw/</code>, trattamento con <code>grade.sh</code>.</li>
       <li>Numeri a schermo in <strong>formato italiano</strong> (22,2% · 307 mila · 11,6 km).</li>
-      <li>Le Parti 2 e 3 seguono con lo stesso impianto: stessi token, stesse barre di confronto, stesso codino.</li>
+      <li>Le Parti 2 e 3 seguono con lo stesso impianto: stessi token, stesse barre di confronto, stessa chiusura.</li>
     </ul>
     <p class="fine">OpenEconomics · Bluette #4400B3 · Lime #B9FF69 · Hedvig Letters Serif + Atkinson Hyperlegible</p>
   </div>
@@ -1060,6 +1067,18 @@ footer .fine{
     });
   })();
 
+  /* ── Scena 10: 100 caselle riempite dal basso, 62 si accendono a tempo con «sessantadue» ── */
+  (function(){
+    var box = document.getElementById('s10cells');
+    for (var i = 0; i < 100; i++){
+      var c = document.createElement('span');
+      c.style.gridRow = String(10 - Math.floor(i / 10));
+      c.style.gridColumn = String(i % 10 + 1);
+      if (i < 62){ c.className = 'a-lit'; c.style.setProperty('--d', (12.9 + i * 0.022).toFixed(3) + 's'); }
+      box.appendChild(c);
+    }
+  })();
+
   /* ── Scena 11: raggi in proporzione esatta (11,6 contro 8,1 km) ── */
   document.getElementById('r81').setAttribute('r', (150 * 8.05 / 11.59).toFixed(1));
   drawable(document.getElementById('r116'), 12.4, 1.4);
@@ -1068,10 +1087,10 @@ footer .fine{
   (function(){
     var svg = document.getElementById('s14net');
     var L = css('--lime-400'), W = css('--white');
-    var xs = [300, 630, 960, 1290, 1620], iconY = 170, S = 116;
+    var xs = [270, 620, 960, 1300, 1650], iconY = 170, S = 116;
     var ids = ['ic-terra','ic-accoglienza','ic-energia','ic-servizi','ic-comuni'];
     var names = ['Terra','Accoglienza','Energia','Servizi','Comuni'];
-    var tgts = [['I mercati'],['I visitatori,','tutto l’anno'],['Chi usa','l’energia'],['Chi vive','lontano'],['I progetti','da avviare']];
+    var tgts = [['Mercati','di sbocco'],['Destagionalizzazione','visitatori'],['Ottimizzazione'],['Accessibilità'],['Progetti','da avviare']];
     var cues = [6.3, 9.2, 14, 17.5, 21];
     var tgtY = 700, conv = 25.6;
 
@@ -1091,7 +1110,7 @@ footer .fine{
       var dot = el('rect', {x:x-9, y:y1-9, width:18, height:18, fill:L, class:'a-pop'}, grp);
       dot.style.setProperty('--d', (cues[i] + 1) + 's');
       tgts[i].forEach(function(line, j){
-        var tt = el('text', {x:x, y:tgtY + j * 58, 'text-anchor':'middle', 'font-family':css('--serif'), 'font-size':50, fill:W, class:'tgt a-fade'}, grp);
+        var tt = el('text', {x:x, y:tgtY + j * 46, 'text-anchor':'middle', 'font-family':css('--serif'), 'font-size':36, fill:W, class:'tgt a-fade'}, grp);
         tt.style.setProperty('--d', (cues[i] + 0.9) + 's'); tt.textContent = line;
       });
     });
