@@ -438,6 +438,13 @@ footer .fine{
 .play .cube3d .face i{animation:solve .5s ease var(--d,0s) both}
 .cube3d .plate{position:absolute;left:-4cqw;right:-4cqw;top:100%;margin-top:2.4cqw;text-align:center;font-family:var(--mono);font-size:1.6cqw;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--white)}
 
+.s15 .holo{position:absolute;inset:0;z-index:0;overflow:hidden}
+.s15 .holo canvas{display:block;width:100%!important;height:100%!important}
+/* righe di scansione leggere sopra il rendering */
+.s15 .holo::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.035) 0 1px,transparent 1px 3px)}
+.s15 .holo-plate{position:absolute;transform:translate(-50%,-50%);margin:0;font-family:var(--mono);font-size:1.6cqw;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime-400);text-shadow:0 0 1.2cqw rgba(185,255,105,.6);white-space:nowrap;pointer-events:none;z-index:1}
+.s15.has-holo .scene3d{display:none}
+
 /* ── Scena 16: il cubo aperto in croce ── */
 .s16 .tblock{max-width:30cqw}
 .net{position:absolute;right:5cqw;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:repeat(4,14.2cqw);grid-template-rows:repeat(3,14.2cqw);gap:.4cqw}
@@ -567,8 +574,9 @@ footer .fine{
 
       <!-- 15 ────────────────────────────────────────────────────────── -->
       <article class="beat">
-        <div class="frame s15" data-dur="32" tabindex="0" role="button" aria-label="Scena 15, rivedi animazione">
+        <div class="frame s15 deep" data-dur="32" tabindex="0" role="button" aria-label="Scena 15, rivedi animazione">
           <div class="stage">
+            <div class="holo" id="s15holo"></div>
             <div class="scene3d a-fade" style="--d:.4s">
               <div class="cube3d" id="s15cube"></div>
             </div>
@@ -576,12 +584,12 @@ footer .fine{
           <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 15 · 0:00 – 0:32</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
-          <p class="idx">Scena 15 · Il metodo del cubo <span class="chip">Motion graphic</span> <span class="chip g">Durata da rivedere</span></p>
+          <p class="idx">Scena 15 · Il metodo del cubo <span class="chip">Rendering 3D</span> <span class="chip g">Durata da rivedere</span></p>
           <dl>
-            <div><dt>On-screen</dt><dd>Fondo Bluette · cubo di Rubik vettoriale a contorno Lime che ruota lentamente · quadratini in colori misti della palette OE · sotto le quattro facce laterali: istituzioni · imprese · lavoro · società · alla fine tutte le facce in Lime</dd></div>
+            <div><dt>On-screen</dt><dd>Fondo Bluette 900 · cubo di Rubik olografico in 3D: 27 cubetti in filo Lime luminoso, quadratini traslucidi in colori misti della palette OE · sotto, la base di proiezione con griglia, anelli, fascio di luce e particelle · sotto le quattro facce laterali: istituzioni · imprese · lavoro · società · alla fine il cubo tutto in Lime</dd></div>
             <div><dt>Voiceover · voce maschile</dt><dd class="vo">Un metodo utile per orchestrare lo sviluppo di un territorio è quello che segue la metafora del cubo. Come in un cubo di Rubik, fare sistema significa far ruotare istituzioni, imprese, lavoro e società verso lo stesso obiettivo: massimizzare, per ogni faccia e dimensione, il valore per il territorio.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Il cubo entra in dissolvenza e gira su se stesso per tutta la scena, un giro ogni 16 secondi. Su «istituzioni, imprese, lavoro e società» le quattro etichette si accendono una per parola sotto le facce laterali (17,1 · 17,7 · 18,2 · 19,3 s) e girano con il cubo. Su «stesso obiettivo» i quadratini passano al Lime uno dopo l'altro (21 s): il cubo si ricompone in un solo colore.</dd></div>
-            <div><dt>Nota</dt><dd class="note">Il PDF propone due soluzioni (le mosse del cubo in tre o quattro passaggi, oppure il cubo mescolato che ruota e si ricompone): qui c'è la seconda. Il cubo è vettoriale, senza prospettiva, come chiede la nota del PPTX. I colori mescolati sono solo quelli del DS (bianco, Lime e tre toni di Bluette): un cubo di Rubik con sei colori veri uscirebbe dalla palette. La voce del PDF ha 49 parole contro le 25 indicate: a 1,8 parole al secondo la scena dura circa 32 secondi, non 19.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Il cubo si accende sulla base (0,4 s) e ruota lentamente per tutta la scena. Su «Come in un cubo di Rubik, fare sistema significa far ruotare» gli strati girano davvero, quattro mosse (11,6 · 12,9 · 14,2 · 15,5 s). Su «istituzioni, imprese, lavoro e società» le etichette si accendono sotto le facce laterali (17,1 · 17,7 · 18,2 · 19,3 s) e restano leggibili quando la faccia guarda la camera. Su «stesso obiettivo» i quadratini passano al Lime a onda (21 s), mentre altre due mosse chiudono il cubo (22,4 · 23,6 s); il bagliore cresce quando è ricomposto.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Rendering 3D in tempo reale (Three.js) in stile ologramma, con i soli colori del DS: Bluette, Lime e bianco. Ogni fotogramma dipende solo dal tempo della scena, quindi per il montaggio si esporta fotogramma per fotogramma a 1080p, senza crediti AI. Il PDF proponeva due soluzioni: qui ci sono tutte e due, le mosse vere e la ricomposizione in un solo colore. La voce del PDF ha 49 parole contro le 25 indicate: a 1,8 parole al secondo la scena dura circa 32 secondi, non 19.</dd></div>
           </dl>
         </div>
       </article>
@@ -1030,5 +1038,203 @@ footer .fine{
   }
 })();
 </script>
+
+<!-- Scena 15: cubo ologramma in Three.js. Tutto dipende dal tempo t della scena, così lo stesso codice serve al
+     montaggio (fotogramma per fotogramma). Se WebGL non c'è, resta il cubo CSS. -->
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { LineSegments2 } from 'three/addons/lines/LineSegments2.js';
+import { LineSegmentsGeometry } from 'three/addons/lines/LineSegmentsGeometry.js';
+import { LineMaterial } from 'three/addons/lines/LineMaterial.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+const frame = document.querySelector('.frame.s15');
+const host = document.getElementById('s15holo');
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const C = { lime: css('--lime-400'), white: css('--white'), b100: css('--bluette-100'), b200: css('--bluette-200'),
+            b400: css('--bluette-400'), b600: css('--bluette-600'), b900: css('--bluette-900') };
+const DUR = parseFloat(frame.dataset.dur);
+
+let renderer;
+try { renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true }); }
+catch (e) { host.remove(); throw e; }
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+host.appendChild(renderer.domElement);
+frame.classList.add('has-holo');            // nasconde il cubo CSS di riserva
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(C.b900);
+scene.fog = new THREE.Fog(C.b900, 11, 22);
+const camera = new THREE.PerspectiveCamera(30, 16 / 9, 0.1, 100);
+camera.position.set(0, 2.2, 15.5);
+camera.lookAt(0, -0.25, 0);
+
+/* ── base di proiezione: griglia, anelli e fascio ── */
+const base = new THREE.Group(); base.position.y = -2.35; scene.add(base);
+const grid = new THREE.GridHelper(16, 32, C.b400, C.b600);
+grid.material.transparent = true; grid.material.opacity = .45; base.add(grid);
+const ringMat = c => new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: .9, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false });
+const ring1 = new THREE.Mesh(new THREE.RingGeometry(2.55, 2.6, 128), ringMat(C.lime)); ring1.rotation.x = -Math.PI / 2; base.add(ring1);
+const ring2 = new THREE.Mesh(new THREE.RingGeometry(2.95, 2.97, 128), ringMat(C.b200)); ring2.rotation.x = -Math.PI / 2; base.add(ring2);
+const ticks = new THREE.Group(); base.add(ticks);
+for (let i = 0; i < 48; i++) {
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(.035, i % 4 ? .12 : .26), ringMat(C.b200));
+  const a = i / 48 * Math.PI * 2; m.rotation.x = -Math.PI / 2; m.rotation.z = -a;
+  m.position.set(Math.sin(a) * 3.25, .002, Math.cos(a) * 3.25); ticks.add(m);
+}
+// fascio: cono aperto con sfumatura verticale
+const beamGeo = new THREE.CylinderGeometry(1.75, 2.6, 4.6, 64, 1, true);
+const beamMat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending,
+  uniforms: { c: { value: new THREE.Color(C.b400) }, k: { value: .0 } },
+  vertexShader: 'varying float vy; void main(){ vy = uv.y; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }',
+  fragmentShader: 'uniform vec3 c; uniform float k; varying float vy; void main(){ gl_FragColor = vec4(c, (1.-vy) * .09 * k); }'
+});
+const beam = new THREE.Mesh(beamGeo, beamMat); beam.position.y = 2.3; base.add(beam);
+
+/* ── particelle che salgono dal fascio (posizioni deterministiche) ── */
+const N = 260, pPos = new Float32Array(N * 3), seeds = [];
+let s = 11; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+for (let i = 0; i < N; i++) seeds.push([rnd() * Math.PI * 2, Math.sqrt(rnd()) * 2.6, rnd(), .25 + rnd() * .5]);
+const pGeo = new THREE.BufferGeometry(); pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+const pts = new THREE.Points(pGeo, new THREE.PointsMaterial({ color: C.b100, size: .045, transparent: true, opacity: .8, blending: THREE.AdditiveBlending, depthWrite: false }));
+scene.add(pts);
+
+/* ── il cubo: 27 cubetti in filo Lime, quadratini traslucidi in colori DS mescolati ── */
+const cube = new THREE.Group(); cube.position.y = .15; scene.add(cube);
+const SP = 1.04, SZ = .94;
+const lineMats = [];
+const edgeGeo = new LineSegmentsGeometry().fromEdgesGeometry(new THREE.EdgesGeometry(new THREE.BoxGeometry(SZ, SZ, SZ)));
+const mix = [C.white, C.b100, C.b200, C.b400, C.lime];
+const stickers = [];
+const cubies = [];
+const faceDirs = [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+for (let x = -1; x <= 1; x++) for (let y = -1; y <= 1; y++) for (let z = -1; z <= 1; z++) {
+  const g = new THREE.Group();
+  const lm = new LineMaterial({ color: C.lime, linewidth: .028, worldUnits: true, transparent: true, opacity: .95 });
+  lineMats.push(lm);
+  g.add(new LineSegments2(edgeGeo, lm));
+  const core = new THREE.Mesh(new THREE.BoxGeometry(SZ * .98, SZ * .98, SZ * .98),
+    new THREE.MeshBasicMaterial({ color: C.b900, transparent: true, opacity: .55, depthWrite: false }));
+  g.add(core);
+  faceDirs.forEach(d => {
+    if (d[0] && d[0] !== x || d[1] && d[1] !== y || d[2] && d[2] !== z) return;     // solo le facce esterne
+    const col = new THREE.Color(mix[Math.floor(rnd() * mix.length)]);
+    const m = new THREE.MeshBasicMaterial({ color: col.clone(), transparent: true, opacity: .55, depthWrite: false, side: THREE.DoubleSide });
+    const st = new THREE.Mesh(new THREE.PlaneGeometry(SZ * .78, SZ * .78), m);
+    st.position.set(d[0] * SZ * .5, d[1] * SZ * .5, d[2] * SZ * .5).multiplyScalar(1.01);
+    st.lookAt(st.position.clone().multiplyScalar(2));
+    g.add(st);
+    stickers.push({ m, from: col, delay: 0 });
+  });
+  cube.add(g);
+  cubies.push({ g, home: new THREE.Vector3(x, y, z) });
+}
+// su «stesso obiettivo» i quadratini passano al Lime a onda, dall'alto in basso
+stickers.forEach((st, i) => { st.delay = 21 + (i % 54) * .03; });
+
+/* ── mosse vere: [inizio, asse, strato, verso] su «far ruotare» ── */
+const MOVES = [[11.6,'x',1,1],[12.9,'y',1,-1],[14.2,'z',1,1],[15.5,'x',-1,-1],[22.4,'y',-1,1],[23.6,'x',0,-1]];
+const MT = .95;
+const ease = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+const AX = { x: new THREE.Vector3(1,0,0), y: new THREE.Vector3(0,1,0), z: new THREE.Vector3(0,0,1) };
+const q = new THREE.Quaternion();
+function layout(t) {
+  cubies.forEach(c => { c.pos = c.home.clone(); c.quat = new THREE.Quaternion(); });
+  for (const [t0, ax, layer, dir] of MOVES) {
+    if (t < t0) break;
+    const k = ease(Math.min(1, (t - t0) / MT));
+    q.setFromAxisAngle(AX[ax], dir * k * Math.PI / 2);
+    cubies.forEach(c => {
+      if (Math.round(c.pos[ax]) !== layer) return;
+      c.pos.applyQuaternion(q); c.quat.premultiply(q);
+      if (k === 1) c.pos.set(Math.round(c.pos.x), Math.round(c.pos.y), Math.round(c.pos.z));
+    });
+  }
+  cubies.forEach(c => { c.g.position.copy(c.pos).multiplyScalar(SP); c.g.quaternion.copy(c.quat); });
+}
+
+/* ── etichette in HTML sotto le quattro facce laterali, visibili quando guardano la camera ── */
+const PLATES = [['Istituzioni',17.1,[0,0,1]],['Imprese',17.7,[1,0,0]],['Lavoro',18.2,[0,0,-1]],['Società',19.3,[-1,0,0]]];
+const plateEls = PLATES.map(p => { const e = document.createElement('p'); e.className = 'holo-plate'; e.textContent = p[0]; host.appendChild(e); return e; });
+
+/* ── post: bagliore dell'ologramma ── */
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), .5, .35, .55);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+
+function resize() {
+  const w = host.clientWidth, h = host.clientHeight; if (!w || !h) return;
+  renderer.setSize(w, h, false); composer.setSize(w, h);
+  camera.aspect = w / h; camera.updateProjectionMatrix();
+  lineMats.forEach(m => m.resolution.set(w, h));
+}
+new ResizeObserver(() => { resize(); if (!playing) draw(DUR); }).observe(host);
+
+const v = new THREE.Vector3(), lime = new THREE.Color(C.lime), tmp = new THREE.Color();
+function draw(t) {
+  const fin = Math.min(1, Math.max(0, (t - .4) / 1.2));
+  cube.scale.setScalar(.86 + .14 * ease(fin));
+  cube.rotation.set(-.42, -.7 + t * .38, 0);
+  layout(t);
+  stickers.forEach(st => {
+    const k = Math.min(1, Math.max(0, (t - st.delay) / .5));
+    st.m.color.copy(tmp.copy(st.from).lerp(lime, k));
+    st.m.opacity = (.42 + .3 * k) * fin;
+  });
+  const solved = Math.min(1, Math.max(0, (t - 23) / 1.5));
+  lineMats.forEach(m => { m.opacity = .95 * fin; });
+  bloom.strength = .45 + .35 * solved;
+  beamMat.uniforms.k.value = fin;
+  ring1.material.opacity = ring2.material.opacity = .9 * fin;
+  ticks.rotation.y = t * .12;
+  for (let i = 0; i < N; i++) {
+    const [a, r, ph, sp] = seeds[i], life = (ph + t * sp * .18) % 1;
+    pPos[i * 3] = Math.sin(a + t * .05) * r * (1 - life * .3);
+    pPos[i * 3 + 1] = -2.3 + life * 4.6;
+    pPos[i * 3 + 2] = Math.cos(a + t * .05) * r * (1 - life * .3);
+  }
+  pGeo.attributes.position.needsUpdate = true;
+  pts.material.opacity = .8 * fin;
+  composer.render();
+  // etichette: ancorate sotto ogni faccia laterale, seguono la rotazione del cubo
+  const w = host.clientWidth, h = host.clientHeight;
+  PLATES.forEach((p, i) => {
+    v.set(p[2][0] * 1.75, -2.05, p[2][2] * 1.75);
+    const n = new THREE.Vector3(...p[2]).applyEuler(new THREE.Euler(0, cube.rotation.y, 0));
+    v.applyEuler(new THREE.Euler(0, cube.rotation.y, 0)).add(cube.position);
+    const face = n.dot(new THREE.Vector3(0, 0, 1));
+    v.project(camera);
+    const on = Math.min(1, Math.max(0, (t - p[1]) / .5));
+    const e = plateEls[i];
+    e.style.left = ((v.x + 1) / 2 * w) + 'px'; e.style.top = ((1 - v.y) / 2 * h) + 'px';
+    e.style.opacity = (on * Math.min(1, Math.max(0, face * 2.2))).toFixed(3);
+  });
+}
+
+let playing = false, t0 = 0, raf = 0;
+function loop() {
+  const t = (performance.now() - t0) / 1000;
+  draw(Math.min(t, DUR));
+  if (playing) raf = requestAnimationFrame(loop);
+}
+// la pagina riavvia una scena togliendo e rimettendo .play nello stesso istante: si riparte da zero
+new MutationObserver(recs => {
+  const on = frame.classList.contains('play');
+  const restarted = recs.some(r => !/(^|\s)play(\s|$)/.test(r.oldValue || ''));
+  if (on && (!playing || restarted)) { playing = true; t0 = performance.now(); cancelAnimationFrame(raf); loop(); }
+  if (!on && playing) { playing = false; cancelAnimationFrame(raf); draw(DUR); }
+}).observe(frame, { attributes: true, attributeFilter: ['class'], attributeOldValue: true });
+window.__holo15 = { draw, DUR };          // per i controlli e per l'export dei fotogrammi
+resize(); draw(DUR);
+</script>
+
 </body>
 </html>
