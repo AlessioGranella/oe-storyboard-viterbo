@@ -296,6 +296,14 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,60px);lin
 .end .hl{font-size:4.6cqw;text-align:center}
 .end .line{position:absolute;left:5cqw;bottom:4.4cqw;font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.74)}
 
+/* ── Video montato ── */
+.vhero{background:var(--black);padding:56px 0 64px}
+.vhero .wrap{display:flex;flex-direction:column;gap:20px}
+.vhero h2{font-family:var(--mono);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--lime-400)}
+.vhero video{width:100%;height:auto;display:block;border:1px solid rgba(255,255,255,.25)}
+.vhero .caption{font-size:14px;color:rgba(255,255,255,.7);max-width:90ch}
+.vhero .caption strong{color:rgba(255,255,255,.92)}
+
 /* ── Metadati sotto il frame ──────────────────────────────────────────── */
 .info{border-left:1px solid var(--black);padding:16px 0 0 16px;margin-top:16px}
 .info .idx{
@@ -452,12 +460,20 @@ footer .fine{
   </div>
 </header>
 
+<section class="vhero" aria-labelledby="vh-h">
+  <div class="wrap">
+    <h2 id="vh-h">Video montato · prima versione · 5 novembre</h2>
+    <video src="assets/final/OE_Video_Viterbo_Parte1.mp4" poster="assets/final/poster-parte1.jpg" controls preload="none" aria-label="Video completo — Viterbo Parte 1, la foto del territorio"></video>
+    <p class="caption">3:17 · 1920×1080 · 25 fps · voci italiane alternate (uomo Marco Esposito, donna Giulia Romano, ElevenLabs) e tappeto musicale con ducking sotto la voce · audio a <strong>−14 LUFS</strong>. Cover, quattordici scene e chiusura, rese dalle animazioni di questa pagina e stirate sulla durata reale della voce. Le scene 5, 6 e 11 usano ancora i clip da rifare (camion dal basso, vicoli di Civita, ospedale). </p>
+  </div>
+</section>
+
 <section class="phases" aria-label="Fasi di lavoro">
   <div class="wrap">
     <ol>
       <li><span class="n">Fase 1 · fatta</span><p>Storyboard con foto statiche: composizione, testi, numeri, grafici animati e tempi d'entrata.</p></li>
-      <li class="on"><span class="n">Fase 2 · questa pagina</span><p>Le foto diventano clip AI da 12 secondi con movimento di camera (Seedance 1.5 Pro, 1080p), con il trattamento fotografico di Rieti.</p></li>
-      <li><span class="n">Fase 3</span><p>Voce sintetica, musica, titoli impressi e montaggio, come per il video di Rieti.</p></li>
+      <li><span class="n">Fase 2 · fatta</span><p>Le foto diventano clip AI da 12 secondi con movimento di camera (Seedance 1.5 Pro, 1080p), con il trattamento fotografico di Rieti.</p></li>
+      <li class="on"><span class="n">Fase 3 · prima versione</span><p>Voce sintetica, musica, titoli impressi e montaggio, come per il video di Rieti: il video è in cima alla pagina.</p></li>
     </ol>
   </div>
 </section>
