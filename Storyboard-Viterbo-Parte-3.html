@@ -496,6 +496,10 @@ footer .fine{
 
 /* ── «Per il tavolo»: domanda in alto, sotto obiettivo → indicatore ── */
 .tav{position:absolute;left:5cqw;right:14cqw;top:9.8cqw;display:flex;flex-direction:column;gap:1.4cqw;z-index:1}
+/* domanda e card come un solo blocco, centrato tra il chip e il monogramma */
+.tavwrap{position:absolute;left:5cqw;right:5cqw;top:8.6cqw;bottom:8cqw;display:flex;flex-direction:column;justify-content:center;gap:3.2cqw;z-index:1}
+.tavwrap .tav,.tavwrap .cards{position:static}
+.tavwrap .tav{padding-right:9cqw}
 .tav.narrow{right:40cqw}
 .tav .q{font-size:3.5cqw}
 .tav .swap{display:grid}
@@ -565,17 +569,17 @@ footer .fine{
 .lower .reg{position:absolute;left:2.6cqw;top:-1.6cqw;margin:0}
 
 /* ── Scena 34: mappa delle aree interne e asset ── */
-.colL{position:absolute;left:5cqw;top:9cqw;bottom:7.6cqw;width:44cqw;display:flex;flex-direction:column;justify-content:center;gap:1.8cqw}
-.colL .num{font-size:8.4cqw}
+.colL{position:absolute;left:5cqw;top:10.6cqw;bottom:7.6cqw;width:44cqw;display:flex;flex-direction:column;justify-content:center;gap:1.6cqw}
+.colL .num{font-size:7.6cqw}
 .colL .cap.s{margin-top:1cqw;font-size:2.8cqw}
 .colL .swap{display:grid}
 .colL .swap > *{grid-area:1/1}
-.card.obj{background:var(--bluette-800);padding:1.8cqw 2.2cqw;display:flex;flex-direction:column;gap:1cqw}
+.card.obj{background:var(--bluette-800);padding:1.6cqw 2cqw;display:flex;flex-direction:column;gap:.9cqw}
 .card.obj .cap.s{font-size:2.3cqw}
 .icons{list-style:none;margin:0;padding:0;display:flex;gap:1.6cqw;flex-wrap:wrap}
 .icons li{display:flex;flex-direction:column;gap:.5cqw;font-family:var(--mono);font-size:1.05cqw;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.86);width:8.6cqw}
-.icons svg{width:4cqw;height:4cqw;display:block}
-.assets{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.9cqw;align-self:center}
+.icons svg{width:3.4cqw;height:3.4cqw;display:block}
+.assets{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7cqw;align-self:start}
 .assets li{display:flex;align-items:center;gap:1.1cqw;font-family:var(--serif);font-size:2.4cqw}
 .assets li b{display:grid;place-items:center;width:2.6cqw;height:2.6cqw;background:var(--lime-400);color:var(--black);font-family:var(--mono);font-size:1.4cqw}
 .assets .tag{font-size:1.1cqw}
@@ -590,7 +594,20 @@ footer .fine{
 .checks{list-style:none;margin:.6cqw 0;padding:0;display:flex;gap:2.4cqw}
 .checks li{display:flex;align-items:center;gap:.9cqw;font-family:var(--serif);font-size:3cqw}
 .checks li::before{content:"";width:2.2cqw;height:2.2cqw;background:var(--lime-400) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%234400B3' stroke-width='3'/%3E%3C/svg%3E") center/80% no-repeat}
-.a35 .icons li{width:10cqw}
+.a35 .icons{gap:1.4cqw 2cqw}
+.a35 .icons li{flex-direction:row;align-items:center;gap:.7cqw;width:auto}
+.a35 .icons svg{width:2.6cqw;height:2.6cqw}
+.a35 .tavwrap{gap:2.4cqw}
+.a35 .checks{margin:0}
+.a35 .regs{display:flex;flex-wrap:wrap;align-items:center;gap:.8cqw 2cqw}
+.a35 .regs .srcl{flex-basis:100%}
+.a35 .checks li{font-size:2.6cqw}
+.a35 .cards{grid-template-columns:minmax(0,2fr) 5cqw minmax(0,1fr)}
+.a35 .cards .card .num{font-size:5.6cqw}
+.a35 .icons{flex-wrap:nowrap}
+.a35 .icons li{font-size:.95cqw}
+/* scena 37: a linea uscita, la card resta al centro del frame */
+.a37 .cards{bottom:auto;top:50%;transform:translateY(-50%)}
 
 /* ── Scena 36: glitch breve sul numerone ── */
 @keyframes glitch{0%{text-shadow:.5cqw 0 var(--white),-.5cqw 0 var(--bluette-400);transform:translateX(.4cqw)}25%{transform:translateX(-.5cqw) skewX(-6deg);clip-path:inset(0 0 45% 0)}50%{text-shadow:-.4cqw 0 var(--white),.4cqw 0 var(--bluette-400);transform:none;clip-path:inset(40% 0 0 0)}75%{clip-path:none;text-shadow:.25cqw 0 var(--white)}100%{text-shadow:none;transform:none;clip-path:none}}
@@ -758,6 +775,7 @@ footer .fine{
         <div class="frame a23" data-dur="27" tabindex="0" role="button" aria-label="Scena 23, rivedi animazione">
           <div class="stage">
             <p class="chap a-up" style="--d:0.4s">Faccia 1 · Competitività e innovazione</p><div class="mini" data-f="1" aria-hidden="true"></div>
+            <div class="tavwrap">
             <div class="tav">
               <p class="k a-up" style="--d:0.3s">Per il tavolo <span class="tag">Proposta</span></p>
               <p class="hl q a-up" style="--d:2.2s"><span>Quale servizio comune porta le filiere agricole ai mercati, visto che la logistica pesa la metà?</span></p>
@@ -773,6 +791,7 @@ footer .fine{
                 <p class="k">Indicatore</p>
                 <p class="cap s">Da definire al tavolo</p>
               </div>
+            </div>
             </div>
           </div>
           <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 23 · 0:36 – 1:03</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
@@ -852,6 +871,7 @@ footer .fine{
         <div class="frame a26" data-dur="28" tabindex="0" role="button" aria-label="Scena 26, rivedi animazione">
           <div class="stage">
             <p class="chap a-up" style="--d:0.4s">Faccia 2 · Transizione verde ed energia</p><div class="mini" data-f="2" aria-hidden="true"></div>
+            <div class="tavwrap">
             <div class="tav">
               <p class="k a-up" style="--d:0.3s">Per il tavolo <span class="tag">Proposta</span></p>
               <p class="hl q a-up" style="--d:2.2s"><span style="font-size:2.9cqw">Come trasformare l&#x27;energia già prodotta in un vantaggio per comuni e imprese, senza consumare altro suolo?</span></p>
@@ -868,6 +888,7 @@ footer .fine{
                 <p class="k">Indicatore</p>
                 <p class="cap s">Da definire al tavolo</p>
               </div>
+            </div>
             </div>
           </div>
           <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 26 · 1:36 – 2:04</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
@@ -1038,6 +1059,7 @@ footer .fine{
         <div class="frame a32" data-dur="25" tabindex="0" role="button" aria-label="Scena 32, rivedi animazione">
           <div class="stage">
             <p class="chap a-up" style="--d:0.4s">Faccia 4 · Lavoro, competenze e inclusione</p><div class="mini" data-f="4" aria-hidden="true"></div>
+            <div class="tavwrap">
             <div class="tav">
               <p class="k a-up" style="--d:0.3s">Per il tavolo <span class="tag">Proposta</span></p>
               <p class="hl q a-up" style="--d:2.2s"><span>Come portare l&#x27;istruzione superiore nei comuni che non ce l&#x27;hanno?</span></p>
@@ -1054,6 +1076,7 @@ footer .fine{
                 <p class="k">Indicatore</p>
                 <p class="cap s">Da definire al tavolo</p>
               </div>
+            </div>
             </div>
           </div>
           <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 32 · 3:51 – 4:16</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
@@ -1166,6 +1189,7 @@ footer .fine{
         <div class="frame a35" data-dur="36" tabindex="0" role="button" aria-label="Scena 35, rivedi animazione">
           <div class="stage">
             <p class="chap a-up" style="--d:0.4s">Faccia 5 · Territori e coesione</p><div class="mini" data-f="5" aria-hidden="true"></div>
+            <div class="tavwrap">
             <div class="tav">
               <p class="k a-up" style="--d:.3s">Per il tavolo</p>
               <div class="swap">
@@ -1189,6 +1213,7 @@ footer .fine{
                 <p class="k">Indicatore</p>
                 <p class="cap s">Da definire al tavolo</p>
               </div>
+            </div>
             </div>
           </div>
           <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 35 · 5:47 – 6:23</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
@@ -1316,6 +1341,7 @@ footer .fine{
             <p class="sov a-up a-out2" style="--d:9.4s;--d2:13.0s">Ospedale Grande degli Infermi · <b>17 milioni</b> · non ancora avviato</p>
             <div class="wash a-fade" style="--d:13.1s"></div>
             <div class="after">
+            <div class="tavwrap">
             <div class="tav">
               <p class="k a-up" style="--d:13.3s">Per il tavolo <span class="tag">Proposta</span></p>
               <p class="hl q a-up" style="--d:14.9s"><span>Quale struttura comune aiuta i piccoli comuni a far partire i progetti fermi?</span></p>
@@ -1331,6 +1357,7 @@ footer .fine{
                 <p class="k">Indicatore</p>
                 <p class="cap s">Da definire al tavolo</p>
               </div>
+            </div>
             </div>
             </div>
           </div>
