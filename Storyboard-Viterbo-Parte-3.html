@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Storyboard visivo — Video Viterbo, Parte 3 | OpenEconomics</title>
+
+<style>
+/* ── Font ─────────────────────────────────────────────────────────────── */
+@font-face{font-family:"Hedvig Letters Serif";src:url("assets/fonts/HedvigLettersSerif-18pt-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible Next";src:url("assets/fonts/AtkinsonHyperlegibleNext-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible Next";src:url("assets/fonts/AtkinsonHyperlegibleNext-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible Mono";src:url("assets/fonts/AtkinsonHyperlegibleMono-VariableFont_wght.ttf") format("truetype");font-weight:200 800;font-display:swap}
+
+/* ── Token OE ─────────────────────────────────────────────────────────── */
+:root{
+  --bluette-050:#EFE5FF; --bluette-100:#D9C1FF; --bluette-200:#B991FF; --bluette-400:#8742FF;
+  --bluette-600:#5902EE; --bluette-700:#4400B3; --bluette-800:#340088; --bluette-900:#270065;
+  --lime-400:#B9FF69; --lime-500:#91FF15; --lime-700:#67C300;
+  --white:#FFFFFF; --black:#000000;
+  --gray-100:#F1F1F1; --gray-200:#E7E7E7; --gray-300:#D2D2D2; --gray-400:#AFAFAF;
+  --gray-500:#999999; --gray-600:#6E6E6E; --gray-700:#545454;
+
+  --serif:"Hedvig Letters Serif",Georgia,serif;
+  --sans:"Atkinson Hyperlegible Next",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --mono:"Atkinson Hyperlegible Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --max:1440px;
+  --pad:40px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0}
+
+body{
+  background:var(--white);color:var(--black);
+  font-family:var(--sans);font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+/* ── Header ───────────────────────────────────────────────────────────── */
+.masthead{background:var(--bluette-700);color:var(--white);padding:64px 0 56px}
+.masthead .wrap{display:flex;flex-direction:column;gap:28px}
+.eyebrow{
+  font-family:var(--mono);font-size:12px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.14em;color:var(--lime-400);
+}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.06;letter-spacing:-.01em;max-width:20ch}
+.sub{font-size:17px;line-height:1.5;max-width:66ch;color:rgba(255,255,255,.86)}
+
+.meta{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.28);margin-top:6px;
+}
+.meta div{background:var(--bluette-700);padding:16px 18px}
+.meta dt{
+  font-family:var(--mono);font-size:12px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.12em;color:rgba(255,255,255,.62);margin-bottom:6px;
+}
+.meta dd{font-size:15px;line-height:1.35}
+
+/* fasi di lavoro: prima foto statiche, poi clip animati */
+.phases{background:var(--black);color:var(--white);padding:36px 0 40px}
+.phases ol{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.22)}
+.phases li{background:var(--black);padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.phases .n{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.phases li.on .n{color:var(--lime-400)}
+.phases li p{font-size:15px;line-height:1.45;color:rgba(255,255,255,.86)}
+.phases li.on{box-shadow:inset 0 3px 0 var(--lime-400)}
+
+/* ── Barra strumenti ──────────────────────────────────────────────────── */
+.toolbar{border-bottom:1px solid var(--gray-300);background:var(--white);position:sticky;top:0;z-index:10}
+.toolbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding-top:14px;padding-bottom:14px}
+.toolbar .label{
+  font-family:var(--mono);font-size:12px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--gray-700);
+}
+.toggle{display:inline-flex;align-items:center;gap:9px;cursor:pointer;user-select:none;font-size:14px}
+.toggle input{
+  appearance:none;width:17px;height:17px;border:1.5px solid var(--black);
+  background:var(--white);cursor:pointer;flex:none;display:grid;place-content:center;
+}
+.toggle input:checked{background:var(--bluette-700);border-color:var(--bluette-700)}
+.toggle input:checked::after{content:"";width:8px;height:8px;background:var(--lime-400)}
+.toggle input:focus-visible{outline:2px solid var(--bluette-700);outline-offset:2px}
+.toolbar .hint{font-size:13px;color:var(--gray-600);margin-left:auto}
+
+/* ── Griglia frame ────────────────────────────────────────────────────── */
+.board{padding:48px 0 80px}
+.sec-h{
+  font-family:var(--mono);font-size:12px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--gray-700);margin-bottom:28px;
+}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 32px}
+.grid.big{grid-template-columns:1fr}
+.beat{display:flex;flex-direction:column;min-width:0}
+
+.frame{
+  container-type:inline-size;
+  position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;
+  background:var(--bluette-700);border:1px solid var(--black);color:var(--white);
+}
+.frame.light{background:var(--white);color:var(--black)}
+.frame.deep{background:var(--bluette-900)}
+.stage{position:absolute;inset:0;z-index:1}
+
+/* timecode e replay — solo in questa pagina */
+.tc{
+  position:absolute;left:1.2cqw;top:1.1cqw;z-index:4;
+  font-family:var(--mono);font-size:1.15cqw;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--lime-400);background:rgba(0,0,0,.55);padding:.3cqw .6cqw;
+}
+.replay{
+  position:absolute;right:2.4cqw;bottom:2cqw;z-index:4;
+  font-family:var(--mono);font-size:1.1cqw;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--white);background:rgba(0,0,0,.55);padding:.35cqw .7cqw;opacity:0;transition:opacity .2s;
+}
+.frame:hover .replay,.frame:focus-visible .replay{opacity:1}
+.frame:focus-visible{outline:3px solid var(--bluette-700);outline-offset:3px}
+
+/* Title safe 16:9 — toggle */
+.safe{position:absolute;inset:0;z-index:3;display:none;pointer-events:none}
+.grid.show-safe .safe{display:block}
+.safe::before{content:"";position:absolute;inset:10%;outline:1px dashed rgba(185,255,105,.9)}
+.frame.light .safe::before{outline-color:rgba(68,0,179,.7)}
+
+/* ── Tipografia nei frame (unità cqw: 100cqw = 1920px del video) ─────── */
+.k{font-family:var(--mono);font-size:1.8cqw;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.74)}
+.light .k{color:var(--gray-700)}
+.hl{font-family:var(--serif);font-weight:400;line-height:1.14;letter-spacing:-.005em}
+.num{font-family:var(--mono);font-weight:700;line-height:.84;letter-spacing:-.035em;color:var(--lime-400);font-variant-numeric:lining-nums;white-space:nowrap}
+.num small{font-size:.42em;letter-spacing:-.01em;margin-left:.12em}
+.cap{font-family:var(--serif);font-weight:400;font-size:4.3cqw;line-height:1.14;color:var(--white)}
+.cap.s{font-size:3.6cqw}
+/* ombra neutra sfumata sotto i testi: non altera il colore dell'immagine */
+.shade{position:absolute;inset:0;background:radial-gradient(ellipse 85% 110% at 0% 55%,rgba(0,0,0,.74) 0%,rgba(0,0,0,.4) 50%,rgba(0,0,0,0) 80%)}
+/* blocco titoli a sinistra, centrato in verticale sul frame (revisione 3 novembre); il chip resta in alto */
+.tblock{position:absolute;left:5cqw;top:50%;transform:translateY(-50%);max-width:58cqw;display:flex;flex-direction:column}
+.tblock .k{margin-bottom:2cqw}
+.tblock .num{font-size:11cqw}
+.tblock .num + .cap{margin-top:1.6cqw}
+.on-photo{text-shadow:0 0 2.2cqw rgba(0,0,0,.45)}
+/* chip di capitolo in alto a sinistra (chip DS: lime, mono, niente icone) */
+.chap{position:absolute;left:5cqw;top:4.4cqw;z-index:2;font-family:var(--mono);font-size:1.5cqw;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--lime-400);color:var(--black);padding:.45cqw .9cqw}
+/* marchi: ANCI in alto a destra solo in cover, monogramma OE in basso a sinistra su tutti i frame */
+.anci{position:absolute;right:5cqw;top:4cqw;width:9cqw;height:auto;z-index:2;display:block}
+.foot{position:absolute;left:5cqw;bottom:4cqw;display:flex;align-items:center;gap:2cqw;z-index:2}
+.foot img{height:3.4cqw;width:auto;display:block}
+.foot .src{font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.74)}
+.light .foot .src{color:var(--gray-700)}
+/* il mono dà cassa piena a punto e virgola: stretta come in burn_titles.py (−0,42em) */
+.num .sep{margin:0 -.21em}
+/* Hedvig: la legatura ff non è nel taglio 18pt e lascia un buco */
+.hl,.cap,.tgt{font-variant-ligatures:no-common-ligatures}
+
+/* clip con il duotone Bluette già impresso (duotone.sh): nessun filtro in pagina */
+.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+/* ── Confronto a barre: Viterbo in Lime, resto del Lazio in bianco ───── */
+.bars{display:flex;flex-direction:column;gap:1.5cqw;margin-top:2.6cqw;--bw:30cqw}
+.bar{display:flex;flex-direction:column;gap:.55cqw}
+.bar .bl{font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.74)}
+.bar .row{display:flex;align-items:center;gap:1.2cqw}
+.bar i{display:block;height:1.3cqw;width:calc(var(--w) * var(--bw));background:var(--lime-400)}
+.bar.ot i{background:rgba(255,255,255,.58)}
+.bar b{font-family:var(--mono);font-size:2.2cqw;font-weight:700;letter-spacing:-.01em;color:var(--lime-400);white-space:nowrap}
+.bar.ot b{color:var(--white)}
+.bar b .sep{margin:0 -.21em}
+.light .bar .bl{color:var(--gray-700)}
+
+/* ── Layout «duo»: numero a sinistra, grafico a destra (scene su fondo pieno) ── */
+.duo .tblock{max-width:46cqw}
+.duo .tblock .num{font-size:15cqw}
+.duo .side{position:absolute;right:5cqw;top:50%;transform:translateY(-50%);width:38cqw;display:flex;flex-direction:column;gap:3cqw}
+.duo .side .bars{--bw:32cqw;margin-top:0}
+
+/* ── Animazioni: senza .play il frame mostra lo stato finale ─────────── */
+@keyframes up{from{opacity:0;transform:translateY(2.2cqw)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes out{from{opacity:1}to{opacity:0}}
+@keyframes dim{from{opacity:1}to{opacity:.42}}
+@keyframes pop{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(-14px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes draw{from{stroke-dashoffset:var(--len,3000)}to{stroke-dashoffset:0}}
+@keyframes slideIn{from{opacity:0;transform:translateX(4cqw)}to{opacity:1;transform:none}}
+@keyframes panel{from{transform:translateX(101%)}to{transform:none}}
+@keyframes lime{from{color:var(--white)}to{color:var(--lime-400)}}
+@keyframes lit{from{background:rgba(255,255,255,.14);color:rgba(255,255,255,.74)}to{background:var(--lime-400);color:var(--black)}}
+
+.play .a-up{animation:up .7s var(--ease) var(--d,0s) both}
+.play .a-fade{animation:fade .8s ease var(--d,0s) both}
+.play .a-out{animation:out .5s ease var(--d,0s) both}
+.play .a-dim{animation:dim .6s ease var(--d,0s) both}
+.play .a-pop{animation:pop .45s var(--ease) var(--d,0s) both;transform-box:fill-box;transform-origin:center}
+.play .a-rise{animation:rise .55s var(--ease) var(--d,0s) both;transform-box:fill-box;transform-origin:center}
+.play .a-growX{animation:growX .9s var(--ease) var(--d,0s) both;transform-origin:left center}
+.play .a-draw{animation:draw var(--t,1.6s) ease-in-out var(--d,0s) both}
+.play .a-in{animation:slideIn .7s var(--ease) var(--d,0s) both}
+.play .a-panel{animation:panel .9s var(--ease) var(--d,0s) both}
+.play .a-lime{animation:lime .5s ease var(--d,0s) both}
+.play .a-lit{animation:lit .5s ease var(--d,0s) both}
+/* stati finali per gli elementi che a fine scena spariscono, si attenuano o cambiano colore */
+.is-out{opacity:0}
+.is-dim{opacity:.42}
+.frame:not(.play) .a-lime{color:var(--lime-400)}
+.frame:not(.play) .a-lit{background:var(--lime-400);color:var(--black)}
+.frame:not(.play) .a-draw{stroke-dashoffset:0}
+
+/* ── Cover (stile del video ANCI di Rieti) ── */
+.cover .tblock{max-width:80cqw;top:50%;bottom:auto;transform:translateY(-50%)}
+.cover .hl{font-size:4.9cqw}
+.cover .line1{color:rgba(255,255,255,.74)}
+.cover .big{position:absolute;right:-1.5cqw;bottom:-3.5cqw;font-family:var(--serif);font-size:26cqw;white-space:nowrap;line-height:1;color:rgba(255,255,255,.06);letter-spacing:-.04em;pointer-events:none}
+
+/* ── Scena 1: foto + le due righe del cambio di regole ── */
+.s1 .tblock{max-width:70cqw}
+.s1 .hl{font-size:3.9cqw}
+.s1 .swap{display:grid}
+.s1 .swap > div{grid-area:1/1;display:flex;flex-direction:column;justify-content:flex-end}
+.s1 .neg{margin-top:2cqw;font-size:1.5cqw}
+
+/* ── Scena 2: mappa dei 60 comuni ── */
+.s2 .mapwrap{position:absolute;right:4cqw;top:3.5cqw;bottom:3.5cqw;width:52cqw;display:flex;align-items:center;justify-content:center}
+.s2 svg{height:100%;width:auto;overflow:visible}
+.s2 .swap{display:grid}
+.s2 .swap > div{grid-area:1/1;display:flex;flex-direction:column;justify-content:flex-end}
+.s2 .big .num{font-size:16cqw}
+.s2 .small .num{font-size:9cqw}
+.s2 .small .cap + .cap{margin-top:.6cqw;color:rgba(255,255,255,.74)}
+
+/* ── Scena 3: il filo dello studio ── */
+.s3 .tblock{max-width:84cqw;top:18cqw;bottom:auto;transform:translateY(-50%)}
+.s3 .hl{font-size:5.6cqw}
+.s3 .hl .lm{color:var(--lime-400)}
+.s3 .hl span{display:inline}
+.chaps{position:absolute;left:5cqw;right:5cqw;bottom:10.5cqw;display:grid;grid-template-columns:repeat(5,1fr);gap:2cqw}
+.chaps .ch{display:flex;flex-direction:column;gap:1.2cqw;position:relative}
+.chaps svg{width:5.4cqw;height:5.4cqw;display:block}
+.chaps .t{font-family:var(--mono);font-size:1.35cqw;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.86);line-height:1.3}
+.chaps .t b{color:var(--lime-400);font-weight:700;margin-right:.5cqw}
+.chaps .wire{position:absolute;left:5.4cqw;right:-2cqw;top:2.7cqw;height:.18cqw;background:var(--lime-400);transform-origin:left center}
+.chaps .ch:last-child .wire{display:none}
+
+/* ── Scena 7: mesi ── */
+.months{display:grid;grid-template-columns:repeat(12,1fr);gap:.4cqw}
+.months span{font-family:var(--mono);font-size:1.3cqw;font-weight:700;text-align:center;padding:1.6cqw 0;background:rgba(255,255,255,.14);color:rgba(255,255,255,.74)}
+.months-k{font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.74);margin-bottom:.8cqw}
+
+/* ── Scena 10: 100 persone, 62 occupate; la soglia del resto del Lazio sotto le 60 ── */
+.s10 .side{gap:1.4cqw}
+.waffle{position:relative;width:24cqw}
+.waffle .cells{display:grid;grid-template-columns:repeat(10,1fr);gap:.4cqw}
+.waffle .cells span{aspect-ratio:1;background:rgba(255,255,255,.14)}
+.waffle .cells span.a-lit{background:var(--lime-400)}
+.play .waffle .cells span.a-lit{background:rgba(255,255,255,.14)}
+.waffle .limit{position:absolute;left:-1cqw;width:26cqw;bottom:calc(60% - .1cqw);border-top:.2cqw dashed var(--white)}
+.waffle .limit .bl{position:absolute;left:27.6cqw;bottom:.1cqw;font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;line-height:1.35;color:rgba(255,255,255,.74);white-space:nowrap}
+.waffle .limit b{position:absolute;left:27.6cqw;top:.5cqw;font-family:var(--mono);font-size:2.2cqw;font-weight:700;letter-spacing:-.01em;color:var(--white);white-space:nowrap}
+
+/* ── Scena 11: cerchi in linea d'aria ── */
+.s11 .tblock{max-width:41cqw}
+.s11 svg.rings{position:absolute;left:63%;top:35%;width:30cqw;height:30cqw;transform:translate(-50%,-50%);overflow:visible;z-index:1}
+
+/* ── Scena 13: fondo bianco, barra del finanziamento ── */
+.s13 .num{color:var(--bluette-700)}
+.s13 .cap{color:var(--black)}
+.stack{display:flex;flex-direction:column;gap:1cqw}
+.stack .track{position:relative;height:4.2cqw;background:var(--gray-200);width:100%}
+.stack .part{position:absolute;left:0;top:0;bottom:0;width:27.3%;background:var(--lime-400);box-shadow:inset 0 0 0 .14cqw var(--bluette-700)}
+.stack .lbls{display:flex;justify-content:space-between;font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-700)}
+.stack .lbls b{color:var(--bluette-700);font-weight:700}
+.s13 .cmp{font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-700);line-height:1.5;border-top:1px solid var(--gray-300);padding-top:1.2cqw}
+.s13 .cmp b{font-size:2.2cqw;color:var(--black);letter-spacing:-.01em;display:block;margin-top:.3cqw}
+
+/* ── Scena 14: le connessioni ── */
+.s14 .dark{position:absolute;inset:0;background:var(--bluette-900)}
+.s14 svg.net{position:absolute;inset:0;width:100%;height:100%}
+.s14 .tgt{font-family:var(--serif)}
+.s14 .final{position:absolute;left:5cqw;right:5cqw;bottom:10cqw;text-align:center}
+.s14 .final .hl{font-size:4.6cqw}
+.s14 .final .hl + .hl{color:var(--lime-400)}
+
+/* ── Codino ── */
+.end .stage{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3.4cqw}
+.end img.logo{width:34cqw;height:auto;display:block}
+.end .hl{font-size:4.6cqw;text-align:center}
+.end .line{position:absolute;left:5cqw;bottom:4.4cqw;font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.74)}
+
+/* ── Video montato ── */
+.vhero{background:var(--black);padding:56px 0 64px}
+.vhero .wrap{display:flex;flex-direction:column;gap:20px}
+.vhero h2{font-family:var(--mono);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--lime-400)}
+.vhero video{width:100%;height:auto;display:block;border:1px solid rgba(255,255,255,.25)}
+.vhero .caption{font-size:14px;color:rgba(255,255,255,.7);max-width:90ch}
+.vhero .caption strong{color:rgba(255,255,255,.92)}
+
+/* ── Metadati sotto il frame ──────────────────────────────────────────── */
+.info{border-left:1px solid var(--black);padding:16px 0 0 16px;margin-top:16px}
+.info .idx{
+  font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--bluette-700);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.chip{
+  font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--lime-400);color:var(--black);padding:3px 6px;
+}
+.chip.g{background:var(--gray-200)}
+.chip.w{background:var(--black);color:var(--lime-400)}
+.info dl{display:flex;flex-direction:column;gap:11px}
+.info dt{
+  font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gray-600);margin-bottom:2px;
+}
+.info dd{font-size:14px;line-height:1.5}
+.info dd.vo{color:var(--gray-700);border-left:3px solid var(--bluette-200);padding-left:10px}
+.info dd.prompt{font-size:13px;color:var(--gray-700)}
+.info dd.note{font-size:13px;border-left:3px solid var(--lime-400);padding-left:10px}
+.info mark{background:var(--bluette-050);color:inherit;padding:0 2px}
+.info a{color:var(--bluette-700)}
+
+/* ── Revisione ────────────────────────────────────────────────────────── */
+.review{background:var(--gray-100);padding:64px 0 72px}
+.review h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1;margin-bottom:12px}
+.review .lead{font-size:17px;max-width:70ch;color:var(--gray-700);margin-bottom:36px}
+.cols{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:start}
+table{width:100%;border-collapse:collapse;font-size:14px;background:var(--white)}
+th{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:10px 12px;border-bottom:1px solid var(--black);background:var(--white)}
+td{padding:9px 12px;border-bottom:1px solid var(--gray-200);vertical-align:top}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+td a{color:var(--bluette-700)}
+.fix{list-style:none;display:flex;flex-direction:column;gap:14px}
+.fix li{background:var(--white);padding:14px 16px;border-left:3px solid var(--bluette-700)}
+.fix .w{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bluette-700);display:block;margin-bottom:4px}
+.fix del{color:var(--gray-600)}
+.fix ins{text-decoration:none;background:var(--lime-400);padding:0 2px}
+.tbl-note{font-size:13px;color:var(--gray-600);margin-top:10px}
+.credits{margin-top:48px}
+
+/* ── Footer ───────────────────────────────────────────────────────────── */
+footer{background:var(--black);color:var(--white);padding:56px 0}
+footer .wrap{display:flex;flex-direction:column;gap:18px}
+footer h2{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.2}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;max-width:86ch}
+footer li{font-size:15px;line-height:1.5;color:rgba(255,255,255,.8);padding-left:18px;position:relative}
+footer li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;background:var(--lime-400)}
+footer code{font-family:var(--mono);font-size:.9em;color:var(--lime-400)}
+footer .fine{
+  font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin-top:14px;
+}
+
+@media (max-width:1000px){ .grid{grid-template-columns:minmax(0,1fr)} .cols{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:640px){
+  :root{--pad:16px}
+  .grid{gap:40px}
+  .masthead{padding:44px 0 40px}
+  .phases ol{grid-template-columns:1fr}
+  .toolbar .hint{display:none}
+  .review table{font-size:13px}
+  .review .tw{overflow-x:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  .play *{animation:none!important}
+}
+/* ── Commento per scena + PDF ─────────────────────────────────────────── */
+.cmt{margin-top:16px;padding:14px 16px 16px;background:var(--gray-100);display:flex;flex-direction:column;gap:10px}
+.cmt label{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-700)}
+.cmt textarea,.cmt input{
+  font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--black);
+  background:var(--white);border:1px solid var(--gray-300);padding:9px 11px;width:100%;
+}
+.cmt textarea{min-height:88px;resize:vertical}
+.cmt textarea:focus,.cmt input:focus{outline:2px solid var(--bluette-700);outline-offset:-1px;border-color:var(--bluette-700)}
+.cmt .saved{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-600)}
+.toolbar .pdf-all{
+  font-family:var(--sans);font-size:14px;font-weight:700;line-height:1.3;
+  background:var(--bluette-700);color:var(--white);border:1px solid var(--bluette-700);padding:7px 15px;cursor:pointer;transition:background .14s;
+}
+.toolbar .pdf-all:hover,.toolbar .pdf-all:focus-visible{background:var(--bluette-900);border-color:var(--bluette-900)}
+.toolbar .pdf-all:focus-visible{outline:2px solid var(--black);outline-offset:2px}
+.toolbar .copy-all,.copy-out button{
+  font-family:var(--sans);font-size:14px;font-weight:700;line-height:1.3;
+  background:transparent;color:var(--bluette-700);border:1px solid var(--bluette-700);padding:7px 15px;cursor:pointer;transition:background .14s;
+}
+.toolbar .copy-all:hover,.copy-out button:hover{background:var(--bluette-050)}
+.toolbar .copy-all:focus-visible,.copy-out button:focus-visible{outline:2px solid var(--black);outline-offset:2px}
+.toolbar .copied{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-600)}
+.copy-out{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:720px;margin:0 auto;background:var(--white);border:1px solid var(--black);padding:14px;display:flex;flex-direction:column;gap:10px}
+.copy-out textarea{font-family:var(--sans);font-size:14px;line-height:1.5;height:40vh;width:100%;border:1px solid var(--gray-300);padding:9px 11px}
+.copy-out button{align-self:flex-end}
+.pdf-head,.pdf-note,.pdf-poster{display:none}
+
+@media print{
+  .toolbar{display:none}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .beat{break-inside:avoid}
+  .cmt{display:none}
+}
+/* stampa di una sola scena: è il «Scarica PDF» del commento */
+@page{size:A4 portrait;margin:12mm}
+@media print{
+  body.print-one{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body.print-one .masthead,body.print-one .phases,body.print-one .review,body.print-one footer,
+  body.print-one .sec-h,body.print-one .beat:not(.printing){display:none!important}
+  body.print-one .wrap{padding:0;max-width:none}
+  body.print-one .board{padding:0}
+  body.print-one .grid{display:block}
+  body.print-one .frame .replay,body.print-one .frame .safe{display:none}
+  body.print-one .printing video.clip{display:none}
+  body.print-one .printing .pdf-poster{display:block}
+  body.print-one .pdf-head{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--black);padding-bottom:8px;margin-bottom:12px;font-family:var(--mono);font-size:9pt;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+  body.print-one .pdf-head b{color:var(--bluette-700)}
+  body.print-one .info{margin-top:10px;padding-top:10px}
+  body.print-one .info dd{font-size:9.5pt}
+  body.print-one .beat.printing:not(.pdf-first){break-before:page}
+  body.print-one .pdf-note{display:block;margin-top:14px;padding:12px 14px;border-left:3px solid var(--bluette-700);background:var(--bluette-050);break-inside:avoid}
+  body.print-one .pdf-note p:first-child{font-family:var(--mono);font-size:9pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bluette-700);margin-bottom:6px}
+  body.print-one .pdf-note p + p{font-size:11pt;line-height:1.5;white-space:pre-wrap}
+}
+
+/* ── Navigazione tra le parti ─────────────────────────────────────────── */
+.parts{display:flex;flex-wrap:wrap;gap:8px}
+.parts a{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--white);text-decoration:none;border:1px solid rgba(255,255,255,.5);padding:6px 10px}
+.parts a:hover{background:rgba(255,255,255,.12)}
+.parts a[aria-current="page"]{background:var(--lime-400);border-color:var(--lime-400);color:var(--black)}
+.parts a:focus-visible{outline:2px solid var(--lime-400);outline-offset:2px}
+
+/* ── Scena 18: i 15 ambiti su fondo bianco ── */
+.s18 .num{color:var(--bluette-700)}
+.s18 .cap{color:var(--black)}
+.s18 .tblock{max-width:24cqw}
+.s18 .tblock .num{font-size:13cqw}
+.amb{position:absolute;right:5cqw;top:50%;transform:translateY(-50%);width:60cqw;display:flex;flex-direction:column;gap:.5cqw;padding-top:3cqw}
+.amb .r{display:grid;grid-template-columns:27cqw 1fr;align-items:center;column-gap:1.2cqw;height:2.3cqw}
+.amb .nm{font-family:var(--sans);font-size:1.5cqw;line-height:1;color:var(--gray-700);white-space:nowrap;text-align:right}
+.amb .row{display:flex;align-items:center;gap:.8cqw}
+.amb .b{display:block;height:1.6cqw;width:calc(var(--v) * .27cqw);background:var(--gray-300);transform-origin:left center}
+.amb .r.lo .b{background:var(--bluette-700)}
+.amb .v{font-family:var(--mono);font-size:1.4cqw;font-weight:700;color:var(--gray-700)}
+.amb .r.hot .nm,.amb .r.hot .v{font-weight:700;color:var(--black)}
+.amb .r.hot.lo .nm,.amb .r.hot.lo .v{color:var(--bluette-700)}
+.amb .ref{position:absolute;left:calc(28.2cqw + 13.5cqw);top:0;bottom:0;border-left:.16cqw dashed var(--black);padding-left:.7cqw;font-family:var(--mono);font-size:1.2cqw;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-700);white-space:nowrap;line-height:1.2}
+.amb .ref b{color:var(--black)}
+@keyframes toblu{from{background:var(--gray-300)}to{background:var(--bluette-700)}}
+.play .amb .r.lo .b{animation:growX .9s var(--ease) var(--d,0s) both,toblu .5s ease var(--d2,17.1s) both}
+.play .amb .r .b{animation:growX .9s var(--ease) var(--d,0s) both}
+
+/* ── Scena 20: dato → obiettivo → indicatore ── */
+.chain{position:absolute;left:5cqw;right:5cqw;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:minmax(0,1fr) 5cqw minmax(0,1fr) 5cqw minmax(0,1fr);align-items:stretch}
+.chain .card{background:var(--bluette-800);padding:2.4cqw;min-height:25cqw;display:flex;flex-direction:column;gap:1.8cqw}
+.chain .card .num{font-size:9cqw}
+.chain .card .cap.s{font-size:2.9cqw}
+.chain .arr{width:4cqw;height:auto;align-self:center;justify-self:center;overflow:visible}
+.chain .tag{display:inline-block;margin-left:.8cqw;background:var(--lime-400);color:var(--black);font-weight:700;padding:.2cqw .6cqw;letter-spacing:.12em}
+
+/* ── Stacco ── */
+.end .lines{position:absolute;left:5cqw;bottom:4.4cqw;display:flex;flex-direction:column;gap:.9cqw;font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.74)}
+
+/* ── Parte 3: cubo piccolo in alto a destra, con la faccia della scena accesa (croce della scena 16) ── */
+.mini{position:absolute;right:5cqw;top:4cqw;z-index:2;display:grid;grid-template-columns:repeat(4,1.5cqw);grid-template-rows:repeat(3,1.5cqw);gap:.22cqw}
+.mini i{display:block;box-sizing:border-box;border:.12cqw solid rgba(255,255,255,.6)}
+.mini i.on{background:var(--lime-400);border-color:var(--lime-400)}
+.light .mini i{border-color:var(--gray-500)}
+.light .mini i.on{background:var(--bluette-700);border-color:var(--bluette-700)}
+.light .chap{background:var(--lime-400)}
+.k .neg,.k.neg{color:rgba(255,255,255,.6)}
+.tag{display:inline-block;margin-left:.8cqw;background:var(--lime-400);color:var(--black);font-family:var(--mono);font-size:1.3cqw;font-weight:700;padding:.2cqw .6cqw;letter-spacing:.12em;text-transform:uppercase;vertical-align:middle}
+.srcl{font-family:var(--mono);font-size:1.15cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.sub-k{margin-top:1.6cqw;color:var(--white)}
+.cmpl{margin-top:1.4cqw;font-family:var(--mono);font-size:1.4cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.cmpl b{font-size:2.2cqw;color:var(--white);letter-spacing:-.01em;margin-left:.4cqw}
+.num small{font-size:.32em;letter-spacing:.02em;margin-left:.35em}
+.veil{position:absolute;inset:0;background:rgba(39,0,101,.62)}
+.a28 .shade{background:radial-gradient(ellipse 95% 120% at 0% 55%,rgba(0,0,0,.84) 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.08) 88%)}
+.wash{position:absolute;inset:0;background:var(--bluette-700)}
+.play .a-zoom{animation:zoom 1.1s var(--ease) var(--d,0s) both}
+@keyframes zoom{0%{transform:scale(1)}35%{transform:scale(1.22)}100%{transform:scale(1.14)}}
+.frame:not(.play) .a-zoom{transform:scale(1.14)}
+.play .a-out2{animation:up .7s var(--ease) var(--d,0s) both,out .5s ease var(--d2) forwards}
+.frame:not(.play) .a-out2{opacity:0}
+
+/* ── Scene 21 e 27: i 15 ambiti con un solo ambito acceso ── */
+.a21 .tblock .num,.a27 .tblock .num{color:var(--bluette-700)}
+.a21 .cap,.a27 .cap{color:var(--black)}
+.a21 .tblock,.a27 .tblock{max-width:24cqw}
+.a21 .amb,.a27 .amb{top:calc(50% + 3.6cqw)}
+.a21 .tblock .num,.a27 .tblock .num{font-size:13cqw}
+.amb-k{margin-top:1.6cqw;color:var(--bluette-700)!important;font-weight:700;line-height:1.35}
+.amb .r.hot .b{background:var(--bluette-700)}
+.play .amb .r.hot .b{animation:growX .9s var(--ease) var(--d,0s) both,toblu .5s ease var(--d2) both}
+
+/* ── «Per il tavolo»: domanda in alto, sotto obiettivo → indicatore ── */
+.tav{position:absolute;left:5cqw;right:14cqw;top:9.8cqw;display:flex;flex-direction:column;gap:1.4cqw;z-index:1}
+.tav.narrow{right:40cqw}
+.tav .q{font-size:3.5cqw}
+.tav .swap{display:grid}
+.tav .swap > *{grid-area:1/1}
+.cards{position:absolute;left:5cqw;right:5cqw;bottom:8.6cqw;display:grid;grid-template-columns:minmax(0,1.7fr) 5cqw minmax(0,1fr);align-items:stretch;z-index:1}
+.cards .card{background:var(--bluette-800);padding:1.8cqw 2.2cqw;display:flex;flex-direction:column;gap:1cqw}
+.cards .card .row{display:flex;align-items:center;gap:2cqw}
+.cards .card .num{font-size:7cqw}
+.cards .card .cap.s{font-size:2.3cqw}
+.cards .card .srcl{margin-top:auto}
+.cards .ind{background:none;border:.16cqw dashed rgba(255,255,255,.6);justify-content:flex-start}
+.cards .ind .cap{color:rgba(255,255,255,.74)}
+.cards .arr,.arr{width:4cqw;height:auto;align-self:center;justify-self:center;overflow:visible}
+.slots{list-style:none;display:flex;gap:.6cqw;margin:0;padding:0}
+.slots li{font-family:var(--mono);font-size:1.15cqw;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.5cqw .8cqw;border:.12cqw dashed rgba(255,255,255,.5);color:rgba(255,255,255,.74)}
+.slots li.on{background:var(--lime-400);border-color:var(--lime-400);color:var(--black)}
+.links{width:9cqw;height:auto;flex:none;overflow:visible}
+
+/* ── Scena 22: mappina dei comuni su foto velata ── */
+.pmap{position:absolute;right:5cqw;top:7cqw;bottom:7cqw;width:34cqw;display:flex;align-items:center;justify-content:center;z-index:1}
+.pmap svg,.wmap svg,.mapR svg{height:100%;width:auto;overflow:visible}
+.a22 .tblock{max-width:48cqw}
+.maplbl{font-family:'Atkinson Hyperlegible Mono',monospace;font-size:19px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.maplbl.halo{font-size:24px;paint-order:stroke;stroke:#270065;stroke-width:7px;stroke-linejoin:round}
+
+/* ── Scena 24 e 30: quadratini ── */
+.dots{display:grid;grid-template-columns:repeat(13,1fr);gap:.55cqw;width:36cqw}
+.dots.g60{grid-template-columns:repeat(10,1fr);width:26cqw;gap:.5cqw}
+.dots span{aspect-ratio:1;background:rgba(255,255,255,.18)}
+.dots span.a-lit{background:var(--lime-400)}
+.play .dots span.a-lit{background:rgba(255,255,255,.18)}
+.a30 .side{width:26cqw}
+
+/* ── Scena 25: la bolla che si riempie ── */
+.bubble-side{align-items:center}
+.bubble{width:26cqw;height:26cqw;display:block;overflow:visible}
+.water{fill:var(--lime-400);transform:translateY(var(--lvl))}
+@keyframes water{from{transform:translateY(100%)}to{transform:translateY(var(--lvl))}}
+.play .a-fill{animation:water 1.6s var(--ease) var(--d,0s) both}
+
+/* ── Scena 28: barra su foto ── */
+.stack.dk{margin-top:2.4cqw;width:44cqw}
+.stack.dk .track{background:rgba(255,255,255,.22);height:2.6cqw}
+.stack.dk .part{box-shadow:none;transform-origin:left center}
+.stack.dk .lbls{color:rgba(255,255,255,.8)}
+.stack.dk .lbls b{color:var(--lime-400)}
+
+/* ── Scena 29: opere su mappina ── */
+.works{position:absolute;left:5cqw;bottom:8.6cqw;width:52cqw;display:flex;flex-direction:column;gap:.6cqw}
+.works .head{display:flex;align-items:center;gap:1.6cqw}
+.works .num{font-size:5cqw}
+.works .cap.s{font-size:2.6cqw}
+.works ol{list-style:none;margin:.4cqw 0 0;padding:0;display:flex;flex-direction:column;gap:.5cqw}
+.works li{display:flex;align-items:center;gap:1cqw;font-family:var(--mono);font-size:1.6cqw;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.works li i{display:block;width:3cqw;height:.45cqw;background:var(--lime-400)}
+.works li:nth-child(2) i{background:var(--white)}
+.works li i.pt{width:1.2cqw;height:1.2cqw;margin:0 .9cqw}
+.indl{margin-top:1.2cqw;font-family:var(--mono);font-size:1.2cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.74);border:.12cqw dashed rgba(255,255,255,.6);padding:.6cqw .9cqw;align-self:flex-start}
+.wmap{position:absolute;right:4cqw;top:9cqw;bottom:5cqw;width:33cqw;display:flex;align-items:center;justify-content:center}
+
+/* ── Scena 31: numerone nel terzo inferiore, su fondo colorato ── */
+.lower{position:absolute;left:5cqw;right:22cqw;bottom:9cqw;background:var(--bluette-700);padding:2cqw 2.6cqw;display:flex;align-items:center;gap:2.4cqw;z-index:1}
+.lower .num{font-size:9cqw}
+.lower .lt{display:flex;flex-direction:column;gap:.4cqw}
+.lower .cap.s{font-size:2.6cqw}
+.lower .cmpl{margin-top:.6cqw}
+.lower .reg{position:absolute;left:2.6cqw;top:-1.6cqw;margin:0}
+
+/* ── Scena 34: mappa delle aree interne e asset ── */
+.colL{position:absolute;left:5cqw;top:9cqw;bottom:7.6cqw;width:44cqw;display:flex;flex-direction:column;justify-content:center;gap:1.8cqw}
+.colL .num{font-size:8.4cqw}
+.colL .cap.s{margin-top:1cqw;font-size:2.8cqw}
+.colL .swap{display:grid}
+.colL .swap > *{grid-area:1/1}
+.card.obj{background:var(--bluette-800);padding:1.8cqw 2.2cqw;display:flex;flex-direction:column;gap:1cqw}
+.card.obj .cap.s{font-size:2.3cqw}
+.icons{list-style:none;margin:0;padding:0;display:flex;gap:1.6cqw;flex-wrap:wrap}
+.icons li{display:flex;flex-direction:column;gap:.5cqw;font-family:var(--mono);font-size:1.05cqw;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.86);width:8.6cqw}
+.icons svg{width:4cqw;height:4cqw;display:block}
+.assets{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.9cqw;align-self:center}
+.assets li{display:flex;align-items:center;gap:1.1cqw;font-family:var(--serif);font-size:2.4cqw}
+.assets li b{display:grid;place-items:center;width:2.6cqw;height:2.6cqw;background:var(--lime-400);color:var(--black);font-family:var(--mono);font-size:1.4cqw}
+.assets .tag{font-size:1.1cqw}
+.mapR{position:absolute;right:4cqw;top:5cqw;bottom:5cqw;width:46cqw;display:flex;align-items:center;justify-content:center}
+
+/* ── Scena 34 bis: confronto in piccolo, tono neutro ── */
+.cmpbox .mid{font-family:var(--mono);font-size:4.2cqw;font-weight:700;color:var(--white);letter-spacing:-.02em}
+.cmpbox .mid span{font-size:1.4cqw;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.74)}
+.note-k{font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.74);border-top:.12cqw solid rgba(255,255,255,.3);padding-top:1.2cqw}
+
+/* ── Scena 35: spunte ── */
+.checks{list-style:none;margin:.6cqw 0;padding:0;display:flex;gap:2.4cqw}
+.checks li{display:flex;align-items:center;gap:.9cqw;font-family:var(--serif);font-size:3cqw}
+.checks li::before{content:"";width:2.2cqw;height:2.2cqw;background:var(--lime-400) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%234400B3' stroke-width='3'/%3E%3C/svg%3E") center/80% no-repeat}
+.a35 .icons li{width:10cqw}
+
+/* ── Scena 36: glitch breve sul numerone ── */
+@keyframes glitch{0%{text-shadow:.5cqw 0 var(--white),-.5cqw 0 var(--bluette-400);transform:translateX(.4cqw)}25%{transform:translateX(-.5cqw) skewX(-6deg);clip-path:inset(0 0 45% 0)}50%{text-shadow:-.4cqw 0 var(--white),.4cqw 0 var(--bluette-400);transform:none;clip-path:inset(40% 0 0 0)}75%{clip-path:none;text-shadow:.25cqw 0 var(--white)}100%{text-shadow:none;transform:none;clip-path:none}}
+.play .a-glitch{animation:up .4s var(--ease) var(--d,0s) both,glitch .7s steps(1) var(--d,0s) both}
+
+/* ── Scena 37: linea del ciclo 2028–2034 e card scritta a macchina ── */
+.tline{position:absolute;left:5cqw;right:5cqw;top:10cqw;display:flex;flex-direction:column;gap:1cqw}
+.tline svg{width:100%;height:auto;overflow:visible}
+.tline .yr{font-family:'Atkinson Hyperlegible Mono',monospace;font-size:40px;font-weight:700;fill:#B9FF69}
+.tline .ms{font-family:'Atkinson Hyperlegible Mono',monospace;font-size:30px;font-weight:600;letter-spacing:.1em;fill:#FFFFFF;text-transform:uppercase}
+.type span{opacity:1}
+.play .type span{animation:fade .01s linear var(--d,0s) both}
+
+/* ── Scena 38: sovraimpressione su foto, poi fondo Bluette ── */
+.sov{position:absolute;left:5cqw;bottom:9cqw;z-index:1;font-family:var(--mono);font-size:1.6cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--white);text-shadow:0 0 1.6cqw rgba(0,0,0,.6)}
+.sov b{color:var(--lime-400)}
+.after{position:absolute;inset:0}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-terra" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M12 36h24M24 36V19"/><path d="M24 27c-5.5 0-9-3.4-9-8.5 5.5 0 9 3.4 9 8.5zM24 23c5.5 0 9-3.4 9-8.5-5.5 0-9 3.4-9 8.5z"/></g></symbol>
+    <symbol id="ic-accoglienza" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M11 15v20M11 29h26v6M37 29v-5h-15v5M14 22h6v-3h-6z"/></g></symbol>
+    <symbol id="ic-energia" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M12 31l4-12h20l-4 12zM14 25h20M24.5 19l-3 12M24 31v6M19 37h10"/></g></symbol>
+    <symbol id="ic-servizi" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M24 37s-10-8.6-10-16a10 10 0 0 1 20 0c0 7.4-10 16-10 16zM24 16v10M19 21h10"/></g></symbol>
+    <symbol id="ic-comuni" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M11 19l13-7 13 7zM15 22v11M21 22v11M27 22v11M33 22v11M11 36h26"/></g></symbol>
+
+    <symbol id="ic-borghi" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M9 36V25l7-6 7 6v11M23 36V21l8-7 8 7v15M7 36h34M14 36v-5h4v5M30 27h3"/></g></symbol>
+    <symbol id="ic-turismo" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M11 37c5-1 9-4 10-8s5-6 9-6 6-3 6-7M33 16V8l6 2.5-6 2.5"/><path d="M11 37h4M19 31h3M27 24h3" stroke-dasharray="0"/></g></symbol>
+    <symbol id="ic-paesaggio" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M7 35l11-11 8 8 5-5 10 8M7 35h34"/><path d="M16 11h6v6h-6z"/></g></symbol>
+    <symbol id="ic-sanita" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M20 12h8v8h8v8h-8v8h-8v-8h-8v-8h8z"/></g></symbol>
+    <symbol id="ic-scuola" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M24 16c-4-3-9-3-13-2v20c4-1 9-1 13 2 4-3 9-3 13-2V14c-4-1-9-1-13 2zM24 16v20"/></g></symbol>
+    <symbol id="ic-trasporto" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M12 12h24v20H12zM12 23h24M16 32v4M32 32v4M17 28h2M29 28h2"/></g></symbol>
+    <symbol id="ic-banda" viewBox="0 0 48 48"><rect width="48" height="48" fill="#B9FF69"/><g fill="none" stroke="#4400B3" stroke-width="2.6" stroke-linejoin="miter"><path d="M10 20a20 20 0 0 1 28 0M15 25.5a13 13 0 0 1 18 0M20 31a6 6 0 0 1 8 0"/><path d="M22.5 34.5h3v3h-3z" fill="#4400B3"/></g></symbol>
+  </defs>
+</svg>
+
+<header class="masthead">
+  <div class="wrap">
+    <nav class="parts" aria-label="Parti del video"><a href="Storyboard-Viterbo-Parte-1.html">Parte 1 · La foto del territorio</a><a href="Storyboard-Viterbo-Parte-2.html">Parte 2 · Il metodo del cubo</a><a href="Storyboard-Viterbo-Parte-3.html" aria-current="page">Parte 3 · Le sei facce</a></nav>
+    <p class="eyebrow">OpenEconomics · Storyboard visivo · Bozza</p>
+    <h1>Video analisi territoriale Viterbo · Parte 3</h1>
+    <p class="sub">Le sei facce, una per una: cover, venti scene dalla sceneggiatura v3 aggiornata il 6 novembre 2026 (PPTX) e lo stacco finale. Per ogni faccia un dato, dove sono andati i fondi e lo schema «Per il tavolo»: domanda, obiettivo del Piano, indicatore lasciato al tavolo. Numeri, mappe e schemi si animano a tempo con la voce stimata.</p>
+    <dl class="meta">
+      <div><dt>Durata in sceneggiatura</dt><dd>6:56 (7:05 – 14:01)</dd></div>
+      <div><dt>In questa pagina</dt><dd>8:13 di scene, più cover e stacco</dd></div>
+      <div><dt>Formato</dt><dd>Orizzontale 16:9</dd></div>
+      <div><dt>Lingua</dt><dd>Italiano</dd></div>
+      <div><dt>Voci</dt><dd>Uomo e donna alternati, come nella sceneggiatura</dd></div>
+      <div><dt>Tono</dt><dd>Istituzionale, data-driven</dd></div>
+    </dl>
+  </div>
+</header>
+
+<section class="phases" aria-label="Fasi di lavoro">
+  <div class="wrap">
+    <ol>
+      <li class="on"><span class="n">Fase 1 · questa pagina</span><p>Storyboard: composizione, testi, numeri, mappe, schemi animati e tempi d'entrata.</p></li>
+      <li><span class="n">Fase 2</span><p>Le sei foto (scene 22, 28, 30, 31, 33, 38) diventano clip con movimento di camera, con il trattamento di Rieti.</p></li>
+      <li><span class="n">Fase 3</span><p>Voce sintetica, musica e montaggio, come per le Parti 1 e 2.</p></li>
+    </ol>
+  </div>
+</section>
+<div class="toolbar">
+  <div class="wrap">
+    <span class="label">Vista</span>
+    <label class="toggle"><input type="checkbox" id="animToggle" checked> Anima i frame</label>
+    <label class="toggle"><input type="checkbox" id="safeToggle"> Mostra title safe 16:9</label>
+    <label class="toggle"><input type="checkbox" id="bigToggle"> Frame grandi</label>
+    <label class="who">Il tuo nome <input type="text" id="whoName" autocomplete="name" placeholder="per firmare i commenti"></label>
+    <button type="button" class="pdf-all" id="pdfAll">Scarica PDF dei commenti</button>
+    <button type="button" class="copy-all" id="copyAll">Copia il testo</button>
+    <span class="copied" id="copied" aria-live="polite"></span>
+    <span class="hint">Clic su un frame per rivedere l'animazione</span>
+  </div>
+</div>
+
+<main class="board">
+  <div class="wrap">
+    <h2 class="sec-h">Scena per scena</h2>
+    <div class="grid" id="grid">
+
+      <!-- Cover ──────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame cover" data-dur="6" tabindex="0" role="button" aria-label="Cover, rivedi animazione">
+          <div class="stage">
+            <span class="big a-fade" style="--d:.2s" aria-hidden="true">28–34</span>
+            <div class="tblock">
+              <p class="k a-up" style="--d:.35s">Analisi territoriale · Provincia di Viterbo</p>
+              <p class="hl line1 a-up" style="--d:.9s">Parte 3</p>
+              <p class="hl line2 a-up" style="--d:1.5s">Le sei facce</p>
+            </div>
+          </div>
+          <img class="anci" src="assets/logo-anci-white.png" alt="ANCI"><div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Cover · 6 s</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Cover · Parte 3 <span class="chip g">Come le Parti 1 e 2</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Analisi territoriale · Provincia di Viterbo · «Parte 3» · «Le sei facce» · filigrana 28–34 · ANCI in alto a destra</dd></div>
+            <div><dt>Voiceover</dt><dd class="vo">Nessuno: musica in apertura.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Nella sceneggiatura la Parte 3 parte dopo lo stacco di cinque secondi della Parte 2: se resta un blocco del video unico con stop&amp;go, la cover non serve e si parte dalla scena 21.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 21 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a21 light duo" data-dur="19" tabindex="0" role="button" aria-label="Scena 21, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 1 · Competitività e innovazione</p><div class="mini" data-f="1" aria-hidden="true"></div>
+            <div class="tblock">
+              <p class="num a-up" style="--d:7.7s"><span class="count" data-to="41" data-d="7.7" data-t="1">41</span></p>
+              <p class="cap a-up" style="--d:8.1s">su 100</p>
+              <p class="k amb-k a-up" style="--d:8.5s">Infrastrutture produttive e logistica</p>
+            </div>
+            <div class="amb" data-hot="Infrastrutture produttive e logistica" data-d="1.2" data-d2="7.7">
+              <span class="ref a-fade" style="--d:13.8s"><b>50</b> resto del Lazio,<br>Roma esclusa</span>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-black.svg" alt="OpenEconomics"></div><span class="tc">Sc. 21 · 0:00 – 0:19</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 21 · Faccia 1: infrastrutture produttive e logistica <span class="chip">Dati reali</span> <span class="chip">Grafico dello studio</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo bianco · chip «Faccia 1 · Competitività e innovazione» · cubo piccolo in alto a destra con la faccia 1 accesa · numerone 41 «su 100» · le 15 barre degli ambiti come nella scena 18, tutte grigie tranne «Infrastrutture produttive e logistica» (40,9) in Bluette · linea a 50 = resto del Lazio, Roma esclusa</dd></div>
+            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Partiamo da competitività e innovazione. Le infrastrutture produttive e la logistica valgono il quarantuno per cento, dove il resto del Lazio, Roma esclusa, vale cinquanta.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Le barre crescono in grigio all'inizio (1,2 s). Su «quarantuno» la barra «Infrastrutture produttive e logistica» passa al Bluette e il numerone conta fino a 41 (7.7 s). La linea a 50 compare su «cinquanta» (13.8 s).</dd></div>
+            <div><dt>Nota</dt><dd class="note">Valore 41 della tabella «Ambiti OSL della faccia» (40,9 nel grafico di «6. Il cubo 2028–2034»). La nota del PPTX vuole il numerone che «esce dalla barra»: qui entra a sinistra, come nella scena 18, per non coprire le altre barre. La voce dice «quarantuno per cento», ma il valore è un indice su 100: vedi «Da correggere».</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 22 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a22 deep" data-dur="17" tabindex="0" role="button" aria-label="Scena 22, rivedi animazione">
+          <div class="stage">
+            <div class="shade"></div>
+            <p class="chap a-up" style="--d:0.4s">Faccia 1 · Competitività e innovazione</p><div class="mini" data-f="1" aria-hidden="true"></div>
+            <div class="veil a-fade" style="--d:12.2s"></div>
+            <div class="tblock on-photo">
+              <p class="num a-up" style="--d:6.6s"><span class="count" data-to="43" data-d="6.6" data-t="1.1">43</span>%</p>
+              <p class="cap s a-up" style="--d:7.0s">addetti manifatturieri impiegati nei 7 comuni del distretto</p>
+            </div>
+            <div class="pmap a-fade" style="--d:11.9s"><svg id="m22" viewBox="0 0 600 600" aria-hidden="true" data-d="12.2"></svg></div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 22 · 0:19 – 0:36</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 22 · Faccia 1: il distretto della ceramica <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Foto della lavorazione della ceramica sanitaria (distretto di Civita Castellana) con movimento di camera · chip «Faccia 1» · numerone 43% «addetti manifatturieri impiegati nei 7 comuni del distretto» · su «sette comuni» la foto si vela e a destra compare la mappina della provincia: i 7 comuni del distretto si accendono in Lime, Civita Castellana con il nome</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Il polo industriale è la ceramica sanitaria di Civita Castellana. Il quarantatré per cento degli addetti manifatturieri della provincia lavora nei sette comuni del distretto.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Il numerone entra su «quarantatré per cento» (6.6 s). Su «sette comuni» la foto si vela di Bluette, compare la mappina e i sette comuni si accendono uno dopo l'altro (12.2 s), Civita Castellana per ultimo e con il nome.</dd></div>
+            <div><dt>Foto</dt><dd class="prompt">Foto ancora da scegliere: nel frame resta il fondo Bluette.</dd></div>
+            <div><dt>Nota</dt><dd class="note">I sette comuni sono quelli che la tabella «Comuni» dello studio classifica come area produttiva, Viterbo escluso: Civita Castellana, Castel Sant'Elia, Corchiano, Fabrica di Roma, Faleria, Gallese, Nepi. Lo studio non li elenca come «distretto»: da far confermare. La foto va reperita: serve la liberatoria dei lavoratori e dell'azienda (slide «Foto da reperire»).</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 23 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a23" data-dur="27" tabindex="0" role="button" aria-label="Scena 23, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 1 · Competitività e innovazione</p><div class="mini" data-f="1" aria-hidden="true"></div>
+            <div class="tav">
+              <p class="k a-up" style="--d:0.3s">Per il tavolo <span class="tag">Proposta</span></p>
+              <p class="hl q a-up" style="--d:2.2s"><span>Quale servizio comune porta le filiere agricole ai mercati, visto che la logistica pesa la metà?</span></p>
+            </div>
+            <div class="cards">
+              <div class="card a-up" style="--d:14.9s">
+                <p class="k">Obiettivo</p>
+                <div class="row"><p class="num"><span class="count" data-to="5" data-d="18.3" data-t=".6">5</span></p><p class="cap s">Filiere corte di qualità in almeno 5 territori rurali entro il 2027</p></div>
+                <p class="srcl">Piano di sviluppo locale OSL</p>
+              </div>
+              <svg class="arr" viewBox="0 0 60 40" aria-hidden="true"><path class="a-draw" style="--d:20.700000000000003s;--t:.6s;--len:80;stroke-dasharray:80" d="M4 20H52M40 8l12 12-12 12" fill="none" stroke="#B9FF69" stroke-width="3.5"/></svg>
+              <div class="card ind a-up" style="--d:21.1s">
+                <p class="k">Indicatore</p>
+                <p class="cap s">Da definire al tavolo</p>
+              </div>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 23 · 0:36 – 1:03</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 23 · Faccia 1: per il tavolo <span class="chip">Schema animato</span> <span class="chip g">Domanda proposta</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo Bluette · «Per il tavolo» con l'etichetta «Proposta» · domanda in Hedvig: «Quale servizio comune porta le filiere agricole ai mercati, visto che la logistica pesa la metà?» · card OBIETTIVO con numerone 5: «Filiere corte di qualità in almeno 5 territori rurali entro il 2027» (Piano di sviluppo locale OSL) · freccia Lime · card INDICATORE vuota «Da definire al tavolo»</dd></div>
+            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Per il tavolo. Quale servizio comune porta le filiere agricole ai mercati, visto che la logistica pesa la metà? Il Piano propone già un obiettivo misurabile: filiere corte di qualità in almeno cinque territori rurali entro il duemilaventisette.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">La domanda entra su «Quale» (2.2 s). La card obiettivo su «filiere corte» (14.9 s), con il 5 che conta. A fine scena la freccia e la card indicatore vuota (21.1 s), come chiede la nota del PPTX.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Lo stesso schema chiude ogni faccia: domanda (etichetta «Proposta», perché le domande sono spunti dello studio per il gruppo), obiettivo del Piano, indicatore lasciato al tavolo. L'obiettivo è del Piano di sviluppo locale dell'Osservatorio, a livello Lazio, non un target della provincia.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 24 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a24 duo" data-dur="15" tabindex="0" role="button" aria-label="Scena 24, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 2 · Transizione verde ed energia</p><div class="mini" data-f="2" aria-hidden="true"></div>
+            <div class="tblock">
+              <p class="num a-up" style="--d:4.9s">6<small>su 26</small></p>
+              <p class="cap s a-up" style="--d:5.3s">comunità energetiche rinnovabili qualificate del Lazio sono in provincia di Viterbo</p>
+            </div>
+            <div class="side">
+              <p class="months-k a-fade" style="--d:5.9s">Le 26 comunità qualificate del Lazio</p>
+              <div class="dots" id="d24" data-n="26" data-on="6" data-d="6.1" data-d2="6.6"></div>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 24 · 1:03 – 1:18</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 24 · Faccia 2: le comunità energetiche <span class="chip">Dati reali</span> <span class="chip">Numerone</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Chip «Faccia 2 · Transizione verde ed energia» · numerone 6 «su 26» · etichetta «comunità energetiche rinnovabili qualificate del Lazio sono in provincia di Viterbo» · a destra 26 quadratini in griglia, 6 si accendono in Lime</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">La seconda sfida riguarda transizione verde ed energia. Sei delle ventisei comunità energetiche rinnovabili qualificate del Lazio sono in provincia di Viterbo.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Il numerone entra su «Sei» (4.9 s). I 26 quadratini compaiono su «ventisei» (6.1 s) e i primi 6 passano al Lime subito dopo (6.6 s).</dd></div>
+            <div><dt>Nota</dt><dd class="note">Dato della Faccia 2 › Cosa dicono i dati: «6 delle 26 comunità energetiche rinnovabili qualificate del Lazio». Quadratini e non puntini: spigolo vivo come in tutto il DS.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 25 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a25 duo" data-dur="18" tabindex="0" role="button" aria-label="Scena 25, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 2 · Transizione verde ed energia</p><div class="mini" data-f="2" aria-hidden="true"></div>
+            <div class="tblock">
+              <p class="num a-up" style="--d:7.2s"><span class="count" data-to="58" data-d="7.2" data-t="1.2">58</span>%</p>
+              <p class="cap s a-up" style="--d:7.6s">fondi per transizione verde ed energia assegnati a un solo progetto</p>
+              <p class="k sub-k a-up" style="--d:11.6s">Depurazione a Civita Castellana, Sutri e Vignanello</p>
+            </div>
+            <div class="side bubble-side">
+              <svg class="bubble" viewBox="0 0 100 100" aria-hidden="true">
+                <defs><clipPath id="cb25"><circle cx="50" cy="50" r="47"/></clipPath></defs>
+                <g clip-path="url(#cb25)"><rect class="water a-fill" style="--d:7.2s;--lvl:43.7%" x="0" y="0" width="100" height="100"/></g>
+                <circle class="a-fade" style="--d:2.2s" cx="50" cy="50" r="47" fill="none" stroke="#FFFFFF" stroke-width="1.4"/>
+              </svg>
+              <p class="months-k a-fade" style="--d:4.4s">Coesione 2021–2027 · 47,9 milioni = 100%</p>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 25 · 1:18 – 1:36</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 25 · Faccia 2: dove sono andati i fondi <span class="chip">Dati reali</span> <span class="chip">Numerone</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo Bluette · chip «Faccia 2» · a destra una bolla bianca (100% = 47,9 milioni) che si riempie di Lime fino al 58% · numerone 58% «fondi per transizione verde ed energia assegnati a un solo progetto» · sotto: «Depurazione a Civita Castellana, Sutri e Vignanello»</dd></div>
+            <div><dt>Voiceover · voce maschile</dt><dd class="vo">La coesione ha finanziato su questi temi quarantasette virgola nove milioni. Il cinquantotto per cento è un solo progetto: la depurazione a Civita Castellana, Sutri e Vignanello.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">La bolla vuota compare su «finanziato» (2.2 s) con l'etichetta dei 47,9 milioni. Su «cinquantotto per cento» si riempie fino al 58% e il numerone conta (7.2 s). Il nome del progetto entra su «depurazione» (11.6 s).</dd></div>
+            <div><dt>Nota</dt><dd class="note">Il campo VISUAL del PPTX chiede la bolla che si riempie d'acqua, la nota di regia una barra intera: i due riferimenti non coincidono, qui c'è la bolla (il campo più recente). L'acqua è Lime perché il DS non ha un azzurro: da confermare. Progetto «Opere di collettamento e depurazione relativamente ai Poli di Civita Castellana, Sutri e Vignanello (I Lotto) – Adeguamento prezzi», 27,9 milioni su 47,9.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 26 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a26" data-dur="28" tabindex="0" role="button" aria-label="Scena 26, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 2 · Transizione verde ed energia</p><div class="mini" data-f="2" aria-hidden="true"></div>
+            <div class="tav">
+              <p class="k a-up" style="--d:0.3s">Per il tavolo <span class="tag">Proposta</span></p>
+              <p class="hl q a-up" style="--d:2.2s"><span style="font-size:2.9cqw">Come trasformare l&#x27;energia già prodotta in un vantaggio per comuni e imprese, senza consumare altro suolo?</span></p>
+            </div>
+            <div class="cards">
+              <div class="card a-up" style="--d:12.7s">
+                <p class="k">Obiettivo</p>
+                <div class="row"><p class="num"><span class="count" data-to="3" data-d="16.1" data-t=".5">3</span></p><p class="cap s">Comunità energetiche di distretto in almeno 3 poli entro il 2028</p></div>
+                <ol class="slots"><li class="on a-up" style="--d:20.5s">Civita Castellana · ceramica</li><li class="a-up" style="--d:20.8s">Da individuare</li><li class="a-up" style="--d:21.0s">Da individuare</li></ol>
+                <p class="srcl">Piano di sviluppo locale OSL</p>
+              </div>
+              <svg class="arr" viewBox="0 0 60 40" aria-hidden="true"><path class="a-draw" style="--d:21.200000000000003s;--t:.6s;--len:80;stroke-dasharray:80" d="M4 20H52M40 8l12 12-12 12" fill="none" stroke="#B9FF69" stroke-width="3.5"/></svg>
+              <div class="card ind a-up" style="--d:21.6s">
+                <p class="k">Indicatore</p>
+                <p class="cap s">Da definire al tavolo</p>
+              </div>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 26 · 1:36 – 2:04</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 26 · Faccia 2: per il tavolo <span class="chip">Schema animato</span> <span class="chip g">Domanda proposta</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo Bluette · «Per il tavolo» · domanda: «Come trasformare l'energia già prodotta in un vantaggio per comuni e imprese, senza consumare altro suolo?» · card OBIETTIVO con numerone 3: «Comunità energetiche di distretto in almeno 3 poli entro il 2028», tre caselle: Civita Castellana · ceramica, poi due «da individuare» · card INDICATORE vuota</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Per il tavolo. Come trasformare l&#x27;energia già prodotta in un vantaggio per comuni e imprese, senza consumare altro suolo? Il Piano propone comunità energetiche di distretto in almeno tre poli entro il duemilaventotto, a partire dalla ceramica di Civita Castellana.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Domanda su «Come» (2.2 s), card obiettivo su «comunità energetiche» (12.7 s) con il 3 che conta su «tre». Su «ceramica» si accende la prima casella, Civita Castellana (20.5 s). Freccia e indicatore vuoto in chiusura.</dd></div>
+            <div><dt>Nota</dt><dd class="note">La nota del PPTX chiede tre puntini sulla mappina con Civita Castellana in evidenza, ma lo studio nomina solo Civita Castellana: per non inventare gli altri due poli, qui sono tre caselle e due restano «da individuare» (al tavolo). Se gli analisti indicano i poli, si torna alla mappina.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 27 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a27 light duo" data-dur="18" tabindex="0" role="button" aria-label="Scena 27, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 3 · Infrastrutture e mobilità</p><div class="mini" data-f="3" aria-hidden="true"></div>
+            <div class="tblock">
+              <p class="num a-up" style="--d:6.1s"><span class="count" data-to="43" data-d="6.1" data-t="1">43</span></p>
+              <p class="cap a-up" style="--d:6.5s">su 100</p>
+              <p class="k amb-k a-up" style="--d:6.9s">Mobilità e trasporto pubblico</p>
+            </div>
+            <div class="amb" data-hot="Mobilità e trasporto pubblico" data-d="1.2" data-d2="6.1">
+              <span class="ref a-fade" style="--d:8.8s"><b>50</b> resto del Lazio,<br>Roma esclusa</span>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-black.svg" alt="OpenEconomics"></div><span class="tc">Sc. 27 · 2:04 – 2:22</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 27 · Faccia 3: la mobilità <span class="chip">Dati reali</span> <span class="chip">Grafico dello studio</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo bianco · chip «Faccia 3 · Infrastrutture e mobilità» · cubo piccolo in alto a destra con la faccia 3 accesa · numerone 43 «su 100» · le 15 barre degli ambiti come nella scena 18, tutte grigie tranne «Mobilità e trasporto pubblico» (42,6) in Bluette · linea a 50 = resto del Lazio, Roma esclusa</dd></div>
+            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Passiamo alla terza dimensione. L&#x27;ambito mobilità e trasporto pubblico vale quarantatré su cento. La provincia dipende dall&#x27;auto più del resto del Lazio, Roma esclusa.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Le barre crescono in grigio all'inizio (1,2 s). Su «quarantatré» la barra «Mobilità e trasporto pubblico» passa al Bluette e il numerone conta fino a 43 (6.1 s). La linea a 50 compare su «dipende» (8.8 s).</dd></div>
+            <div><dt>Nota</dt><dd class="note">Valore 43 della tabella «Ambiti OSL della faccia» (42,6 nel grafico). «Dipende dall'auto» viene da Faccia 3 › Cosa dicono i dati (783 autovetture ogni mille abitanti contro 732): il numero non si cita, a schermo resta la linea a 50 che compare su «dipende».</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 28 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a28 deep" data-dur="18" tabindex="0" role="button" aria-label="Scena 28, rivedi animazione">
+          <div class="stage">
+            <img class="photo a-zoom" style="--d:6.6s" src="assets/frames/p3/28-ferrovia.jpg" alt="Un treno della ferrovia Roma-Viterbo">
+            <div class="shade"></div>
+            <p class="chap a-up" style="--d:0.4s">Faccia 3 · Infrastrutture e mobilità</p><div class="mini" data-f="3" aria-hidden="true"></div>
+            <div class="tblock on-photo">
+              <p class="num a-up" style="--d:7.2s"><span class="count" data-to="56" data-d="7.2" data-t="1.2">56</span>%</p>
+              <p class="cap s a-up" style="--d:7.6s">fondi per infrastrutture e mobilità assegnati a un'opera sola</p>
+              <p class="k sub-k a-up" style="--d:11.1s">Il segnalamento della ferrovia Roma-Viterbo</p>
+              <div class="stack dk a-fade" style="--d:4.4s">
+                <div class="track"><span class="part a-growX" style="--d:7.2s;width:56.4%"></span></div>
+                <div class="lbls"><span><b>56%</b> un'opera</span><span>165,4 milioni = 100%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 28 · 2:22 – 2:40</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 28 · Faccia 3: dove sono andati i fondi <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Foto della ferrovia Roma-Viterbo con movimento di camera ed effetto zoom punch · chip «Faccia 3» · numerone 56% «fondi per infrastrutture e mobilità assegnati a un'opera sola» · «Il segnalamento della ferrovia Roma-Viterbo» · barra intera (100% = 165,4 milioni) con il 56% in Lime</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">La coesione ha finanziato su questi temi centosessantacinque virgola quattro milioni. Il cinquantasei per cento è un&#x27;opera sola: il nuovo impianto di segnalamento della ferrovia Roma-Viterbo.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">La barra vuota entra su «centosessantacinque» (4.4 s). Poco prima di «cinquantasei per cento» la camera entra di scatto nella foto (zoom punch) e il numerone appare mentre la barra si riempie al 56% (7.2 s). Il nome dell'opera su «nuovo impianto di segnalamento» (11.1 s).</dd></div>
+            <div><dt>Foto</dt><dd class="prompt">Treno della ferrovia Roma-Civita Castellana-Viterbo in linea, foto di Falk2 (CC BY-SA 4.0). Per il video: clip di 12 s a partire dalla foto, con il trattamento di Rieti, come nella Parte 1.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Opera «Ferrovia Roma-Viterbo – nuovo impianto di segnalamento di terra ERTMS-L2», 93,3 milioni su 165,4, in corso. Il VISUAL chiede numerone e zoom, la nota la barra: qui ci sono tutti e due. Per la foto in stazione serve il permesso del gestore.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 29 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a29" data-dur="30" tabindex="0" role="button" aria-label="Scena 29, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 3 · Infrastrutture e mobilità</p><div class="mini" data-f="3" aria-hidden="true"></div>
+            <div class="tav narrow">
+              <p class="k a-up" style="--d:.3s">Per il tavolo <span class="tag">Proposta</span></p>
+              <p class="hl q a-up" style="--d:2.2s"><span style="font-size:2.7cqw">Quali opere vanno completate nel prossimo ciclo? Quale collegamento tra aree interne e poli di servizio va fatto per primo?</span></p>
+            </div>
+            <div class="works">
+              <div class="head"><p class="num a-up" style="--d:16.1s">3</p>
+              <p class="cap s a-up" style="--d:16.4s">opere in corso di rilievo nazionale</p></div>
+              <ol>
+                <li class="a-up" style="--d:19.9s"><i></i>Strada statale 675</li>
+                <li class="a-up" style="--d:21.6s"><i></i>Ferrovia Roma-Viterbo</li>
+                <li class="a-up" style="--d:23.3s"><i class="pt"></i>Interporto di Orte</li>
+              </ol>
+              <p class="indl a-fade" style="--d:24.9s">Indicatore · da definire al tavolo</p>
+            </div>
+            <div class="wmap"><svg id="m29" viewBox="0 0 600 600" aria-hidden="true" data-d="13.8" data-ss="19.9" data-fr="21.6" data-io="23.3"></svg></div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 29 · 2:40 – 3:10</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 29 · Faccia 3: per il tavolo <span class="chip">Schema animato</span> <span class="chip g">Domanda proposta</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo Bluette · «Per il tavolo» · domanda: «Quali opere vanno completate nel prossimo ciclo? Quale collegamento tra aree interne e poli di servizio va fatto per primo?» · numerone 3 «opere in corso di rilievo nazionale» con l'elenco · a destra la mappina della provincia: linea della statale 675, linea della ferrovia Roma-Viterbo, punto dell'interporto di Orte · in basso «Indicatore · da definire al tavolo»</dd></div>
+            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Per il tavolo. Quali opere vanno completate nel prossimo ciclo, e quale collegamento tra aree interne e poli di servizio va fatto per primo? Sono già in corso tre opere di rilievo nazionale: la strada statale seicentosettantacinque, la ferrovia Roma-Viterbo e l&#x27;interporto di Orte.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Domanda su «Quali» (2.2 s). La mappina entra su «Sono già in corso» (13.8 s), il 3 su «tre opere». Le opere si disegnano sui nomi: statale (19.9 s), ferrovia (21.6 s), interporto (23.3 s). Indicatore vuoto in chiusura.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Tracciati schematici, passanti per i centri dei comuni attraversati (statale: Orte, Viterbo, Vetralla, Monte Romano verso Civitavecchia; ferrovia: Viterbo, Soriano nel Cimino, Vallerano, Vignanello, Fabrica di Roma, Civita Castellana, Castel Sant'Elia verso Roma): danno l'idea, non sono un rilievo. Fonte: Faccia 3 › Cosa dicono i dati e Spunti per il gruppo.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 30 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a30 deep duo" data-dur="13" tabindex="0" role="button" aria-label="Scena 30, rivedi animazione">
+          <div class="stage">
+            <div class="shade"></div>
+            <p class="chap a-up" style="--d:0.4s">Faccia 4 · Lavoro, competenze e inclusione</p><div class="mini" data-f="4" aria-hidden="true"></div>
+            <div class="veil a-fade" style="--d:4.0s"></div>
+            <div class="tblock on-photo">
+              <p class="num a-up" style="--d:4.4s"><span class="count" data-to="45" data-d="4.4" data-t="1">45</span><small>su 60</small></p>
+              <p class="cap s a-up" style="--d:4.8s">comuni senza una scuola secondaria di secondo grado</p>
+            </div>
+            <div class="side"><div class="dots g60" id="d30" data-n="60" data-on="45" data-d="4.1" data-d2="4.4"></div></div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 30 · 3:10 – 3:23</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 30 · Faccia 4: le scuole <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Video di una scuola o di studenti, senza volti riconoscibili, con movimento di camera · chip «Faccia 4 · Lavoro, competenze e inclusione» · numerone 45 «su 60» «comuni senza una scuola secondaria di secondo grado» · a destra 60 quadratini, uno per comune: 45 si accendono in Lime</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Sul fronte di lavoro, competenze e inclusione. quarantacinque comuni su sessanta non hanno una scuola secondaria di secondo grado.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Su «quarantacinque» la foto si vela, compaiono i 60 quadratini e 45 si accendono mentre il numerone conta (4.4 s).</dd></div>
+            <div><dt>Foto</dt><dd class="prompt">Foto ancora da scegliere: nel frame resta il fondo Bluette.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Dato della Faccia 4: «In tutto sono 45 Comuni su 60 senza una scuola secondaria di II grado». I quadratini non sono una mappa: se serve sapere quali comuni, lo studio ha l'elenco nella pagina «Comuni». Se ci sono minori nella foto servono le liberatorie: meglio riprese di spalle.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 31 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a31 deep" data-dur="28" tabindex="0" role="button" aria-label="Scena 31, rivedi animazione">
+          <div class="stage">
+            <div class="shade"></div>
+            <p class="chap a-up" style="--d:0.4s">Faccia 4 · Lavoro, competenze e inclusione</p><div class="mini" data-f="4" aria-hidden="true"></div>
+            <div class="lower a-up" style="--d:8.0s">
+              <p class="num"><span class="count" data-to="10.4" data-dec="1" data-d="8.3" data-t="1.2">10<span class="sep">,</span>4</span>%</p>
+              <div class="lt">
+                <p class="cap s">aziende agricole guidate da un capo azienda con meno di 40 anni</p>
+                <p class="cmpl a-fade" style="--d:9.9s">Resto del Lazio, Roma esclusa · <b>10<span class="sep">,</span>0%</b></p>
+              </div>
+              <p class="tag reg a-up" style="--d:20.5s">Proposta di regolamento 2028–2034</p>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 31 · 3:23 – 3:51</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 31 · Faccia 4: il ricambio generazionale <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Foto di un giovane agricoltore al lavoro con movimento di camera · chip «Faccia 4» · nel terzo inferiore, su fondo Bluette: numerone 10,4% «aziende agricole guidate da un capo azienda con meno di 40 anni» · in piccolo «Resto del Lazio, Roma esclusa · 10,0%» · etichetta «Proposta di regolamento 2028–2034»</dd></div>
+            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Il ricambio generazionale in agricoltura è in linea con il resto del Lazio. Il dieci virgola quattro per cento delle aziende ha un capo azienda con meno di quarant&#x27;anni. La proposta di regolamento lo tratta come priorità a sé, con una concentrazione obbligatoria di risorse.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Il fondo colorato e il numerone entrano su «dieci virgola quattro» (8.3 s). Il confronto in piccolo subito dopo. L'etichetta della proposta di regolamento su «priorità a sé» (20.5 s).</dd></div>
+            <div><dt>Foto</dt><dd class="prompt">Foto ancora da scegliere: nel frame resta il fondo Bluette.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Il PPTX vuole il confronto «su in linea», cioè all'inizio della voce, prima del numerone: qui arriva dopo il numerone, perché un confronto senza il suo numero non si legge. Fonte: Istat, Censimento agricoltura 2020 (10,4% contro 10,0%); art. 22(1)(g)(i), proposta ancora in negoziato. Liberatoria della persona ripresa e dell'azienda agricola.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 32 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a32" data-dur="25" tabindex="0" role="button" aria-label="Scena 32, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 4 · Lavoro, competenze e inclusione</p><div class="mini" data-f="4" aria-hidden="true"></div>
+            <div class="tav">
+              <p class="k a-up" style="--d:0.3s">Per il tavolo <span class="tag">Proposta</span></p>
+              <p class="hl q a-up" style="--d:2.2s"><span>Come portare l&#x27;istruzione superiore nei comuni che non ce l&#x27;hanno?</span></p>
+            </div>
+            <div class="cards">
+              <div class="card a-up" style="--d:11.6s">
+                <p class="k">Obiettivo</p>
+                <div class="row"><p class="num"><span class="count" data-to="5" data-d="13.8" data-t=".6">5</span></p><p class="cap s">Raccordo strutturale tra almeno 5 istituti tecnologici superiori e i poli produttivi entro il 2027</p>
+                <svg class="links" viewBox="0 0 120 100" aria-hidden="true" data-d="17.2"></svg></div>
+                <p class="srcl">Piano di sviluppo locale OSL</p>
+              </div>
+              <svg class="arr" viewBox="0 0 60 40" aria-hidden="true"><path class="a-draw" style="--d:19.0s;--t:.6s;--len:80;stroke-dasharray:80" d="M4 20H52M40 8l12 12-12 12" fill="none" stroke="#B9FF69" stroke-width="3.5"/></svg>
+              <div class="card ind a-up" style="--d:19.4s">
+                <p class="k">Indicatore</p>
+                <p class="cap s">Da definire al tavolo</p>
+              </div>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 32 · 3:51 – 4:16</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 32 · Faccia 4: per il tavolo <span class="chip">Schema animato</span> <span class="chip g">Domanda proposta</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo Bluette · «Per il tavolo» · domanda: «Come portare l'istruzione superiore nei comuni che non ce l'hanno?» · card OBIETTIVO con numerone 5: «Raccordo strutturale tra almeno 5 istituti tecnologici superiori e i poli produttivi entro il 2027», cinque quadratini che si collegano al polo · card INDICATORE vuota</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Per il tavolo. Come portare l&#x27;istruzione superiore nei comuni che non ce l&#x27;hanno? Il Piano propone un obiettivo misurabile: un raccordo strutturale tra almeno cinque istituti tecnologici superiori e i poli produttivi entro il duemilaventisette.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Domanda su «Come» (2.2 s), card obiettivo su «un raccordo» (11.6 s). Su «poli produttivi» i cinque quadratini si collegano al polo (17.2 s). Indicatore vuoto in chiusura.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Lo studio dice «ITS Academy»; la voce e lo schermo dicono «istituti tecnologici superiori», più chiaro in sala. Obiettivo del Piano a livello Lazio, aree produttive.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 33 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a33 deep" data-dur="23" tabindex="0" role="button" aria-label="Scena 33, rivedi animazione">
+          <div class="stage">
+            <img class="photo" src="assets/frames/p3/33-vicolo.jpg" alt="Un vicolo di un borgo dell&#x27;entroterra">
+            <div class="shade"></div>
+            <p class="chap a-up" style="--d:0.4s">Faccia 5 · Territori e coesione</p><div class="mini" data-f="5" aria-hidden="true"></div>
+            <div class="tblock on-photo">
+              <p class="num a-up" style="--d:14.9s">−<span class="count" data-to="3.1" data-dec="1" data-d="14.9" data-t="1">3<span class="sep">,</span>1</span>%</p>
+              <p class="cap s a-up" style="--d:15.3s">popolazione dal 2015</p>
+              <p class="cmpl a-fade" style="--d:18.8s">Resto del Lazio, Roma esclusa · <b>−0<span class="sep">,</span>2%</b></p>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 33 · 4:16 – 4:39</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 33 · Faccia 5: il calo della popolazione <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Foto di un vicolo di borgo con movimento di camera · chip «Faccia 5 · Territori e coesione» · numerone −3,1% «popolazione dal 2015» · in piccolo «Resto del Lazio, Roma esclusa · −0,2%»</dd></div>
+            <div><dt>Voiceover · voce maschile</dt><dd class="vo">La quinta faccia del cubo riguarda territori e coesione. È qui che i servizi hanno più margini di miglioramento. Dal duemilaquindici la popolazione è calata del tre virgola uno per cento, contro lo zero virgola due nel resto del Lazio, Roma esclusa.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Il numerone entra su «tre virgola uno» (14.9 s), il confronto in piccolo su «zero virgola due» (18.8 s). Nessuna mappa: lo studio non ha un grafico su questo dato.</dd></div>
+            <div><dt>Foto</dt><dd class="prompt">Vicolo sotto un arco nel quartiere di San Pellegrino, Viterbo, foto di Ben Skála, Benfoto (CC BY-SA 3.0). Per il video: clip di 12 s a partire dalla foto, con il trattamento di Rieti, come nella Parte 1.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Il dato compare solo nella Faccia 5 › Cosa dicono i dati, senza grafico né altra pagina che lo confermi: da far confermare (slide «Da verificare»). Nel testo «la popolazione è calata», mai «spopolamento».</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 34 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a34 deep" data-dur="40" tabindex="0" role="button" aria-label="Scena 34, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 5 · Territori e coesione</p><div class="mini" data-f="5" aria-hidden="true"></div>
+            <div class="colL">
+              <div>
+                <p class="num a-up" style="--d:3.3s"><span class="count" data-to="53" data-d="3.3" data-t="1">53</span>%</p>
+                <p class="cap s a-up" style="--d:3.7s">residenti in aree interne e montane</p>
+              </div>
+              <div class="swap">
+                <div class="card obj a-up a-out2" style="--d:11.1s;--d2:22.5s">
+                  <p class="k">Obiettivo · entro il 2027</p>
+                  <p class="cap s">Strategia di valorizzazione del patrimonio per ogni area interna</p>
+                  <ul class="icons"><li class="a-up" style="--d:19.9s"><svg><use href="#ic-borghi"/></svg>Borghi</li><li class="a-up" style="--d:20.5s"><svg><use href="#ic-terra"/></svg>Filiere</li><li class="a-up" style="--d:21.1s"><svg><use href="#ic-turismo"/></svg>Turismo lento</li><li class="a-up" style="--d:22.2s"><svg><use href="#ic-paesaggio"/></svg>Paesaggio</li></ul>
+                  <p class="srcl">Piano di sviluppo locale OSL</p>
+                </div>
+                <ol class="assets"><li class="a-up" style="--d:27.2s"><b>1</b>Lago di Bolsena</li><li class="a-up" style="--d:28.8s"><b>2</b>Lago di Vico</li><li class="a-up" style="--d:29.4s"><b>3</b>Civita di Bagnoregio</li><li class="a-up" style="--d:31.6s"><b>4</b>Terme di Viterbo</li><li class="a-up" style="--d:33.8s"><b>5</b>Necropoli di Tarquinia <span class="tag">Unesco</span></li></ol>
+              </div>
+            </div>
+            <div class="mapR"><svg id="m34" viewBox="0 0 600 600" aria-hidden="true" data-d="7.2" data-a="27.2,28.8,29.4,31.6,33.8"></svg></div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 34 · 4:39 – 5:19</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 34 · Faccia 5: dove investire <span class="chip">Dati reali</span> <span class="chip">Mappa e schema</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo Bluette · chip «Faccia 5» · a destra la mappa della provincia: si accendono in Bluette chiaro i 42 comuni delle aree interne · numerone 53% «residenti in aree interne e montane» · card OBIETTIVO «Strategia di valorizzazione del patrimonio per ogni area interna», entro il 2027, con quattro icone: borghi, filiere, turismo lento, paesaggio · poi la card esce e sulla mappa si accendono in Lime i cinque asset numerati, con l'elenco a sinistra: lago di Bolsena, lago di Vico, Civita di Bagnoregio, terme di Viterbo, necropoli di Tarquinia (Unesco)</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Dove investire in questo ambito? Più della metà dei residenti vive in aree interne e montane. Per queste aree il Piano propone, entro il duemilaventisette, una strategia di valorizzazione del patrimonio per ogni area interna: borghi, filiere, turismo lento, paesaggio. Gli asset ci sono già: i laghi di Bolsena e di Vico, Civita di Bagnoregio, le terme di Viterbo, la necropoli di Tarquinia.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Tre momenti, come da nota del PPTX. 1) Su «aree interne e montane» si accendono i 42 comuni (7.2 s); il 53% entra su «più della metà» (3.3 s). 2) Su «il Piano propone» entra la card obiettivo (11.1 s); le icone si accendono sui nomi. 3) Su «Gli asset» la card esce (22.7 s) e i cinque asset si accendono sulla mappa uno per nome.</dd></div>
+            <div><dt>Nota</dt><dd class="note">I 42 comuni sono quelli con area «interna» nella tabella «Comuni» dello studio (dashboard): pesano il 52,9% dei residenti, che torna con il 53% dell'Osservatorio. Gli asset sono posizionati sul comune (Bolsena, Caprarola, Bagnoregio, Viterbo, Tarquinia), non sul punto esatto. Le quattro icone sono disegnate nello stile di quelle della Parte 1: il set del DS non ha borghi, filiere, turismo lento e paesaggio. Nessun dato di spesa a schermo.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 34 bis ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a34b duo" data-dur="28" tabindex="0" role="button" aria-label="Scena 34 bis, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 5 · Territori e coesione</p><div class="mini" data-f="5" aria-hidden="true"></div>
+            <div class="tblock">
+              <p class="num a-up" style="--d:3.3s">8<small>€</small></p>
+              <p class="cap s a-up" style="--d:3.7s">fondi di coesione 2021–2027 per abitante per territori e coesione, distribuiti su 4 progetti</p>
+            </div>
+            <div class="side">
+              <div class="cmpbox a-fade" style="--d:9.4s">
+                <p class="months-k">Faccia 3 · infrastrutture e mobilità</p>
+                <p class="mid">538 € <span>per abitante</span></p>
+              </div>
+              <p class="note-k a-fade" style="--d:17.7s">Pochi progetti · confronto con il resto del Lazio non possibile</p>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 34 bis · 5:19 – 5:47</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 34 bis · Faccia 5: dove sono andati i fondi <span class="chip">Dati reali</span> <span class="chip g">Da validare</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo Bluette · chip «Faccia 5» · numerone 8 € «fondi di coesione 2021–2027 per abitante per territori e coesione, distribuiti su 4 progetti» · a destra, in piccolo e in bianco: «Faccia 3 · infrastrutture e mobilità · 538 € per abitante» · nota «Pochi progetti · confronto con il resto del Lazio non possibile»</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Qui la coesione ha finanziato otto euro per abitante, con quattro progetti. Sulla faccia tre sono cinquecentotrentotto euro per abitante. Sono pochi progetti e il confronto con il resto del Lazio non è possibile. È un dato da discutere al tavolo, non un giudizio.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Scena sensibile, tono neutro. Il numerone entra su «otto euro» (3.3 s); il 538 compare in piccolo su «cinquecentotrentotto» (9.4 s), senza barre a confronto né colori di allarme; la nota su «non è possibile» (17.7 s).</dd></div>
+            <div><dt>Nota</dt><dd class="note">Nella sceneggiatura è la seconda «Scena 34» (11:42–12:10, stessi tempi della precedente): qui «34 bis». L'accostamento 8 € contro 538 € è di chi ha scritto la sceneggiatura, non dello studio: la scena si mostra solo dopo la conferma degli analisti. Fonte: Faccia 5 › Cosa è stato finanziato (2,6 milioni, 8 € per abitante, 4 progetti); Faccia 3 (538 € per abitante).</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 35 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a35" data-dur="36" tabindex="0" role="button" aria-label="Scena 35, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 5 · Territori e coesione</p><div class="mini" data-f="5" aria-hidden="true"></div>
+            <div class="tav">
+              <p class="k a-up" style="--d:.3s">Per il tavolo</p>
+              <div class="swap">
+                <div class="regs a-out2" style="--d2:23.5s">
+                  <p class="hl q a-up" style="--d:2.7s"><span style="font-size:3.2cqw">Ogni strategia territoriale:</span></p>
+                  <ul class="checks"><li class="a-up" style="--d:7.7s">Area</li><li class="a-up" style="--d:8.3s">Bisogni</li><li class="a-up" style="--d:9.4s">Obiettivi misurabili</li></ul>
+                  <p class="srcl a-fade" style="--d:2.7s">Proposta di regolamento 2028–2034 · art. 75</p>
+                </div>
+                <p class="hl q a-up" style="--d:23.8s"><span style="font-size:2.9cqw">Quale offerta fuori stagione usa i posti letto che già ci sono? <span class="tag">Proposta</span></span></p>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card a-up" style="--d:14.9s">
+                <p class="k">Obiettivo</p>
+                <div class="row"><p class="num">2027</p><p class="cap s">Pacchetto minimo di servizi essenziali per ogni area interna</p></div>
+                <ul class="icons"><li class="a-up" style="--d:19.4s"><svg><use href="#ic-sanita"/></svg>Presidio sanitario</li><li class="a-up" style="--d:20.5s"><svg><use href="#ic-scuola"/></svg>Scuola</li><li class="a-up" style="--d:21.1s"><svg><use href="#ic-trasporto"/></svg>Trasporto a chiamata</li><li class="a-up" style="--d:22.7s"><svg><use href="#ic-banda"/></svg>Banda ultralarga</li></ul>
+                <p class="srcl">Piano di sviluppo locale OSL</p>
+              </div>
+              <svg class="arr" viewBox="0 0 60 40" aria-hidden="true"><path class="a-draw" style="--d:25.3s;--t:.6s;--len:80;stroke-dasharray:80" d="M4 20H52M40 8l12 12-12 12" fill="none" stroke="#B9FF69" stroke-width="3.5"/></svg>
+              <div class="card ind a-up" style="--d:25.7s">
+                <p class="k">Indicatore</p>
+                <p class="cap s">Da definire al tavolo</p>
+              </div>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 35 · 5:47 – 6:23</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 35 · Faccia 5: per il tavolo <span class="chip">Schema animato</span> <span class="chip g">Domanda proposta</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo Bluette · «Per il tavolo» · in alto «Ogni strategia territoriale:» con tre spunte Lime: area, bisogni, obiettivi misurabili (proposta di regolamento, art. 75) · card OBIETTIVO con numerone 2027: «Pacchetto minimo di servizi essenziali per ogni area interna», quattro icone: presidio sanitario, scuola, trasporto a chiamata, banda ultralarga · in chiusura la riga in alto lascia il posto alla domanda in Hedvig «Quale offerta fuori stagione usa i posti letto che già ci sono?» · card INDICATORE vuota</dd></div>
+            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Per il tavolo. La proposta di regolamento chiede che ogni strategia territoriale indichi area, bisogni e obiettivi misurabili. Per le aree interne il Piano propone un pacchetto minimo di servizi essenziali entro il duemilaventisette: presidio sanitario, scuola, trasporto a chiamata, banda ultralarga. E fuori stagione, quale offerta usa i posti letto che già ci sono?</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Tre momenti. 1) Su «La proposta di regolamento» la riga con le spunte, che si accendono su area, bisogni, obiettivi misurabili (7.7 · 8.3 · 9.4 s). 2) Su «un pacchetto minimo» la card obiettivo (14.9 s), con le icone sui nomi. 3) Su «E fuori stagione» la domanda prende il posto della riga (23.8 s), poi freccia e indicatore vuoto.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Fonti: Faccia 5 › Dove si colloca nel 2028–2034 (art. 75); Cosa indica l'OSL › aree interne e montane (pacchetto minimo entro il 2027); Spunti per il gruppo. Icone disegnate nello stile della Parte 1, come nella scena 34.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 36 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a36 duo" data-dur="20" tabindex="0" role="button" aria-label="Scena 36, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 6 · Capacità amministrativa e governance</p><div class="mini" data-f="6" aria-hidden="true"></div>
+            <div class="tblock">
+              <p class="num a-up a-glitch" style="--d:10.5s"><span class="count" data-to="4.9" data-dec="1" data-d="10.5" data-t=".8">4<span class="sep">,</span>9</span></p>
+              <p class="cap s a-up" style="--d:10.9s">dipendenti a tempo indeterminato ogni mille abitanti</p>
+            </div>
+            <div class="side">
+              <div class="bars">
+                <div class="bar a-up" style="--d:11.1s"><span class="bl">Comuni della provincia di Viterbo</span><span class="row"><i class="a-growX" style="--w:1;--d:11.1s"></i><b>4<span class="sep">,</span>9</b></span></div>
+                <div class="bar ot a-up" style="--d:14.9s"><span class="bl">Resto del Lazio, Roma esclusa</span><span class="row"><i class="a-growX" style="--w:.837;--d:14.9s"></i><b>4<span class="sep">,</span>1</b></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 36 · 6:23 – 6:43</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 36 · Faccia 6: il personale dei comuni <span class="chip">Dati reali</span> <span class="chip">Numerone</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo Bluette · chip «Faccia 6 · Capacità amministrativa e governance» · numerone 4,9 con effetto glitch «dipendenti a tempo indeterminato ogni mille abitanti» · a destra le due barre: comuni della provincia 4,9, resto del Lazio, Roma esclusa 4,1</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Concludiamo con capacità amministrativa e governance. I comuni hanno più personale a tempo indeterminato del resto del Lazio: quattro virgola nove dipendenti ogni mille abitanti, contro quattro virgola uno nel resto del Lazio.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Il numerone entra con un glitch breve su «quattro virgola nove» (10.5 s); la barra del resto del Lazio su «quattro virgola uno» (14.9 s).</dd></div>
+            <div><dt>Nota</dt><dd class="note">Il glitch dura meno di un secondo e usa solo bianco e Bluette chiaro, poi il numero resta fermo. «A tempo indeterminato» compare solo nella Faccia 6: il Capitolo 5 dà 4,94 contro 4,08 senza questa dicitura (slide «Da verificare»).</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 37 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a37" data-dur="35" tabindex="0" role="button" aria-label="Scena 37, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 6 · Capacità amministrativa e governance</p><div class="mini" data-f="6" aria-hidden="true"></div>
+            <div class="tline a-out" style="--d:14.6s">
+              <p class="k a-fade" style="--d:9.9s">Enti locali partner <span class="neg">· proposta in negoziato</span></p>
+              <svg viewBox="0 0 1700 260" aria-hidden="true">
+                <path class="a-draw" style="--d:1.1s;--t:1.4s;--len:1600;stroke-dasharray:1600" d="M50 150H1650" stroke="#B9FF69" stroke-width="5" fill="none"/>
+                <text x="50" y="215" class="yr a-fade" style="--d:1.1s">2028</text>
+                <text x="1650" y="215" text-anchor="end" class="yr a-fade" style="--d:2.1s">2034</text>
+                <g class="a-pop" style="--d:12.2s"><use href="#ic-comuni" x="490" y="96" width="108" height="108"/></g>
+                <text x="544" y="60" text-anchor="middle" class="ms a-fade" style="--d:12.2s">Preparazione dei piani</text>
+                <g class="a-pop" style="--d:13.3s"><use href="#ic-comuni" x="1100" y="96" width="108" height="108"/></g>
+                <text x="1154" y="60" text-anchor="middle" class="ms a-fade" style="--d:13.3s">Comitati di sorveglianza</text>
+              </svg>
+            </div>
+            <div class="cards">
+              <div class="card a-up" style="--d:17.7s">
+                <p class="k">Obiettivo · aree urbane</p>
+                <div class="row"><p class="num"><span class="count" data-to="60" data-d="24.9" data-t="1">60</span>%</p><p class="cap s type" data-d="21.1" data-t="3.4">Servizi digitali online di livello minimo nel 60% dei comuni urbani entro il 2028</p></div>
+                <p class="srcl">Piano di sviluppo locale OSL</p>
+              </div>
+              <svg class="arr" viewBox="0 0 60 40" aria-hidden="true"><path class="a-draw" style="--d:29.8s;--t:.6s;--len:80;stroke-dasharray:80" d="M4 20H52M40 8l12 12-12 12" fill="none" stroke="#B9FF69" stroke-width="3.5"/></svg>
+              <div class="card ind a-up" style="--d:30.2s">
+                <p class="k">Indicatore</p>
+                <p class="cap s">Da definire al tavolo</p>
+              </div>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 37 · 6:43 – 7:18</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 37 · Faccia 6: il ruolo dei comuni nel nuovo ciclo <span class="chip">Schema animato</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo Bluette · chip «Faccia 6» · linea 2028–2034 con due tappe in cui si accende l'icona del municipio: «Preparazione dei piani» e «Comitati di sorveglianza» · etichetta «Enti locali partner · proposta in negoziato» · poi la linea esce ed entra la card OBIETTIVO con numerone 60%: «Servizi digitali online di livello minimo nel 60% dei comuni urbani entro il 2028», scritta a macchina · card INDICATORE vuota</dd></div>
+            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Nel nuovo ciclo gli enti locali hanno un ruolo preciso: la proposta di regolamento li prevede come partner dei piani, dalla preparazione ai comitati di sorveglianza. E per le aree urbane il Piano propone un obiettivo misurabile: servizi digitali online di livello minimo nel sessanta per cento dei comuni urbani entro il duemilaventotto.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Su «nuovo ciclo» si disegna la linea (1.1 s); su «partner dei piani» l'etichetta (9.9 s); le due tappe su «preparazione» (12.2 s) e «comitati di sorveglianza» (13.3 s). Su «il Piano propone» la linea esce ed entra la card (17.7 s): il testo si scrive a macchina e il 60% conta su «sessanta per cento» (24.9 s). Indicatore vuoto in chiusura.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Nella sceneggiatura è la prima delle due «Scena 37» (13:18–13:53) e viene prima della spesa dei comuni: l'ordine segue le slide. Ma la voce della scena dopo comincia con «E pagano quasi tutto…», che si attacca meglio al personale (scena 36): vedi «Da verificare». Fonte: art. 6 della proposta (partenariato con le autorità locali); Cosa indica l'OSL › aree urbane (29% dei residenti; O4).</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 37 bis ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a37b duo" data-dur="18" tabindex="0" role="button" aria-label="Scena 37 bis, rivedi animazione">
+          <div class="stage">
+            <p class="chap a-up" style="--d:0.4s">Faccia 6 · Capacità amministrativa e governance</p><div class="mini" data-f="6" aria-hidden="true"></div>
+            <div class="tblock">
+              <p class="num a-up" style="--d:11.1s"><span class="count" data-to="95" data-d="11.1" data-t="1.1">95</span>%</p>
+              <p class="cap s a-up" style="--d:11.5s">degli impegni in conto capitale pagati, nel 2021</p>
+            </div>
+            <div class="side">
+              <p class="months-k a-fade" style="--d:4.9s">Spesa in conto capitale · 2021</p>
+              <div class="bars">
+                <div class="bar a-up" style="--d:11.1s"><span class="bl">Comuni della provincia di Viterbo</span><span class="row"><i class="a-growX" style="--w:.95;--d:11.1s"></i><b>95%</b></span></div>
+                <div class="bar ot a-up" style="--d:14.9s"><span class="bl">Resto del Lazio, Roma esclusa</span><span class="row"><i class="a-growX" style="--w:.71;--d:14.9s"></i><b>71%</b></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 37 bis · 7:18 – 7:36</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 37 bis · Faccia 6: la spesa dei comuni <span class="chip">Dati reali</span> <span class="chip">Numerone</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Fondo Bluette · chip «Faccia 6» · numerone 95% «degli impegni in conto capitale pagati, nel 2021» · a destra «Spesa in conto capitale · 2021» e le due barre: comuni della provincia 95%, resto del Lazio, Roma esclusa 71%</dd></div>
+            <div><dt>Voiceover · voce maschile</dt><dd class="vo">E pagano quasi tutto quello che impegnano. Nel duemilaventuno la spesa in conto capitale è stata pagata per il novantacinque per cento degli impegni, contro il settantuno.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">L'anno entra su «duemilaventuno» (4.9 s) e resta sempre visibile. La barra si riempie al 95% su «novantacinque» (11.1 s), il 71% in piccolo su «settantuno» (14.9 s).</dd></div>
+            <div><dt>Nota</dt><dd class="note">Seconda «Scena 37» della sceneggiatura (13:06–13:24): qui «37 bis». Dato di un solo anno (Capitolo 5: 94,68 contro 71,46).</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 38 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame a38 deep" data-dur="37" tabindex="0" role="button" aria-label="Scena 38, rivedi animazione">
+          <div class="stage">
+            <div class="shade"></div>
+            <p class="chap a-up" style="--d:0.4s">Faccia 6 · Capacità amministrativa e governance</p><div class="mini" data-f="6" aria-hidden="true"></div>
+            <p class="sov a-up a-out2" style="--d:9.4s;--d2:13.0s">Ospedale Grande degli Infermi · <b>17 milioni</b> · non ancora avviato</p>
+            <div class="wash a-fade" style="--d:13.1s"></div>
+            <div class="after">
+            <div class="tav">
+              <p class="k a-up" style="--d:13.3s">Per il tavolo <span class="tag">Proposta</span></p>
+              <p class="hl q a-up" style="--d:14.9s"><span>Quale struttura comune aiuta i piccoli comuni a far partire i progetti fermi?</span></p>
+            </div>
+            <div class="cards">
+              <div class="card a-up" style="--d:23.8s">
+                <p class="k">Obiettivo</p>
+                <div class="row"><p class="num"><span class="count" data-to="70" data-d="28.3" data-t="1">70</span>%</p><p class="cap s">Supporto tecnico stabile per i bandi europei al 70% dei comuni delle aree interne entro il 2027</p></div>
+                <p class="srcl">Piano di sviluppo locale OSL</p>
+              </div>
+              <svg class="arr" viewBox="0 0 60 40" aria-hidden="true"><path class="a-draw" style="--d:33.4s;--t:.6s;--len:80;stroke-dasharray:80" d="M4 20H52M40 8l12 12-12 12" fill="none" stroke="#B9FF69" stroke-width="3.5"/></svg>
+              <div class="card ind a-up" style="--d:33.8s">
+                <p class="k">Indicatore</p>
+                <p class="cap s">Da definire al tavolo</p>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 38 · 7:36 – 8:13</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 38 · Faccia 6: i progetti fermi <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Foto esterna dell'antico Ospedale Grande degli Infermi di Viterbo con movimento di camera · chip «Faccia 6» · in sovraimpressione piccola «Ospedale Grande degli Infermi · 17 milioni · non ancora avviato» · su «Per il tavolo» stacco a fondo Bluette: domanda «Quale struttura comune aiuta i piccoli comuni a far partire i progetti fermi?» · card OBIETTIVO con numerone 70%: «Supporto tecnico stabile per i bandi europei al 70% dei comuni delle aree interne entro il 2027» · card INDICATORE vuota</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Il solo progetto di questa faccia, il restauro dell&#x27;antico Ospedale Grande degli Infermi di Viterbo, vale diciassette milioni e non è ancora avviato. Per il tavolo: quale struttura comune aiuta i piccoli comuni a far partire i progetti fermi? Il Piano propone supporto tecnico stabile per i bandi europei al settanta per cento dei comuni delle aree interne entro il duemilaventisette.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">La sovraimpressione entra su «diciassette milioni» (9.4 s). Su «Per il tavolo» la foto lascia il posto al fondo Bluette (13.3 s) e la domanda entra su «quale struttura» (14.9 s). Card obiettivo su «supporto tecnico» (23.8 s), il 70% su «settanta». Indicatore vuoto in chiusura.</dd></div>
+            <div><dt>Foto</dt><dd class="prompt">Foto ancora da scegliere: nel frame resta il fondo Bluette.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Progetto «Restauro, rifunzionalizzazione e valorizzazione dell'antico Ospedale Grande degli Infermi di Viterbo», 17,0 milioni, non avviato: da solo è il 100% del finanziamento della faccia. Prima di usare la foto verificare con il Comune lo stato dei lavori. Ultima scena prima della conclusione.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- Stacco ─────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame end deep" data-dur="5" tabindex="0" role="button" aria-label="Stacco, rivedi animazione">
+          <div class="stage">
+            <div class="lines">
+              <p class="a-fade" style="--d:.3s">Provincia di Viterbo · Fine parte 3 · Le sei facce</p>
+              <p class="a-fade" style="--d:.9s">A seguire · Conclusione</p>
+            </div>
+          </div>
+          <span class="tc">Stacco · 5 s</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+        </div>
+        <div class="info">
+          <p class="idx">Stacco · Fine parte 3 <span class="chip g">Frase da decidere</span></p>
+          <dl>
+            <div><dt>On-screen</dt><dd>Bluette 900 fisso 5 secondi · in basso a sinistra, in mono: Provincia di Viterbo · Fine parte 3 · Le sei facce / A seguire · Conclusione</dd></div>
+            <div><dt>Voiceover</dt><dd class="vo">Nessuno: il moderatore apre i tavoli.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Terzo stop della sceneggiatura (fine scena 38). Come per le altre parti, la frase al centro non c'è nel PPTX: nella Parte 1 è «Per creare connessioni serve un metodo», nella Parte 2 «Passiamo alla fase dei workshop».</dd></div>
+          </dl>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</main>
+
+<section class="review" aria-labelledby="rev-h">
+  <div class="wrap">
+    <h2 id="rev-h">Ritmo, correzioni e punti aperti</h2>
+    <p class="lead">I tempi d'entrata sono stimati sulla voce del PPTX a 1,8 parole al secondo, come nelle Parti 1 e 2: nel montaggio si riallineano sulla voce registrata, parola per parola.</p>
+    <div class="cols">
+      <div>
+        <h3 class="sec-h">Ritmo del voiceover</h3>
+        <div class="tw">
+        <table>
+          <thead><tr><th>Scena</th><th>Voce</th><th class="n">Parole</th><th class="n">Secondi</th></tr></thead>
+          <tbody>
+            <tr><td>Cover</td><td>—</td><td class="n">—</td><td class="n">6</td></tr>
+            <tr><td>21 · infrastrutture produttive e logistica</td><td>Uomo</td><td class="n">25</td><td class="n">19</td></tr>
+            <tr><td>22 · il distretto della ceramica</td><td>Donna</td><td class="n">25</td><td class="n">17</td></tr>
+            <tr><td>23 · per il tavolo</td><td>Uomo</td><td class="n">38</td><td class="n">27</td></tr>
+            <tr><td>24 · le comunità energetiche</td><td>Donna</td><td class="n">22</td><td class="n">15</td></tr>
+            <tr><td>25 · dove sono andati i fondi</td><td>Uomo</td><td class="n">27</td><td class="n">18</td></tr>
+            <tr><td>26 · per il tavolo</td><td>Donna</td><td class="n">40</td><td class="n">28</td></tr>
+            <tr><td>27 · la mobilità</td><td>Uomo</td><td class="n">24</td><td class="n">18</td></tr>
+            <tr><td>28 · dove sono andati i fondi</td><td>Donna</td><td class="n">26</td><td class="n">18</td></tr>
+            <tr><td>29 · per il tavolo</td><td>Uomo</td><td class="n">44</td><td class="n">30</td></tr>
+            <tr><td>30 · le scuole</td><td>Donna</td><td class="n">19</td><td class="n">13</td></tr>
+            <tr><td>31 · il ricambio generazionale</td><td>Uomo</td><td class="n">45</td><td class="n">28</td></tr>
+            <tr><td>32 · per il tavolo</td><td>Donna</td><td class="n">35</td><td class="n">25</td></tr>
+            <tr><td>33 · il calo della popolazione</td><td>Uomo</td><td class="n">42</td><td class="n">23</td></tr>
+            <tr><td>34 · dove investire</td><td>Donna</td><td class="n">63</td><td class="n">40</td></tr>
+            <tr><td>34 bis · dove sono andati i fondi</td><td>Donna</td><td class="n">44</td><td class="n">28</td></tr>
+            <tr><td>35 · per il tavolo</td><td>Uomo</td><td class="n">55</td><td class="n">36</td></tr>
+            <tr><td>36 · il personale dei comuni</td><td>Donna</td><td class="n">33</td><td class="n">20</td></tr>
+            <tr><td>37 · il ruolo dei comuni nel nuovo ciclo</td><td>Uomo</td><td class="n">53</td><td class="n">35</td></tr>
+            <tr><td>37 bis · la spesa dei comuni</td><td>Uomo</td><td class="n">27</td><td class="n">18</td></tr>
+            <tr><td>38 · i progetti fermi</td><td>Donna</td><td class="n">61</td><td class="n">37</td></tr>
+            <tr><td>Stacco</td><td>—</td><td class="n">—</td><td class="n">5</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="tbl-note">Durate del PPTX, allungate dove la voce non ci sta a 1,8 parole al secondo. Le scene «34 bis» e «37 bis» sono le seconde «Scena 34» e «Scena 37» della sceneggiatura, che ha due slide con lo stesso numero.</p>
+        <div class="credits">
+          <h3 class="sec-h">Foto della Parte 3</h3>
+          <div class="tw">
+          <table>
+            <thead><tr><th>Foto</th><th>Scena</th><th>Autore</th><th>Licenza</th></tr></thead>
+            <tbody>
+              <tr><td><a href="https://commons.wikimedia.org/wiki/File:L06_749_Hp_Roma_Campi_Sportivi,_8731_007.jpg">Treno della ferrovia Roma-Civita Castellana-Viterbo in linea</a></td><td>28</td><td>Falk2</td><td>CC BY-SA 4.0</td></tr>
+              <tr><td><a href="https://commons.wikimedia.org/wiki/File:Viterbo2013r.jpg">Vicolo sotto un arco nel quartiere di San Pellegrino, Viterbo</a></td><td>33</td><td>Ben Skála, Benfoto</td><td>CC BY-SA 3.0</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="sec-h">Da correggere nel voiceover</h3>
+        <ul class="fix">
+          <li><span class="w">Scena 21 · «per cento»</span>«valgono il quarantuno <del>per cento</del><ins>su cento</ins>, dove il resto del Lazio… vale cinquanta»: è un indice su 100, come dice la scena 27 («vale quarantatré su cento»)</li>
+          <li><span class="w">Scena 30 · maiuscola</span>«…e inclusione. <del>q</del><ins>Q</ins>uarantacinque comuni…»; e «Sul fronte di lavoro» → «Sul fronte del lavoro»</li>
+          <li><span class="w">Scena 23 · «già»</span>«Il Piano propone già un obiettivo» → nelle altre scene «Il Piano propone»: uniformare</li>
+        </ul>
+        <h3 class="sec-h" style="margin-top:32px">Da verificare prima della produzione</h3>
+        <ul class="fix">
+          <li><span class="w">Scene 34 e 37 doppie</span>la sceneggiatura ha due «Scena 34» e due «Scena 37» con tempi che si sovrappongono. Qui seguo l'ordine delle slide; ma «E pagano quasi tutto…» (37 bis) si lega al personale della scena 36: forse va subito dopo la 36</li>
+          <li><span class="w">Scena 34 bis · 8 € contro 538 €</span>accostamento non dello studio: si mostra solo dopo la conferma degli analisti</li>
+          <li><span class="w">Scena 25 · bolla o barra</span>il VISUAL chiede una bolla che si riempie d'acqua, la nota di regia una barra: qui la bolla, in Lime</li>
+          <li><span class="w">Scena 22 · i sette comuni</span>presi dall'area «produttiva» della tabella «Comuni» (Viterbo escluso): confermare che siano il distretto</li>
+          <li><span class="w">Scena 26 · i tre poli</span>lo studio nomina solo Civita Castellana: gli altri due restano «da individuare»</li>
+          <li><span class="w">Scena 33 · −3,1%</span>il dato compare solo nella Faccia 5, senza grafico</li>
+          <li><span class="w">Icone</span>borghi, turismo lento, paesaggio, sanità, scuola, trasporto e banda ultralarga non sono nel set del DS: disegnate nello stile delle icone della Parte 1</li>
+          <li><span class="w">Conclusione</span>scene 39 e 40 («Dal dato all'indicatore, faccia per faccia» e il codino) sono un blocco a sé: non sono in questa pagina</li>
+          <li><span class='w'>Foto</span>da scegliere per le scene 22, 30, 31, 38</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Note di lettura</h2>
+    <ul>
+      <li>Questa pagina è uno <strong>storyboard</strong>: i frame mostrano composizione, testi e tempi d'entrata. Senza animazione ogni frame mostra lo stato finale della scena.</li>
+      <li><strong>Dati:</strong> dalle pagine delle sei facce dello studio (dashboard «Analisi territoriale Viterbo», bozza per validazione); grafici e mappe ridisegnati in palette OE, senza titolo né fonte. Confronto sempre con il resto del Lazio, Roma esclusa.</li>
+      <li><strong>Mappe:</strong> confini ISTAT dei 60 comuni (openpolis), come nella scena 2 della Parte 1. Le aree interne sono quelle della tabella «Comuni» dello studio.</li>
+      <li>Numeri a schermo in <strong>formato italiano</strong>. Testi centrati in verticale e numeri in Atkinson Mono, come nelle Parti 1 e 2.</li>
+    </ul>
+    <p class="fine">OpenEconomics · Bluette #4400B3 · Lime #B9FF69 · Hedvig Letters Serif + Atkinson Hyperlegible</p>
+  </div>
+</footer>
+
+<script src="assets/data/viterbo.js"></script>
+<script>
+(function(){
+  'use strict';
+  var NS = 'http://www.w3.org/2000/svg';
+  var fmt = function(v, dec){ return new Intl.NumberFormat('it-IT',{minimumFractionDigits:dec||0,maximumFractionDigits:dec||0,useGrouping:'always'}).format(v); };
+  var fmtNum = function(v, dec){ return fmt(v, dec).replace(/[.,]/g, '<span class="sep">$&</span>'); };
+  function el(tag, attrs, parent){
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  var css = function(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); };
+  function drawable(p, d, t){
+    var len = Math.ceil(p.getTotalLength ? p.getTotalLength() : 3000);
+    p.style.strokeDasharray = len; p.style.setProperty('--len', len);
+    p.style.setProperty('--d', d + 's'); if (t) p.style.setProperty('--t', t + 's');
+    p.classList.add('a-draw');
+  }
+
+
+
+  /* ── Cubo piccolo: croce delle sei facce (come la scena 16), accesa quella della scena ── */
+  var POS = [[0,1],[1,0],[1,1],[1,2],[1,3],[2,1]];
+  document.querySelectorAll('.mini').forEach(function(m){
+    var f = parseInt(m.dataset.f, 10);
+    POS.forEach(function(p, i){ var t = document.createElement('i'); t.style.gridRow = p[0] + 1; t.style.gridColumn = p[1] + 1; if (i + 1 === f) t.className = 'on'; m.appendChild(t); });
+  });
+
+  /* ── Scene 21 e 27: i 15 ambiti, tutti grigi tranne quello della faccia ── */
+  var AMB = [['Turismo e destagionalizzazione',31.4],['Accesso ai servizi sanitari',39.2],['Spopolamento e demografia',39.4],
+             ['Infrastrutture produttive e logistica',40.9],['Mobilità e trasporto pubblico',42.6],['Rete scolastica e istruzione',49.3],
+             ['Connettività digitale',49.4],['Valorizzazione patrimonio culturale',51.0],['Ricambio generazionale',51.4],
+             ['Competenze e capitale umano',53.6],['Governance e capacità istituzionale',55.0],['Qualità ambientale e delle acque',61.1],
+             ['Sicurezza del territorio',65.2],['Erosione e rischio idrogeologico',72.4],['Energia e transizione ecologica',76.9]];
+  document.querySelectorAll('.amb[data-hot]').forEach(function(box){
+    var d0 = parseFloat(box.dataset.d), d2 = box.dataset.d2 + 's';
+    AMB.forEach(function(a, i){
+      var r = document.createElement('div'), hot = a[0] === box.dataset.hot;
+      r.className = 'r' + (hot ? ' hot lo' : '');
+      r.innerHTML = '<span class="nm"></span><span class="row"><i class="b"></i><b class="v">' + fmt(Math.round(a[1])) + '</b></span>';
+      r.querySelector('.nm').textContent = a[0];
+      var b = r.querySelector('.b'); b.style.setProperty('--v', a[1]); b.style.setProperty('--d', (d0 + i * 0.08).toFixed(2) + 's');
+      if (hot) b.style.setProperty('--d2', d2);
+      box.appendChild(r);
+    });
+  });
+
+  /* ── Quadratini: n caselle, le prime «on» si accendono in Lime ── */
+  document.querySelectorAll('.dots[data-n]').forEach(function(box){
+    var n = +box.dataset.n, on = +box.dataset.on, d = +box.dataset.d, d2 = +box.dataset.d2;
+    for (var i = 0; i < n; i++){
+      var s = document.createElement('span');
+      if (i < on){ s.className = 'a-lit'; s.style.setProperty('--d', (d2 + i * 0.03).toFixed(2) + 's'); }
+      else { s.className = 'a-fade'; s.style.setProperty('--d', (d + i * 0.01).toFixed(2) + 's'); }
+      box.appendChild(s);
+    }
+  });
+
+  /* ── Mappe dei comuni (stessa geometria della scena 2) ── */
+  var VTC = window.VT.comuni, byName = {};
+  VTC.forEach(function(c){ byName[c.n] = c; });
+  function base(svg, fill, stroke){
+    var g = el('g', {}, svg);
+    VTC.forEach(function(c){ c.__p = el('path', {d:c.d, fill:fill, stroke:stroke, 'stroke-width':1.1, 'stroke-linejoin':'round'}, g); });
+    el('path', {d:VTC.map(function(c){ return c.d; }).join(''), fill:'none', stroke:css('--white'), 'stroke-width':2.2, 'stroke-linejoin':'round', opacity:.8}, svg);
+    return g;
+  }
+  function lit(svg, names, color, d, step, cls){
+    names.forEach(function(n, i){
+      var c = byName[n]; if (!c) { console.warn('comune non trovato', n); return; }
+      var p = el('path', {d:c.d, fill:color, stroke:css('--white'), 'stroke-width':1.1, 'stroke-linejoin':'round', class:cls || 'a-fade'}, svg);
+      p.style.setProperty('--d', (d + i * step).toFixed(2) + 's');
+    });
+  }
+  function label(svg, n, text, d, dx, dy, color){
+    var c = byName[n];
+    var t = el('text', {x:c.x + (dx || 0), y:c.y + (dy || 0), class:'maplbl halo a-fade', fill:color || css('--white'), 'text-anchor':'end'}, svg);
+    t.textContent = text; t.style.setProperty('--d', d + 's');
+  }
+  // 22 · i sette comuni del distretto della ceramica (area «produttiva» nello studio, Viterbo escluso)
+  (function(){
+    var svg = document.getElementById('m22'); if (!svg) return;
+    var d = parseFloat(svg.dataset.d);
+    base(svg, 'rgba(255,255,255,.12)', 'rgba(255,255,255,.55)');
+    lit(svg, ["Faleria","Nepi","Castel Sant'Elia","Gallese","Corchiano","Fabrica di Roma","Civita Castellana"], css('--lime-400'), d, 0.18);
+    label(svg, 'Civita Castellana', 'Civita Castellana', d + 1.4, 40, -64, css('--lime-400'));
+  })();
+  // 29 · statale 675, ferrovia Roma-Viterbo, interporto di Orte (tracciati schematici sui centri dei comuni)
+  (function(){
+    var svg = document.getElementById('m29'); if (!svg) return;
+    var g = base(svg, 'rgba(255,255,255,.1)', 'rgba(255,255,255,.4)');
+    g.setAttribute('class', 'a-fade'); g.style.setProperty('--d', svg.dataset.d + 's');
+    var P = function(list){ return 'M' + list.map(function(n){ return typeof n === 'string' ? byName[n].x + ' ' + byName[n].y : n.join(' '); }).join('L'); };
+    var ss = el('path', {d:P(['Orte','Vitorchiano','Viterbo','Vetralla','Monte Romano',[214,520]]), fill:'none', stroke:css('--lime-400'), 'stroke-width':9, 'stroke-linejoin':'round'}, svg);
+    drawable(ss, parseFloat(svg.dataset.ss), 1.6);
+    var fr = el('path', {d:P(['Viterbo','Soriano nel Cimino','Vallerano','Vignanello','Fabrica di Roma','Civita Castellana',"Castel Sant'Elia",[505,590]]), fill:'none', stroke:css('--white'), 'stroke-width':7, 'stroke-dasharray':'none', 'stroke-linejoin':'round'}, svg);
+    drawable(fr, parseFloat(svg.dataset.fr), 1.6);
+    var o = byName['Orte'], io = el('rect', {x:o.x - 14, y:o.y - 14, width:28, height:28, fill:css('--lime-400'), stroke:css('--bluette-900'), 'stroke-width':4, class:'a-pop'}, svg);
+    io.style.setProperty('--d', svg.dataset.io + 's');
+  })();
+  // 34 · i 42 comuni delle aree interne (tabella «Comuni» dello studio) e i cinque asset
+  (function(){
+    var svg = document.getElementById('m34'); if (!svg) return;
+    var INT = ["Acquapendente", "Arlena di Castro", "Barbarano Romano", "Bassano Romano", "Canepina", "Canino", "Capodimonte", "Capranica", "Caprarola", "Carbognano", "Castel Sant'Elia", "Cellere", "Civitella d'Agliano", "Corchiano", "Fabrica di Roma", "Farnese", "Gallese", "Gradoli", "Grotte di Castro", "Ischia di Castro", "Latera", "Marta", "Montalto di Castro", "Monterosi", "Nepi", "Onano", "Oriolo Romano", "Piansano", "Proceno", "Ronciglione", "San Lorenzo Nuovo", "Soriano nel Cimino", "Sutri", "Tessennano", "Tuscania", "Valentano", "Vallerano", "Vasanello", "Vejano", "Vetralla", "Vignanello", "Vitorchiano"], d = parseFloat(svg.dataset.d), A = svg.dataset.a.split(',').map(parseFloat);
+    base(svg, 'rgba(255,255,255,.1)', 'rgba(255,255,255,.45)');
+    lit(svg, INT, css('--bluette-400'), d, 0.03);
+    var pts = [[262,232],[402,428],[372,200],[322,322],[196,470]];   // laghi di Bolsena e di Vico, Civita, terme, necropoli
+    pts.forEach(function(p, i){
+      var g = el('g', {class:'a-pop'}, svg); g.style.setProperty('--d', A[i] + 's');
+      el('rect', {x:p[0] - 19, y:p[1] - 19, width:38, height:38, fill:css('--lime-400'), stroke:css('--bluette-900'), 'stroke-width':3}, g);
+      var t = el('text', {x:p[0], y:p[1] + 8, 'text-anchor':'middle', class:'maplbl', fill:css('--black')}, g); t.textContent = i + 1;
+    });
+  })();
+
+  /* ── Scena 32: cinque istituti che si collegano al polo ── */
+  document.querySelectorAll('svg.links').forEach(function(svg){
+    var d = parseFloat(svg.dataset.d), L = css('--lime-400');
+    for (var i = 0; i < 5; i++){
+      var y = 10 + i * 20, ln = el('path', {d:'M18 ' + y + 'L96 50', stroke:L, 'stroke-width':2.4, fill:'none'}, svg);
+      drawable(ln, d + i * 0.12, 0.5);
+      var q = el('rect', {x:6, y:y - 6, width:12, height:12, fill:L, class:'a-pop'}, svg); q.style.setProperty('--d', (d - 0.4 + i * 0.08).toFixed(2) + 's');
+    }
+    var pole = el('rect', {x:92, y:38, width:24, height:24, fill:'none', stroke:css('--white'), 'stroke-width':3, class:'a-pop'}, svg);
+    pole.style.setProperty('--d', (d - 0.5) + 's');
+  });
+
+  /* ── Testo scritto a macchina ── */
+  document.querySelectorAll('.type').forEach(function(p){
+    var txt = p.textContent, d = parseFloat(p.dataset.d), t = parseFloat(p.dataset.t), n = txt.length;
+    p.textContent = '';
+    for (var i = 0; i < n; i++){ var s = document.createElement('span'); s.textContent = txt[i]; s.style.setProperty('--d', (d + t * i / n).toFixed(2) + 's'); p.appendChild(s); }
+  });
+
+  /* ── Riproduzione ── */
+  var frames = Array.prototype.slice.call(document.querySelectorAll('.frame'));
+  var animOn = true, timers = new Map();
+
+  function runCounters(f){
+    f.querySelectorAll('.count').forEach(function(c){
+      var to = parseFloat(c.dataset.to), dec = parseInt(c.dataset.dec || 0, 10);
+      var d = parseFloat(c.dataset.d || 0) * 1000, t = parseFloat(c.dataset.t || 1) * 1000;
+      c.innerHTML = fmtNum(0, dec);
+      var start = performance.now() + d;
+      (function step(now){
+        if (!f.classList.contains('play')) { c.innerHTML = fmtNum(to, dec); return; }
+        var k = Math.min(1, Math.max(0, (now - start) / t));
+        k = 1 - Math.pow(1 - k, 3);
+        c.innerHTML = fmtNum(to * k, dec);
+        if (k < 1) requestAnimationFrame(step);
+      })(performance.now());
+    });
+  }
+  function settle(f){
+    // stato finale statico: elementi che a fine scena spariscono o si attenuano
+    f.querySelectorAll('.a-out').forEach(function(n){ n.classList.add('is-out'); });
+    f.querySelectorAll('.a-dim').forEach(function(n){ n.classList.add('is-dim'); });
+  }
+  function play(f){
+    if (document.body.classList.contains('print-one')) return;
+    clearTimeout(timers.get(f));
+    f.classList.remove('play');
+    f.querySelectorAll('.is-out,.is-dim').forEach(function(n){ n.classList.remove('is-out','is-dim'); });
+    void f.offsetWidth;
+    f.classList.add('play');
+    runCounters(f);
+    var v = f.querySelector('video.clip');
+    if (v){ if (v.preload === 'none'){ v.preload = 'auto'; v.load(); } try { v.currentTime = 0; } catch(e){} v.play().catch(function(){}); }
+    var dur = (parseFloat(f.dataset.dur) || 10) * 1000;
+    timers.set(f, setTimeout(function(){ if (animOn && f.__visible) play(f); }, dur + 1800));
+  }
+  function stop(f){
+    clearTimeout(timers.get(f));
+    f.classList.remove('play');
+    settle(f);
+    var v = f.querySelector('video.clip'); if (v) v.pause();
+    f.querySelectorAll('.count').forEach(function(c){ c.innerHTML = fmtNum(parseFloat(c.dataset.to), parseInt(c.dataset.dec || 0, 10)); });
+  }
+  frames.forEach(settle);
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var f = e.target; f.__visible = e.isIntersecting;
+      if (e.isIntersecting && animOn) { if (!f.classList.contains('play')) play(f); }
+      else if (!e.isIntersecting) stop(f);
+    });
+  }, { threshold: 0.4 });
+  frames.forEach(function(f){
+    io.observe(f);
+    f.addEventListener('click', function(){ if (animOn) play(f); });
+    f.addEventListener('keydown', function(e){ if ((e.key === 'Enter' || e.key === ' ') && animOn){ e.preventDefault(); play(f); } });
+  });
+
+  document.getElementById('animToggle').addEventListener('change', function(e){
+    animOn = e.target.checked;
+    frames.forEach(function(f){ if (!animOn) stop(f); else if (f.__visible) play(f); });
+  });
+  document.getElementById('safeToggle').addEventListener('change', function(e){
+    document.getElementById('grid').classList.toggle('show-safe', e.target.checked);
+  });
+  document.getElementById('bigToggle').addEventListener('change', function(e){
+    document.getElementById('grid').classList.toggle('big', e.target.checked);
+  });
+  /* ── Commenti: uno per scena, salvati nel browser di chi scrive; «Scarica PDF» li raccoglie tutti ── */
+  var store = {
+    get: function(k){ try { return localStorage.getItem(k) || ''; } catch(e){ return ''; } },
+    set: function(k, v){ try { localStorage.setItem(k, v); return true; } catch(e){ return false; } }
+  };
+  var PFX = 'oe-viterbo-p3:';
+  var who = document.getElementById('whoName');
+  who.value = store.get(PFX + 'nome');
+  who.addEventListener('input', function(){ store.set(PFX + 'nome', who.value.trim()); });
+  var today = function(){ return new Date().toLocaleDateString('it-IT', {day:'numeric', month:'long', year:'numeric'}); };
+  var beats = Array.prototype.slice.call(document.querySelectorAll('.beat'));
+  var sceneTitle = function(beat){ return beat.querySelector('.info .idx').firstChild.textContent.trim(); };  // «Scena 01 · Il cambio di regole»
+
+  beats.forEach(function(beat, i){
+    var short = sceneTitle(beat).split('·')[0].trim();                 // «Scena 01» · «Cover» · «Codino»
+    var key = PFX + 'scena-' + i, id = 'cmt-' + i;
+    var box = document.createElement('div'); box.className = 'cmt';
+    box.innerHTML = '<label for="' + id + '">Commento · ' + short + '</label>' +
+      '<textarea id="' + id + '" placeholder="Scrivi qui cosa cambiare in questa scena"></textarea>' +
+      '<span class="saved" aria-live="polite"></span>';
+    beat.appendChild(box);
+    var ta = box.querySelector('textarea'), saved = box.querySelector('.saved');
+    ta.value = store.get(key);
+    if (ta.value) saved.textContent = 'Salvato in questo browser';
+    ta.addEventListener('input', function(){
+      saved.textContent = store.set(key, ta.value) ? 'Salvato in questo browser' : 'Non salvato: scarica il PDF prima di chiudere';
+    });
+  });
+  var commented = function(){
+    return beats.filter(function(beat){ return beat.querySelector('.cmt textarea').value.trim(); });
+  };
+  var copied = document.getElementById('copied');
+
+  // un solo PDF: una pagina per ogni scena commentata, con il frame, le schede e il commento
+  document.getElementById('pdfAll').addEventListener('click', function(){
+    var list = commented();
+    if (!list.length){ copied.textContent = 'Nessun commento da scaricare'; return; }
+    var name = who.value.trim(), added = [], waits = [];
+    list.forEach(function(beat, n){
+      var f = beat.querySelector('.frame');
+      stop(f);
+      var head = document.createElement('div'); head.className = 'pdf-head';
+      head.innerHTML = '<span></span><span><b></b></span>';
+      head.firstChild.textContent = 'Storyboard Viterbo · Parte 3 · commenti' + (name ? ' di ' + name : '') + ' · ' + today();
+      head.querySelector('b').textContent = sceneTitle(beat) + ' · ' + (n + 1) + '/' + list.length;
+      var note = document.createElement('div'); note.className = 'pdf-note';
+      note.innerHTML = '<p>Commento</p><p></p>';
+      note.lastChild.textContent = beat.querySelector('.cmt textarea').value.trim();
+      beat.insertBefore(head, beat.firstChild); beat.appendChild(note);
+      added.push(head, note);
+      // il video non si stampa: al suo posto il fotogramma
+      var v = f.querySelector('video.clip');
+      if (v){
+        var img = document.createElement('img'); img.className = 'photo pdf-poster'; img.alt = '';
+        img.src = v.getAttribute('poster'); v.parentNode.insertBefore(img, v.nextSibling);
+        added.push(img); if (img.decode) waits.push(img.decode().catch(function(){}));
+      }
+      beat.classList.add('printing'); if (n === 0) beat.classList.add('pdf-first');
+    });
+    var oldTitle = document.title;
+    document.title = 'Viterbo-Parte-3-commenti' + (name ? '-' + name.replace(/\s+/g, '-') : '');   // nome del file PDF
+    document.body.classList.add('print-one');
+    var done = function(){
+      window.removeEventListener('afterprint', done);
+      document.body.classList.remove('print-one');
+      list.forEach(function(beat){ beat.classList.remove('printing', 'pdf-first'); });
+      added.forEach(function(n){ n.remove(); });
+      document.title = oldTitle;
+    };
+    window.addEventListener('afterprint', done);
+    Promise.all(waits).then(function(){ window.print(); });
+  });
+
+  // tutti i commenti in un testo solo, da incollare in una mail o in un documento
+  document.getElementById('copyAll').addEventListener('click', function(){
+    var name = who.value.trim(), parts = commented().map(function(beat){
+      return sceneTitle(beat) + '\n' + beat.querySelector('.cmt textarea').value.trim();
+    });
+    if (!parts.length){ copied.textContent = 'Nessun commento da copiare'; return; }
+    var text = 'Storyboard Viterbo · Parte 3 · commenti' + (name ? ' di ' + name : '') + ' · ' + today() +
+      '\n' + location.href.split('#')[0] + '\n\n' + parts.join('\n\n');
+    var fallback = function(){
+      var old = document.querySelector('.copy-out'); if (old) old.remove();
+      var p = document.createElement('div'); p.className = 'copy-out';
+      p.innerHTML = '<textarea readonly aria-label="Testo dei commenti"></textarea><button type="button">Chiudi</button>';
+      p.querySelector('textarea').value = text;
+      p.querySelector('button').addEventListener('click', function(){ p.remove(); });
+      document.body.appendChild(p); p.querySelector('textarea').select();
+      copied.textContent = 'Seleziona e copia il testo';
+    };
+    if (navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(function(){
+        copied.textContent = parts.length + (parts.length === 1 ? ' commento copiato' : ' commenti copiati');
+      }, fallback);
+    } else fallback();
+  });
+
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.getElementById('animToggle').checked = false; animOn = false; frames.forEach(stop);
+  }
+})();
+</script>
+</body>
+</html>
