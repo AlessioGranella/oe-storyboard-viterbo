@@ -445,6 +445,10 @@ footer .fine{
 .amb .r.hot.lo .nm,.amb .r.hot.lo .v{color:var(--bluette-700)}
 .amb .ref{position:absolute;left:calc(28.2cqw + 13.5cqw);top:0;bottom:0;border-left:.16cqw dashed var(--black);padding-left:.7cqw;font-family:var(--mono);font-size:1.2cqw;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-700);white-space:nowrap;line-height:1.2}
 .amb .ref b{color:var(--black)}
+.s18 .ttl{margin:2.4cqw 0 0;font-family:var(--mono);font-size:1.3cqw;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--bluette-700);line-height:1.5}
+/* nomi e valori entrano con la loro barra, non prima */
+.play .amb .nm{animation:fade .5s ease var(--d,0s) both}
+.play .amb .v{animation:fade .4s ease calc(var(--d,0s) + .6s) both}
 @keyframes toblu{from{background:var(--gray-300)}to{background:var(--bluette-700)}}
 .play .amb .r.lo .b{animation:growX .9s var(--ease) var(--d,0s) both,toblu .5s ease var(--d2,17.1s) both}
 .play .amb .r .b{animation:growX .9s var(--ease) var(--d,0s) both}
@@ -652,10 +656,10 @@ footer .fine{
     <nav class="parts" aria-label="Parti del video"><a href="Storyboard-Viterbo-Parte-1.html">Parte 1 · La foto del territorio</a><a href="Storyboard-Viterbo-Parte-2.html">Parte 2 · Il metodo del cubo</a><a href="Storyboard-Viterbo-Parte-3.html" aria-current="page">Parte 3 · Le sei facce</a></nav>
     <p class="eyebrow">OpenEconomics · Storyboard visivo · Bozza</p>
     <h1>Video analisi territoriale Viterbo · Parte 3</h1>
-    <p class="sub">Le sei facce, una per una: cover, venti scene dalla sceneggiatura v3 aggiornata il 6 novembre 2026 (PPTX) e lo stacco finale. Per ogni faccia un dato, dove sono andati i fondi e lo schema «Per il tavolo»: domanda, obiettivo del Piano, indicatore lasciato al tavolo. Numeri, mappe e schemi si animano a tempo con la voce stimata.</p>
+    <p class="sub">Le sei facce, una per una: cover, dodici scene dalla sceneggiatura v3 aggiornata il 6 novembre 2026 (PPTX) e lo stacco finale. Per ogni faccia i dati e dove sono andati i fondi; le scene «Per il tavolo» sono state tolte il 9 novembre (commenti di Federico Chiarello). Numeri, mappe e schemi si animano a tempo con la voce.</p>
     <dl class="meta">
       <div><dt>Durata in sceneggiatura</dt><dd>6:56 (7:05 – 14:01)</dd></div>
-      <div><dt>In questa pagina</dt><dd>8:13 di scene, più cover e stacco</dd></div>
+      <div><dt>In questa pagina</dt><dd>4:23 di scene, più cover e stacco</dd></div>
       <div><dt>Formato</dt><dd>Orizzontale 16:9</dd></div>
       <div><dt>Lingua</dt><dd>Italiano</dd></div>
       <div><dt>Voci</dt><dd>Uomo e donna alternati, come nella sceneggiatura</dd></div>
@@ -664,12 +668,20 @@ footer .fine{
   </div>
 </header>
 
+<section class="vhero" aria-labelledby="vh-h">
+  <div class="wrap">
+    <h2 id="vh-h">Video montato · prima versione · 10 novembre</h2>
+    <video src="assets/final/OE_Video_Viterbo_Parte3.mp4" poster="assets/final/poster-parte3.jpg" controls preload="none" aria-label="Video completo — Viterbo Parte 3, le sei facce"></video>
+    <p class="caption">3:06 · 1920×1080 · 25 fps · voci italiane alternate (uomo Marco Esposito, donna Giulia Romano, ElevenLabs) e tappeto musicale con ducking sotto la voce · audio a <strong>−14 LUFS</strong>. Dodici scene e chiusura, senza cover: la Parte 3 segue la Parte 2 senza pausa. Ogni animazione è agganciata alla parola della voce registrata (Whisper), così i dati entrano mentre la voce li dice. Clip AI per le scene con foto (Seedance 1.5 Pro), rallentate con interpolazione di movimento.</p>
+  </div>
+</section>
+
 <section class="phases" aria-label="Fasi di lavoro">
   <div class="wrap">
     <ol>
       <li class="on"><span class="n">Fase 1 · questa pagina</span><p>Storyboard: composizione, testi, numeri, mappe, schemi animati e tempi d'entrata.</p></li>
-      <li><span class="n">Fase 2</span><p>Le sei foto (scene 22, 28, 30, 31, 33, 38) diventano clip con movimento di camera, con il trattamento di Rieti.</p></li>
-      <li><span class="n">Fase 3</span><p>Voce sintetica, musica e montaggio, come per le Parti 1 e 2.</p></li>
+      <li class="on"><span class="n">Fase 2 · fatta</span><p>Le foto delle scene 22, 24, 25, 28, 30, 31 e 33 sono clip con movimento di camera, con il trattamento di Rieti.</p></li>
+      <li class="on"><span class="n">Fase 3 · fatta</span><p>Voce sintetica, musica e montaggio, come per le Parti 1 e 2: il video è qui sopra.</p></li>
     </ol>
   </div>
 </section>
@@ -706,7 +718,7 @@ footer .fine{
           <img class="anci" src="assets/logo-anci-white.png" alt="ANCI"><div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Cover · 6 s</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
-          <p class="idx">Cover · Parte 3 <span class="chip g">Come le Parti 1 e 2</span></p>
+          <p class="idx">Cover · Parte 3 <span class="chip g">Non nel montaggio</span></p>
           <dl>
             <div><dt>On-screen</dt><dd>Analisi territoriale · Provincia di Viterbo · «Parte 3» · «Le sei facce» · filigrana 28–34 · ANCI in alto a destra</dd></div>
             <div><dt>Voiceover</dt><dd class="vo">Nessuno: musica in apertura.</dd></div>
@@ -717,27 +729,27 @@ footer .fine{
 
       <!-- 21 ────────────────────────────────────────────────────────── -->
       <article class="beat">
-        <div class="frame a21 light duo" data-dur="19" tabindex="0" role="button" aria-label="Scena 21, rivedi animazione">
+        <div class="frame a21 light duo" data-dur="18" tabindex="0" role="button" aria-label="Scena 21, rivedi animazione">
           <div class="stage">
             <p class="chap a-up" style="--d:0.4s">Faccia 1 · Competitività e innovazione</p><div class="mini" data-f="1" aria-hidden="true"></div>
             <div class="tblock">
-              <p class="num a-up" style="--d:7.7s"><span class="count" data-to="41" data-d="7.7" data-t="1">41</span></p>
-              <p class="cap a-up" style="--d:8.1s">su 100</p>
-              <p class="k amb-k a-up" style="--d:8.5s">Infrastrutture produttive e logistica</p>
+              <p class="num a-up" style="--d:7.2s"><span class="count" data-to="41" data-d="7.2" data-t="1">41</span></p>
+              <p class="cap a-up" style="--d:7.6s">su 100</p>
+              <p class="k amb-k a-up" style="--d:8.0s">Infrastrutture produttive e logistica</p>
             </div>
-            <div class="amb" data-hot="Infrastrutture produttive e logistica" data-d="1.2" data-d2="7.7">
-              <span class="ref a-fade" style="--d:13.8s"><b>50</b> resto del Lazio,<br>Roma esclusa</span>
+            <div class="amb" data-hot="Infrastrutture produttive e logistica" data-d="1.2" data-d2="7.2">
+              <span class="ref a-fade" style="--d:13.3s"><b>50</b> resto del Lazio,<br>Roma esclusa</span>
             </div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-black.svg" alt="OpenEconomics"></div><span class="tc">Sc. 21 · 0:00 – 0:19</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-black.svg" alt="OpenEconomics"></div><span class="tc">Sc. 21 · 0:00 – 0:18</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 21 · Faccia 1: infrastrutture produttive e logistica <span class="chip">Dati reali</span> <span class="chip">Grafico dello studio</span></p>
           <dl>
             <div><dt>On-screen</dt><dd>Fondo bianco · chip «Faccia 1 · Competitività e innovazione» · cubo piccolo in alto a destra con la faccia 1 accesa · numerone 41 «su 100» · le 15 barre degli ambiti come nella scena 18, tutte grigie tranne «Infrastrutture produttive e logistica» (40,9) in Bluette · linea a 50 = resto del Lazio, Roma esclusa</dd></div>
-            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Partiamo da competitività e innovazione. Le infrastrutture produttive e la logistica valgono il quarantuno per cento, dove il resto del Lazio, Roma esclusa, vale cinquanta.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Le barre crescono in grigio all'inizio (1,2 s). Su «quarantuno» la barra «Infrastrutture produttive e logistica» passa al Bluette e il numerone conta fino a 41 (7.7 s). La linea a 50 compare su «cinquanta» (13.8 s).</dd></div>
-            <div><dt>Nota</dt><dd class="note">Valore 41 della tabella «Ambiti OSL della faccia» (40,9 nel grafico di «6. Il cubo 2028–2034»). La nota del PPTX vuole il numerone che «esce dalla barra»: qui entra a sinistra, come nella scena 18, per non coprire le altre barre. La voce dice «quarantuno per cento», ma il valore è un indice su 100: vedi «Da correggere».</dd></div>
+            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Partiamo da competitività e innovazione. Le infrastrutture produttive e la logistica valgono quarantuno su cento, dove il resto del Lazio, Roma esclusa, vale cinquanta.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Le barre crescono in grigio all'inizio (1,2 s); nome e valore di ogni ambito entrano solo dopo la sua barra (commento del 9 novembre). Su «quarantuno» la barra «Infrastrutture produttive e logistica» passa al Bluette e il numerone conta fino a 41 (7.2 s). La linea a 50 compare su «cinquanta» (13.3 s).</dd></div>
+            <div><dt>Nota</dt><dd class="note">Valore 41 della tabella «Ambiti OSL della faccia» (40,9 nel grafico di «6. Il cubo 2028–2034»). La nota del PPTX vuole il numerone che «esce dalla barra»: qui entra a sinistra, come nella scena 18, per non coprire le altre barre. La voce dice «quarantuno su cento» (corretto il 10/11: era «per cento»).</dd></div>
           </dl>
         </div>
       </article>
@@ -756,7 +768,7 @@ footer .fine{
             </div>
             <div class="pmap a-fade" style="--d:11.9s"><svg id="m22" viewBox="0 0 600 600" aria-hidden="true" data-d="12.2"></svg></div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 22 · 0:19 – 0:36</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 22 · 0:18 – 0:35</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 22 · Faccia 1: il distretto della ceramica <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
@@ -766,43 +778,6 @@ footer .fine{
             <div><dt>Regia</dt><dd class="prompt">Il numerone entra su «quarantatré per cento» (6.6 s). Su «sette comuni» la foto si vela di Bluette, compare la mappina e i sette comuni si accendono uno dopo l'altro (12.2 s), Civita Castellana per ultimo e con il nome.</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Lavorazione della ceramica sanitaria (immagine AI, Nano Banana 2.1). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
             <div><dt>Nota</dt><dd class="note">I sette comuni sono quelli che la tabella «Comuni» dello studio classifica come area produttiva, Viterbo escluso: Civita Castellana, Castel Sant'Elia, Corchiano, Fabrica di Roma, Faleria, Gallese, Nepi. Lo studio non li elenca come «distretto»: da far confermare. La foto va reperita: serve la liberatoria dei lavoratori e dell'azienda (slide «Foto da reperire»).</dd></div>
-          </dl>
-        </div>
-      </article>
-
-      <!-- 23 ────────────────────────────────────────────────────────── -->
-      <article class="beat">
-        <div class="frame a23" data-dur="27" tabindex="0" role="button" aria-label="Scena 23, rivedi animazione">
-          <div class="stage">
-            <p class="chap a-up" style="--d:0.4s">Faccia 1 · Competitività e innovazione</p><div class="mini" data-f="1" aria-hidden="true"></div>
-            <div class="tavwrap">
-            <div class="tav">
-              <p class="k a-up" style="--d:0.3s">Per il tavolo <span class="tag">Proposta</span></p>
-              <p class="hl q a-up" style="--d:2.2s"><span>Quale servizio comune porta le filiere agricole ai mercati, visto che la logistica pesa la metà?</span></p>
-            </div>
-            <div class="cards">
-              <div class="card a-up" style="--d:14.9s">
-                <p class="k">Obiettivo</p>
-                <div class="row"><p class="num"><span class="count" data-to="5" data-d="18.3" data-t=".6">5</span></p><p class="cap s">Filiere corte di qualità in almeno 5 territori rurali entro il 2027</p></div>
-                <p class="srcl">Piano di sviluppo locale OSL</p>
-              </div>
-              <svg class="arr" viewBox="0 0 60 40" aria-hidden="true"><path class="a-draw" style="--d:20.700000000000003s;--t:.6s;--len:80;stroke-dasharray:80" d="M4 20H52M40 8l12 12-12 12" fill="none" stroke="#B9FF69" stroke-width="3.5"/></svg>
-              <div class="card ind a-up" style="--d:21.1s">
-                <p class="k">Indicatore</p>
-                <p class="cap s">Da definire al tavolo</p>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 23 · 0:36 – 1:03</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
-        </div>
-        <div class="info">
-          <p class="idx">Scena 23 · Faccia 1: per il tavolo <span class="chip">Schema animato</span> <span class="chip g">Domanda proposta</span></p>
-          <dl>
-            <div><dt>On-screen</dt><dd>Fondo Bluette · «Per il tavolo» con l'etichetta «Proposta» · domanda in Hedvig: «Quale servizio comune porta le filiere agricole ai mercati, visto che la logistica pesa la metà?» · card OBIETTIVO con numerone 5: «Filiere corte di qualità in almeno 5 territori rurali entro il 2027» (Piano di sviluppo locale OSL) · freccia Lime · card INDICATORE vuota «Da definire al tavolo»</dd></div>
-            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Per il tavolo. Quale servizio comune porta le filiere agricole ai mercati, visto che la logistica pesa la metà? Il Piano propone già un obiettivo misurabile: filiere corte di qualità in almeno cinque territori rurali entro il duemilaventisette.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">La domanda entra su «Quale» (2.2 s). La card obiettivo su «filiere corte» (14.9 s), con il 5 che conta. A fine scena la freccia e la card indicatore vuota (21.1 s), come chiede la nota del PPTX.</dd></div>
-            <div><dt>Nota</dt><dd class="note">Lo stesso schema chiude ogni faccia: domanda (etichetta «Proposta», perché le domande sono spunti dello studio per il gruppo), obiettivo del Piano, indicatore lasciato al tavolo. L'obiettivo è del Piano di sviluppo locale dell'Osservatorio, a livello Lazio, non un target della provincia.</dd></div>
           </dl>
         </div>
       </article>
@@ -824,7 +799,7 @@ footer .fine{
               <div class="dots" id="d24" data-n="26" data-on="6" data-d="6.1" data-d2="6.6"></div>
             </div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 24 · 1:03 – 1:18</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 24 · 0:35 – 0:50</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 24 · Faccia 2: le comunità energetiche <span class="chip">Dati reali</span> <span class="chip g">Immagine AI</span></p>
@@ -860,7 +835,7 @@ footer .fine{
               <p class="months-k a-fade" style="--d:4.4s">Coesione 2021–2027 · 47,9 milioni = 100%</p>
             </div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 25 · 1:18 – 1:36</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 25 · 0:50 – 1:08</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 25 · Faccia 2: dove sono andati i fondi <span class="chip">Dati reali</span> <span class="chip g">Immagine AI</span></p>
@@ -870,44 +845,6 @@ footer .fine{
             <div><dt>Regia</dt><dd class="prompt">La bolla vuota compare su «finanziato» (2.2 s) con l'etichetta dei 47,9 milioni. Su «cinquantotto per cento» si riempie fino al 58% e il numerone conta (7.2 s). Il nome del progetto entra su «depurazione» (11.6 s).</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Impianto di depurazione in campagna (immagine AI, Nano Banana 2.1). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
             <div><dt>Nota</dt><dd class="note">Il campo VISUAL del PPTX chiede la bolla che si riempie d'acqua, la nota di regia una barra intera: i due riferimenti non coincidono, qui c'è la bolla (il campo più recente). L'acqua è Lime perché il DS non ha un azzurro: da confermare. Progetto «Opere di collettamento e depurazione relativamente ai Poli di Civita Castellana, Sutri e Vignanello (I Lotto) – Adeguamento prezzi», 27,9 milioni su 47,9. Immagine aggiunta il 6 novembre su richiesta: è un depuratore generico, non quello dei tre comuni.</dd></div>
-          </dl>
-        </div>
-      </article>
-
-      <!-- 26 ────────────────────────────────────────────────────────── -->
-      <article class="beat">
-        <div class="frame a26" data-dur="28" tabindex="0" role="button" aria-label="Scena 26, rivedi animazione">
-          <div class="stage">
-            <p class="chap a-up" style="--d:0.4s">Faccia 2 · Transizione verde ed energia</p><div class="mini" data-f="2" aria-hidden="true"></div>
-            <div class="tavwrap">
-            <div class="tav">
-              <p class="k a-up" style="--d:0.3s">Per il tavolo <span class="tag">Proposta</span></p>
-              <p class="hl q a-up" style="--d:2.2s"><span style="font-size:2.9cqw">Come trasformare l&#x27;energia già prodotta in un vantaggio per comuni e imprese, senza consumare altro suolo?</span></p>
-            </div>
-            <div class="cards">
-              <div class="card a-up" style="--d:12.7s">
-                <p class="k">Obiettivo</p>
-                <div class="row"><p class="num"><span class="count" data-to="3" data-d="16.1" data-t=".5">3</span></p><p class="cap s">Comunità energetiche di distretto in almeno 3 poli entro il 2028</p></div>
-                <ol class="slots"><li class="on a-up" style="--d:20.5s">Civita Castellana · ceramica</li><li class="a-up" style="--d:20.8s">Da individuare</li><li class="a-up" style="--d:21.0s">Da individuare</li></ol>
-                <p class="srcl">Piano di sviluppo locale OSL</p>
-              </div>
-              <svg class="arr" viewBox="0 0 60 40" aria-hidden="true"><path class="a-draw" style="--d:21.200000000000003s;--t:.6s;--len:80;stroke-dasharray:80" d="M4 20H52M40 8l12 12-12 12" fill="none" stroke="#B9FF69" stroke-width="3.5"/></svg>
-              <div class="card ind a-up" style="--d:21.6s">
-                <p class="k">Indicatore</p>
-                <p class="cap s">Da definire al tavolo</p>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 26 · 1:36 – 2:04</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
-        </div>
-        <div class="info">
-          <p class="idx">Scena 26 · Faccia 2: per il tavolo <span class="chip">Schema animato</span> <span class="chip g">Domanda proposta</span></p>
-          <dl>
-            <div><dt>On-screen</dt><dd>Fondo Bluette · «Per il tavolo» · domanda: «Come trasformare l'energia già prodotta in un vantaggio per comuni e imprese, senza consumare altro suolo?» · card OBIETTIVO con numerone 3: «Comunità energetiche di distretto in almeno 3 poli entro il 2028», tre caselle: Civita Castellana · ceramica, poi due «da individuare» · card INDICATORE vuota</dd></div>
-            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Per il tavolo. Come trasformare l&#x27;energia già prodotta in un vantaggio per comuni e imprese, senza consumare altro suolo? Il Piano propone comunità energetiche di distretto in almeno tre poli entro il duemilaventotto, a partire dalla ceramica di Civita Castellana.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Domanda su «Come» (2.2 s), card obiettivo su «comunità energetiche» (12.7 s) con il 3 che conta su «tre». Su «ceramica» si accende la prima casella, Civita Castellana (20.5 s). Freccia e indicatore vuoto in chiusura.</dd></div>
-            <div><dt>Nota</dt><dd class="note">La nota del PPTX chiede tre puntini sulla mappina con Civita Castellana in evidenza, ma lo studio nomina solo Civita Castellana: per non inventare gli altri due poli, qui sono tre caselle e due restano «da individuare» (al tavolo). Se gli analisti indicano i poli, si torna alla mappina.</dd></div>
           </dl>
         </div>
       </article>
@@ -926,14 +863,14 @@ footer .fine{
               <span class="ref a-fade" style="--d:8.8s"><b>50</b> resto del Lazio,<br>Roma esclusa</span>
             </div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-black.svg" alt="OpenEconomics"></div><span class="tc">Sc. 27 · 2:04 – 2:22</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-black.svg" alt="OpenEconomics"></div><span class="tc">Sc. 27 · 1:08 – 1:26</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 27 · Faccia 3: la mobilità <span class="chip">Dati reali</span> <span class="chip">Grafico dello studio</span></p>
           <dl>
             <div><dt>On-screen</dt><dd>Fondo bianco · chip «Faccia 3 · Infrastrutture e mobilità» · cubo piccolo in alto a destra con la faccia 3 accesa · numerone 43 «su 100» · le 15 barre degli ambiti come nella scena 18, tutte grigie tranne «Mobilità e trasporto pubblico» (42,6) in Bluette · linea a 50 = resto del Lazio, Roma esclusa</dd></div>
             <div><dt>Voiceover · voce maschile</dt><dd class="vo">Passiamo alla terza dimensione. L&#x27;ambito mobilità e trasporto pubblico vale quarantatré su cento. La provincia dipende dall&#x27;auto più del resto del Lazio, Roma esclusa.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Le barre crescono in grigio all'inizio (1,2 s). Su «quarantatré» la barra «Mobilità e trasporto pubblico» passa al Bluette e il numerone conta fino a 43 (6.1 s). La linea a 50 compare su «dipende» (8.8 s).</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Le barre crescono in grigio all'inizio (1,2 s); nome e valore di ogni ambito entrano solo dopo la sua barra (commento del 9 novembre). Su «quarantatré» la barra «Mobilità e trasporto pubblico» passa al Bluette e il numerone conta fino a 43 (6.1 s). La linea a 50 compare su «dipende» (8.8 s).</dd></div>
             <div><dt>Nota</dt><dd class="note">Valore 43 della tabella «Ambiti OSL della faccia» (42,6 nel grafico). «Dipende dall'auto» viene da Faccia 3 › Cosa dicono i dati (783 autovetture ogni mille abitanti contro 732): il numero non si cita, a schermo resta la linea a 50 che compare su «dipende».</dd></div>
           </dl>
         </div>
@@ -956,7 +893,7 @@ footer .fine{
               </div>
             </div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 28 · 2:22 – 2:40</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 28 · 1:26 – 1:44</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 28 · Faccia 3: dove sono andati i fondi <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
@@ -966,40 +903,6 @@ footer .fine{
             <div><dt>Regia</dt><dd class="prompt">La barra vuota entra su «centosessantacinque» (4.4 s). Poco prima di «cinquantasei per cento» la camera entra di scatto nella foto (zoom punch) e il numerone appare mentre la barra si riempie al 56% (7.2 s). Il nome dell'opera su «nuovo impianto di segnalamento» (11.1 s).</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Treno della ferrovia Roma-Civita Castellana-Viterbo in linea, foto di Falk2 (CC BY-SA 4.0). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
             <div><dt>Nota</dt><dd class="note">Opera «Ferrovia Roma-Viterbo – nuovo impianto di segnalamento di terra ERTMS-L2», 93,3 milioni su 165,4, in corso. Il VISUAL chiede numerone e zoom, la nota la barra: qui ci sono tutti e due. Per la foto in stazione serve il permesso del gestore.</dd></div>
-          </dl>
-        </div>
-      </article>
-
-      <!-- 29 ────────────────────────────────────────────────────────── -->
-      <article class="beat">
-        <div class="frame a29" data-dur="30" tabindex="0" role="button" aria-label="Scena 29, rivedi animazione">
-          <div class="stage">
-            <p class="chap a-up" style="--d:0.4s">Faccia 3 · Infrastrutture e mobilità</p><div class="mini" data-f="3" aria-hidden="true"></div>
-            <div class="tav narrow">
-              <p class="k a-up" style="--d:.3s">Per il tavolo <span class="tag">Proposta</span></p>
-              <p class="hl q a-up" style="--d:2.2s"><span style="font-size:2.7cqw">Quali opere vanno completate nel prossimo ciclo? Quale collegamento tra aree interne e poli di servizio va fatto per primo?</span></p>
-            </div>
-            <div class="works">
-              <div class="head"><p class="num a-up" style="--d:16.1s">3</p>
-              <p class="cap s a-up" style="--d:16.4s">opere in corso di rilievo nazionale</p></div>
-              <ol>
-                <li class="a-up" style="--d:19.9s"><i></i>Strada statale 675</li>
-                <li class="a-up" style="--d:21.6s"><i></i>Ferrovia Roma-Viterbo</li>
-                <li class="a-up" style="--d:23.3s"><i class="pt"></i>Interporto di Orte</li>
-              </ol>
-              <p class="indl a-fade" style="--d:24.9s">Indicatore · da definire al tavolo</p>
-            </div>
-            <div class="wmap"><svg id="m29" viewBox="0 0 600 600" aria-hidden="true" data-d="13.8" data-ss="19.9" data-fr="21.6" data-io="23.3"></svg></div>
-          </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 29 · 2:40 – 3:10</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
-        </div>
-        <div class="info">
-          <p class="idx">Scena 29 · Faccia 3: per il tavolo <span class="chip">Schema animato</span> <span class="chip g">Domanda proposta</span></p>
-          <dl>
-            <div><dt>On-screen</dt><dd>Fondo Bluette · «Per il tavolo» · domanda: «Quali opere vanno completate nel prossimo ciclo? Quale collegamento tra aree interne e poli di servizio va fatto per primo?» · numerone 3 «opere in corso di rilievo nazionale» con l'elenco · a destra la mappina della provincia: linea della statale 675, linea della ferrovia Roma-Viterbo, punto dell'interporto di Orte · in basso «Indicatore · da definire al tavolo»</dd></div>
-            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Per il tavolo. Quali opere vanno completate nel prossimo ciclo, e quale collegamento tra aree interne e poli di servizio va fatto per primo? Sono già in corso tre opere di rilievo nazionale: la strada statale seicentosettantacinque, la ferrovia Roma-Viterbo e l&#x27;interporto di Orte.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Domanda su «Quali» (2.2 s). La mappina entra su «Sono già in corso» (13.8 s), il 3 su «tre opere». Le opere si disegnano sui nomi: statale (19.9 s), ferrovia (21.6 s), interporto (23.3 s). Indicatore vuoto in chiusura.</dd></div>
-            <div><dt>Nota</dt><dd class="note">Tracciati schematici, passanti per i centri dei comuni attraversati (statale: Orte, Viterbo, Vetralla, Monte Romano verso Civitavecchia; ferrovia: Viterbo, Soriano nel Cimino, Vallerano, Vignanello, Fabrica di Roma, Civita Castellana, Castel Sant'Elia verso Roma): danno l'idea, non sono un rilievo. Fonte: Faccia 3 › Cosa dicono i dati e Spunti per il gruppo.</dd></div>
           </dl>
         </div>
       </article>
@@ -1018,13 +921,13 @@ footer .fine{
             </div>
             <div class="side"><div class="dots g60" id="d30" data-n="60" data-on="45" data-d="4.1" data-d2="4.4"></div></div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 30 · 3:10 – 3:23</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 30 · 1:44 – 1:57</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 30 · Faccia 4: le scuole <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
           <dl>
             <div><dt>On-screen</dt><dd>Video di una scuola o di studenti, senza volti riconoscibili, con movimento di camera · chip «Faccia 4 · Lavoro, competenze e inclusione» · numerone 45 «su 60» «comuni senza una scuola secondaria di secondo grado» · a destra 60 quadratini, uno per comune: 45 si accendono in Lime</dd></div>
-            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Sul fronte di lavoro, competenze e inclusione. quarantacinque comuni su sessanta non hanno una scuola secondaria di secondo grado.</dd></div>
+            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Sul fronte del lavoro, competenze e inclusione. Quarantacinque comuni su sessanta non hanno una scuola secondaria di secondo grado.</dd></div>
             <div><dt>Regia</dt><dd class="prompt">Su «quarantacinque» la foto si vela, compaiono i 60 quadratini e 45 si accendono mentre il numerone conta (4.4 s).</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Studenti di spalle nel corridoio di una scuola (immagine AI, Nano Banana 2.1). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
             <div><dt>Nota</dt><dd class="note">Dato della Faccia 4: «In tutto sono 45 Comuni su 60 senza una scuola secondaria di II grado». I quadratini non sono una mappa: se serve sapere quali comuni, lo studio ha l'elenco nella pagina «Comuni». Se ci sono minori nella foto servono le liberatorie: meglio riprese di spalle.</dd></div>
@@ -1048,7 +951,7 @@ footer .fine{
               <p class="tag reg a-up" style="--d:20.5s">Proposta di regolamento 2028–2034</p>
             </div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 31 · 3:23 – 3:51</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 31 · 1:57 – 2:25</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 31 · Faccia 4: il ricambio generazionale <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
@@ -1058,44 +961,6 @@ footer .fine{
             <div><dt>Regia</dt><dd class="prompt">Il fondo colorato e il numerone entrano su «dieci virgola quattro» (8.3 s). Il confronto in piccolo subito dopo. L'etichetta della proposta di regolamento su «priorità a sé» (20.5 s).</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Giovane agricoltore in un noccioleto della Tuscia (immagine AI, Nano Banana 2.1). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
             <div><dt>Nota</dt><dd class="note">Il PPTX vuole il confronto «su in linea», cioè all'inizio della voce, prima del numerone: qui arriva dopo il numerone, perché un confronto senza il suo numero non si legge. Fonte: Istat, Censimento agricoltura 2020 (10,4% contro 10,0%); art. 22(1)(g)(i), proposta ancora in negoziato. Liberatoria della persona ripresa e dell'azienda agricola.</dd></div>
-          </dl>
-        </div>
-      </article>
-
-      <!-- 32 ────────────────────────────────────────────────────────── -->
-      <article class="beat">
-        <div class="frame a32" data-dur="25" tabindex="0" role="button" aria-label="Scena 32, rivedi animazione">
-          <div class="stage">
-            <p class="chap a-up" style="--d:0.4s">Faccia 4 · Lavoro, competenze e inclusione</p><div class="mini" data-f="4" aria-hidden="true"></div>
-            <div class="tavwrap">
-            <div class="tav">
-              <p class="k a-up" style="--d:0.3s">Per il tavolo <span class="tag">Proposta</span></p>
-              <p class="hl q a-up" style="--d:2.2s"><span>Come portare l&#x27;istruzione superiore nei comuni che non ce l&#x27;hanno?</span></p>
-            </div>
-            <div class="cards">
-              <div class="card a-up" style="--d:11.6s">
-                <p class="k">Obiettivo</p>
-                <div class="row"><p class="num"><span class="count" data-to="5" data-d="13.8" data-t=".6">5</span></p><p class="cap s">Raccordo strutturale tra almeno 5 istituti tecnologici superiori e i poli produttivi entro il 2027</p>
-                <svg class="links" viewBox="0 0 120 100" aria-hidden="true" data-d="17.2"></svg></div>
-                <p class="srcl">Piano di sviluppo locale OSL</p>
-              </div>
-              <svg class="arr" viewBox="0 0 60 40" aria-hidden="true"><path class="a-draw" style="--d:19.0s;--t:.6s;--len:80;stroke-dasharray:80" d="M4 20H52M40 8l12 12-12 12" fill="none" stroke="#B9FF69" stroke-width="3.5"/></svg>
-              <div class="card ind a-up" style="--d:19.4s">
-                <p class="k">Indicatore</p>
-                <p class="cap s">Da definire al tavolo</p>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 32 · 3:51 – 4:16</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
-        </div>
-        <div class="info">
-          <p class="idx">Scena 32 · Faccia 4: per il tavolo <span class="chip">Schema animato</span> <span class="chip g">Domanda proposta</span></p>
-          <dl>
-            <div><dt>On-screen</dt><dd>Fondo Bluette · «Per il tavolo» · domanda: «Come portare l'istruzione superiore nei comuni che non ce l'hanno?» · card OBIETTIVO con numerone 5: «Raccordo strutturale tra almeno 5 istituti tecnologici superiori e i poli produttivi entro il 2027», cinque quadratini che si collegano al polo · card INDICATORE vuota</dd></div>
-            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Per il tavolo. Come portare l&#x27;istruzione superiore nei comuni che non ce l&#x27;hanno? Il Piano propone un obiettivo misurabile: un raccordo strutturale tra almeno cinque istituti tecnologici superiori e i poli produttivi entro il duemilaventisette.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Domanda su «Come» (2.2 s), card obiettivo su «un raccordo» (11.6 s). Su «poli produttivi» i cinque quadratini si collegano al polo (17.2 s). Indicatore vuoto in chiusura.</dd></div>
-            <div><dt>Nota</dt><dd class="note">Lo studio dice «ITS Academy»; la voce e lo schermo dicono «istituti tecnologici superiori», più chiaro in sala. Obiettivo del Piano a livello Lazio, aree produttive.</dd></div>
           </dl>
         </div>
       </article>
@@ -1113,7 +978,7 @@ footer .fine{
               <p class="cmpl a-fade" style="--d:18.8s">Resto del Lazio, Roma esclusa · <b>−0<span class="sep">,</span>2%</b></p>
             </div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 33 · 4:16 – 4:39</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 33 · 2:25 – 2:48</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 33 · Faccia 5: il calo della popolazione <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
@@ -1149,7 +1014,7 @@ footer .fine{
             </div>
             <div class="mapR"><svg id="m34" viewBox="0 0 600 600" aria-hidden="true" data-d="7.2" data-a="27.2,28.8,29.4,31.6,33.8"></svg></div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 34 · 4:39 – 5:19</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 34 · 2:48 – 3:28</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 34 · Faccia 5: dove investire <span class="chip">Dati reali</span> <span class="chip">Mappa e schema</span></p>
@@ -1158,81 +1023,6 @@ footer .fine{
             <div><dt>Voiceover · voce femminile</dt><dd class="vo">Dove investire in questo ambito? Più della metà dei residenti vive in aree interne e montane. Per queste aree il Piano propone, entro il duemilaventisette, una strategia di valorizzazione del patrimonio per ogni area interna: borghi, filiere, turismo lento, paesaggio. Gli asset ci sono già: i laghi di Bolsena e di Vico, Civita di Bagnoregio, le terme di Viterbo, la necropoli di Tarquinia.</dd></div>
             <div><dt>Regia</dt><dd class="prompt">Tre momenti, come da nota del PPTX. 1) Su «aree interne e montane» si accendono i 42 comuni (7.2 s); il 53% entra su «più della metà» (3.3 s). 2) Su «il Piano propone» entra la card obiettivo (11.1 s); le icone si accendono sui nomi. 3) Su «Gli asset» la card esce (22.7 s) e i cinque asset si accendono sulla mappa uno per nome.</dd></div>
             <div><dt>Nota</dt><dd class="note">I 42 comuni sono quelli con area «interna» nella tabella «Comuni» dello studio (dashboard): pesano il 52,9% dei residenti, che torna con il 53% dell'Osservatorio. Gli asset sono posizionati sul comune (Bolsena, Caprarola, Bagnoregio, Viterbo, Tarquinia), non sul punto esatto. Le quattro icone sono disegnate nello stile di quelle della Parte 1: il set del DS non ha borghi, filiere, turismo lento e paesaggio. Nessun dato di spesa a schermo.</dd></div>
-          </dl>
-        </div>
-      </article>
-
-      <!-- 34 bis ────────────────────────────────────────────────────────── -->
-      <article class="beat">
-        <div class="frame a34b duo" data-dur="28" tabindex="0" role="button" aria-label="Scena 34 bis, rivedi animazione">
-          <div class="stage">
-            <p class="chap a-up" style="--d:0.4s">Faccia 5 · Territori e coesione</p><div class="mini" data-f="5" aria-hidden="true"></div>
-            <div class="tblock">
-              <p class="num a-up" style="--d:3.3s">8<small>€</small></p>
-              <p class="cap s a-up" style="--d:3.7s">fondi di coesione 2021–2027 per abitante per territori e coesione, distribuiti su 4 progetti</p>
-            </div>
-            <div class="side">
-              <div class="cmpbox a-fade" style="--d:9.4s">
-                <p class="months-k">Faccia 3 · infrastrutture e mobilità</p>
-                <p class="mid">538 € <span>per abitante</span></p>
-              </div>
-              <p class="note-k a-fade" style="--d:17.7s">Pochi progetti · confronto con il resto del Lazio non possibile</p>
-            </div>
-          </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 34 bis · 5:19 – 5:47</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
-        </div>
-        <div class="info">
-          <p class="idx">Scena 34 bis · Faccia 5: dove sono andati i fondi <span class="chip">Dati reali</span> <span class="chip g">Da validare</span></p>
-          <dl>
-            <div><dt>On-screen</dt><dd>Fondo Bluette · chip «Faccia 5» · numerone 8 € «fondi di coesione 2021–2027 per abitante per territori e coesione, distribuiti su 4 progetti» · a destra, in piccolo e in bianco: «Faccia 3 · infrastrutture e mobilità · 538 € per abitante» · nota «Pochi progetti · confronto con il resto del Lazio non possibile»</dd></div>
-            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Qui la coesione ha finanziato otto euro per abitante, con quattro progetti. Sulla faccia tre sono cinquecentotrentotto euro per abitante. Sono pochi progetti e il confronto con il resto del Lazio non è possibile. È un dato da discutere al tavolo, non un giudizio.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Scena sensibile, tono neutro. Il numerone entra su «otto euro» (3.3 s); il 538 compare in piccolo su «cinquecentotrentotto» (9.4 s), senza barre a confronto né colori di allarme; la nota su «non è possibile» (17.7 s).</dd></div>
-            <div><dt>Nota</dt><dd class="note">Nella sceneggiatura è la seconda «Scena 34» (11:42–12:10, stessi tempi della precedente): qui «34 bis». L'accostamento 8 € contro 538 € è di chi ha scritto la sceneggiatura, non dello studio: la scena si mostra solo dopo la conferma degli analisti. Fonte: Faccia 5 › Cosa è stato finanziato (2,6 milioni, 8 € per abitante, 4 progetti); Faccia 3 (538 € per abitante).</dd></div>
-          </dl>
-        </div>
-      </article>
-
-      <!-- 35 ────────────────────────────────────────────────────────── -->
-      <article class="beat">
-        <div class="frame a35" data-dur="36" tabindex="0" role="button" aria-label="Scena 35, rivedi animazione">
-          <div class="stage">
-            <p class="chap a-up" style="--d:0.4s">Faccia 5 · Territori e coesione</p><div class="mini" data-f="5" aria-hidden="true"></div>
-            <div class="tavwrap">
-            <div class="tav">
-              <p class="k a-up" style="--d:.3s">Per il tavolo</p>
-              <div class="swap">
-                <div class="regs a-out2" style="--d2:23.5s">
-                  <p class="hl q a-up" style="--d:2.7s"><span style="font-size:3.2cqw">Ogni strategia territoriale:</span></p>
-                  <ul class="checks"><li class="a-up" style="--d:7.7s">Area</li><li class="a-up" style="--d:8.3s">Bisogni</li><li class="a-up" style="--d:9.4s">Obiettivi misurabili</li></ul>
-                  <p class="srcl a-fade" style="--d:2.7s">Proposta di regolamento 2028–2034 · art. 75</p>
-                </div>
-                <p class="hl q a-up" style="--d:23.8s"><span style="font-size:2.9cqw">Quale offerta fuori stagione usa i posti letto che già ci sono? <span class="tag">Proposta</span></span></p>
-              </div>
-            </div>
-            <div class="cards">
-              <div class="card a-up" style="--d:14.9s">
-                <p class="k">Obiettivo</p>
-                <div class="row"><p class="num">2027</p><p class="cap s">Pacchetto minimo di servizi essenziali per ogni area interna</p></div>
-                <ul class="icons"><li class="a-up" style="--d:19.4s"><svg><use href="#ic-sanita"/></svg>Presidio sanitario</li><li class="a-up" style="--d:20.5s"><svg><use href="#ic-scuola"/></svg>Scuola</li><li class="a-up" style="--d:21.1s"><svg><use href="#ic-trasporto"/></svg>Trasporto a chiamata</li><li class="a-up" style="--d:22.7s"><svg><use href="#ic-banda"/></svg>Banda ultralarga</li></ul>
-                <p class="srcl">Piano di sviluppo locale OSL</p>
-              </div>
-              <svg class="arr" viewBox="0 0 60 40" aria-hidden="true"><path class="a-draw" style="--d:25.3s;--t:.6s;--len:80;stroke-dasharray:80" d="M4 20H52M40 8l12 12-12 12" fill="none" stroke="#B9FF69" stroke-width="3.5"/></svg>
-              <div class="card ind a-up" style="--d:25.7s">
-                <p class="k">Indicatore</p>
-                <p class="cap s">Da definire al tavolo</p>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 35 · 5:47 – 6:23</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
-        </div>
-        <div class="info">
-          <p class="idx">Scena 35 · Faccia 5: per il tavolo <span class="chip">Schema animato</span> <span class="chip g">Domanda proposta</span></p>
-          <dl>
-            <div><dt>On-screen</dt><dd>Fondo Bluette · «Per il tavolo» · in alto «Ogni strategia territoriale:» con tre spunte Lime: area, bisogni, obiettivi misurabili (proposta di regolamento, art. 75) · card OBIETTIVO con numerone 2027: «Pacchetto minimo di servizi essenziali per ogni area interna», quattro icone: presidio sanitario, scuola, trasporto a chiamata, banda ultralarga · in chiusura la riga in alto lascia il posto alla domanda in Hedvig «Quale offerta fuori stagione usa i posti letto che già ci sono?» · card INDICATORE vuota</dd></div>
-            <div><dt>Voiceover · voce maschile</dt><dd class="vo">Per il tavolo. La proposta di regolamento chiede che ogni strategia territoriale indichi area, bisogni e obiettivi misurabili. Per le aree interne il Piano propone un pacchetto minimo di servizi essenziali entro il duemilaventisette: presidio sanitario, scuola, trasporto a chiamata, banda ultralarga. E fuori stagione, quale offerta usa i posti letto che già ci sono?</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Tre momenti. 1) Su «La proposta di regolamento» la riga con le spunte, che si accendono su area, bisogni, obiettivi misurabili (7.7 · 8.3 · 9.4 s). 2) Su «un pacchetto minimo» la card obiettivo (14.9 s), con le icone sui nomi. 3) Su «E fuori stagione» la domanda prende il posto della riga (23.8 s), poi freccia e indicatore vuoto.</dd></div>
-            <div><dt>Nota</dt><dd class="note">Fonti: Faccia 5 › Dove si colloca nel 2028–2034 (art. 75); Cosa indica l'OSL › aree interne e montane (pacchetto minimo entro il 2027); Spunti per il gruppo. Icone disegnate nello stile della Parte 1, come nella scena 34.</dd></div>
           </dl>
         </div>
       </article>
@@ -1253,7 +1043,7 @@ footer .fine{
               </div>
             </div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 36 · 6:23 – 6:43</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 36 · 3:28 – 3:48</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 36 · Faccia 6: il personale dei comuni <span class="chip">Dati reali</span> <span class="chip">Numerone</span></p>
@@ -1296,7 +1086,7 @@ footer .fine{
               </div>
             </div>
           </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 37 · 6:43 – 7:18</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
+          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 37 · 3:48 – 4:23</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
           <p class="idx">Scena 37 · Faccia 6: il ruolo dei comuni nel nuovo ciclo <span class="chip">Schema animato</span></p>
@@ -1304,81 +1094,7 @@ footer .fine{
             <div><dt>On-screen</dt><dd>Fondo Bluette · chip «Faccia 6» · linea 2028–2034 con due tappe in cui si accende l'icona del municipio: «Preparazione dei piani» e «Comitati di sorveglianza» · etichetta «Enti locali partner · proposta in negoziato» · poi la linea esce ed entra la card OBIETTIVO con numerone 60%: «Servizi digitali online di livello minimo nel 60% dei comuni urbani entro il 2028», scritta a macchina · card INDICATORE vuota</dd></div>
             <div><dt>Voiceover · voce maschile</dt><dd class="vo">Nel nuovo ciclo gli enti locali hanno un ruolo preciso: la proposta di regolamento li prevede come partner dei piani, dalla preparazione ai comitati di sorveglianza. E per le aree urbane il Piano propone un obiettivo misurabile: servizi digitali online di livello minimo nel sessanta per cento dei comuni urbani entro il duemilaventotto.</dd></div>
             <div><dt>Regia</dt><dd class="prompt">Su «nuovo ciclo» si disegna la linea (1.1 s); su «partner dei piani» l'etichetta (9.9 s); le due tappe su «preparazione» (12.2 s) e «comitati di sorveglianza» (13.3 s). Su «il Piano propone» la linea esce ed entra la card (17.7 s): il testo si scrive a macchina e il 60% conta su «sessanta per cento» (24.9 s). Indicatore vuoto in chiusura.</dd></div>
-            <div><dt>Nota</dt><dd class="note">Nella sceneggiatura è la prima delle due «Scena 37» (13:18–13:53) e viene prima della spesa dei comuni: l'ordine segue le slide. Ma la voce della scena dopo comincia con «E pagano quasi tutto…», che si attacca meglio al personale (scena 36): vedi «Da verificare». Fonte: art. 6 della proposta (partenariato con le autorità locali); Cosa indica l'OSL › aree urbane (29% dei residenti; O4).</dd></div>
-          </dl>
-        </div>
-      </article>
-
-      <!-- 37 bis ────────────────────────────────────────────────────────── -->
-      <article class="beat">
-        <div class="frame a37b duo" data-dur="18" tabindex="0" role="button" aria-label="Scena 37 bis, rivedi animazione">
-          <div class="stage">
-            <p class="chap a-up" style="--d:0.4s">Faccia 6 · Capacità amministrativa e governance</p><div class="mini" data-f="6" aria-hidden="true"></div>
-            <div class="tblock">
-              <p class="num a-up" style="--d:11.1s"><span class="count" data-to="95" data-d="11.1" data-t="1.1">95</span>%</p>
-              <p class="cap s a-up" style="--d:11.5s">degli impegni in conto capitale pagati, nel 2021</p>
-            </div>
-            <div class="side">
-              <p class="months-k a-fade" style="--d:4.9s">Spesa in conto capitale · 2021</p>
-              <div class="bars">
-                <div class="bar a-up" style="--d:11.1s"><span class="bl">Comuni della provincia di Viterbo</span><span class="row"><i class="a-growX" style="--w:.95;--d:11.1s"></i><b>95%</b></span></div>
-                <div class="bar ot a-up" style="--d:14.9s"><span class="bl">Resto del Lazio, Roma esclusa</span><span class="row"><i class="a-growX" style="--w:.71;--d:14.9s"></i><b>71%</b></span></div>
-              </div>
-            </div>
-          </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 37 bis · 7:18 – 7:36</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
-        </div>
-        <div class="info">
-          <p class="idx">Scena 37 bis · Faccia 6: la spesa dei comuni <span class="chip">Dati reali</span> <span class="chip">Numerone</span></p>
-          <dl>
-            <div><dt>On-screen</dt><dd>Fondo Bluette · chip «Faccia 6» · numerone 95% «degli impegni in conto capitale pagati, nel 2021» · a destra «Spesa in conto capitale · 2021» e le due barre: comuni della provincia 95%, resto del Lazio, Roma esclusa 71%</dd></div>
-            <div><dt>Voiceover · voce maschile</dt><dd class="vo">E pagano quasi tutto quello che impegnano. Nel duemilaventuno la spesa in conto capitale è stata pagata per il novantacinque per cento degli impegni, contro il settantuno.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">L'anno entra su «duemilaventuno» (4.9 s) e resta sempre visibile. La barra si riempie al 95% su «novantacinque» (11.1 s), il 71% in piccolo su «settantuno» (14.9 s).</dd></div>
-            <div><dt>Nota</dt><dd class="note">Seconda «Scena 37» della sceneggiatura (13:06–13:24): qui «37 bis». Dato di un solo anno (Capitolo 5: 94,68 contro 71,46).</dd></div>
-          </dl>
-        </div>
-      </article>
-
-      <!-- 38 ────────────────────────────────────────────────────────── -->
-      <article class="beat">
-        <div class="frame a38 deep" data-dur="37" tabindex="0" role="button" aria-label="Scena 38, rivedi animazione">
-          <div class="stage">
-            <video class="photo clip" src="assets/clips/p3/38-ospedale.mp4" poster="assets/frames/p3/38-ospedale.jpg" muted loop playsinline preload="none" aria-label="L&#x27;antico Ospedale Grande degli Infermi di Viterbo"></video>
-            <div class="shade"></div>
-            <p class="chap a-up" style="--d:0.4s">Faccia 6 · Capacità amministrativa e governance</p><div class="mini" data-f="6" aria-hidden="true"></div>
-            <p class="sov a-up a-out2" style="--d:9.4s;--d2:13.0s">Ospedale Grande degli Infermi · <b>17 milioni</b> · non ancora avviato</p>
-            <div class="wash a-fade" style="--d:13.1s"></div>
-            <div class="after">
-            <div class="tavwrap">
-            <div class="tav">
-              <p class="k a-up" style="--d:13.3s">Per il tavolo <span class="tag">Proposta</span></p>
-              <p class="hl q a-up" style="--d:14.9s"><span>Quale struttura comune aiuta i piccoli comuni a far partire i progetti fermi?</span></p>
-            </div>
-            <div class="cards">
-              <div class="card a-up" style="--d:23.8s">
-                <p class="k">Obiettivo</p>
-                <div class="row"><p class="num"><span class="count" data-to="70" data-d="28.3" data-t="1">70</span>%</p><p class="cap s">Supporto tecnico stabile per i bandi europei al 70% dei comuni delle aree interne entro il 2027</p></div>
-                <p class="srcl">Piano di sviluppo locale OSL</p>
-              </div>
-              <svg class="arr" viewBox="0 0 60 40" aria-hidden="true"><path class="a-draw" style="--d:33.4s;--t:.6s;--len:80;stroke-dasharray:80" d="M4 20H52M40 8l12 12-12 12" fill="none" stroke="#B9FF69" stroke-width="3.5"/></svg>
-              <div class="card ind a-up" style="--d:33.8s">
-                <p class="k">Indicatore</p>
-                <p class="cap s">Da definire al tavolo</p>
-              </div>
-            </div>
-            </div>
-            </div>
-          </div>
-          <div class="foot"><img src="assets/logo-mark-white.svg" alt="OpenEconomics"></div><span class="tc">Sc. 38 · 7:36 – 8:13</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
-        </div>
-        <div class="info">
-          <p class="idx">Scena 38 · Faccia 6: i progetti fermi <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
-          <dl>
-            <div><dt>On-screen</dt><dd>Foto esterna dell'antico Ospedale Grande degli Infermi di Viterbo con movimento di camera · chip «Faccia 6» · in sovraimpressione piccola «Ospedale Grande degli Infermi · 17 milioni · non ancora avviato» · su «Per il tavolo» stacco a fondo Bluette: domanda «Quale struttura comune aiuta i piccoli comuni a far partire i progetti fermi?» · card OBIETTIVO con numerone 70%: «Supporto tecnico stabile per i bandi europei al 70% dei comuni delle aree interne entro il 2027» · card INDICATORE vuota</dd></div>
-            <div><dt>Voiceover · voce femminile</dt><dd class="vo">Il solo progetto di questa faccia, il restauro dell&#x27;antico Ospedale Grande degli Infermi di Viterbo, vale diciassette milioni e non è ancora avviato. Per il tavolo: quale struttura comune aiuta i piccoli comuni a far partire i progetti fermi? Il Piano propone supporto tecnico stabile per i bandi europei al settanta per cento dei comuni delle aree interne entro il duemilaventisette.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">La sovraimpressione entra su «diciassette milioni» (9.4 s). Su «Per il tavolo» la foto lascia il posto al fondo Bluette (13.3 s) e la domanda entra su «quale struttura» (14.9 s). Card obiettivo su «supporto tecnico» (23.8 s), il 70% su «settanta». Indicatore vuoto in chiusura.</dd></div>
-            <div><dt>Foto</dt><dd class="prompt">Un antico ospedale nel centro di Viterbo: NON è l&#x27;Ospedale Grande degli Infermi, immagine AI segnaposto (Nano Banana 2.1). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
-            <div><dt>Nota</dt><dd class="note">Progetto «Restauro, rifunzionalizzazione e valorizzazione dell'antico Ospedale Grande degli Infermi di Viterbo», 17,0 milioni, non avviato: da solo è il 100% del finanziamento della faccia. L'immagine è generata con l'AI e <strong>non è l'Ospedale Grande degli Infermi</strong>: è un segnaposto, da sostituire con una foto vera dell'edificio (verificando con il Comune lo stato dei lavori) prima del video finale. Ultima scena prima della conclusione.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Nella sceneggiatura è la prima delle due «Scena 37» (13:18–13:53) ; la seconda («la spesa dei comuni», 37 bis) è stata tolta il 9 novembre. Fonte: art. 6 della proposta (partenariato con le autorità locali); Cosa indica l'OSL › aree urbane (29% dei residenti; O4).</dd></div>
           </dl>
         </div>
       </article>
@@ -1399,7 +1115,7 @@ footer .fine{
           <dl>
             <div><dt>On-screen</dt><dd>Bluette 900 fisso 5 secondi · in basso a sinistra, in mono: Provincia di Viterbo · Fine parte 3 · Le sei facce / A seguire · Conclusione</dd></div>
             <div><dt>Voiceover</dt><dd class="vo">Nessuno: il moderatore apre i tavoli.</dd></div>
-            <div><dt>Nota</dt><dd class="note">Terzo stop della sceneggiatura (fine scena 38). Come per le altre parti, la frase al centro non c'è nel PPTX: nella Parte 1 è «Per creare connessioni serve un metodo», nella Parte 2 «Passiamo alla fase dei workshop».</dd></div>
+            <div><dt>Nota</dt><dd class="note">Terzo stop della sceneggiatura: con le scene «Per il tavolo» tolte, arriva dopo la scena 37. Come per le altre parti, la frase al centro non c'è nel PPTX: nella Parte 1 è «Per creare connessioni serve un metodo», nella Parte 2 «Passiamo alla fase dei workshop».</dd></div>
           </dl>
         </div>
       </article>
@@ -1420,31 +1136,23 @@ footer .fine{
           <thead><tr><th>Scena</th><th>Voce</th><th class="n">Parole</th><th class="n">Secondi</th></tr></thead>
           <tbody>
             <tr><td>Cover</td><td>—</td><td class="n">—</td><td class="n">6</td></tr>
-            <tr><td>21 · infrastrutture produttive e logistica</td><td>Uomo</td><td class="n">25</td><td class="n">19</td></tr>
+            <tr><td>21 · infrastrutture produttive e logistica</td><td>Uomo</td><td class="n">24</td><td class="n">18</td></tr>
             <tr><td>22 · il distretto della ceramica</td><td>Donna</td><td class="n">25</td><td class="n">17</td></tr>
-            <tr><td>23 · per il tavolo</td><td>Uomo</td><td class="n">38</td><td class="n">27</td></tr>
             <tr><td>24 · le comunità energetiche</td><td>Donna</td><td class="n">22</td><td class="n">15</td></tr>
             <tr><td>25 · dove sono andati i fondi</td><td>Uomo</td><td class="n">27</td><td class="n">18</td></tr>
-            <tr><td>26 · per il tavolo</td><td>Donna</td><td class="n">40</td><td class="n">28</td></tr>
             <tr><td>27 · la mobilità</td><td>Uomo</td><td class="n">24</td><td class="n">18</td></tr>
             <tr><td>28 · dove sono andati i fondi</td><td>Donna</td><td class="n">26</td><td class="n">18</td></tr>
-            <tr><td>29 · per il tavolo</td><td>Uomo</td><td class="n">44</td><td class="n">30</td></tr>
             <tr><td>30 · le scuole</td><td>Donna</td><td class="n">19</td><td class="n">13</td></tr>
             <tr><td>31 · il ricambio generazionale</td><td>Uomo</td><td class="n">45</td><td class="n">28</td></tr>
-            <tr><td>32 · per il tavolo</td><td>Donna</td><td class="n">35</td><td class="n">25</td></tr>
             <tr><td>33 · il calo della popolazione</td><td>Uomo</td><td class="n">42</td><td class="n">23</td></tr>
             <tr><td>34 · dove investire</td><td>Donna</td><td class="n">63</td><td class="n">40</td></tr>
-            <tr><td>34 bis · dove sono andati i fondi</td><td>Donna</td><td class="n">44</td><td class="n">28</td></tr>
-            <tr><td>35 · per il tavolo</td><td>Uomo</td><td class="n">55</td><td class="n">36</td></tr>
             <tr><td>36 · il personale dei comuni</td><td>Donna</td><td class="n">33</td><td class="n">20</td></tr>
             <tr><td>37 · il ruolo dei comuni nel nuovo ciclo</td><td>Uomo</td><td class="n">53</td><td class="n">35</td></tr>
-            <tr><td>37 bis · la spesa dei comuni</td><td>Uomo</td><td class="n">27</td><td class="n">18</td></tr>
-            <tr><td>38 · i progetti fermi</td><td>Donna</td><td class="n">61</td><td class="n">37</td></tr>
             <tr><td>Stacco</td><td>—</td><td class="n">—</td><td class="n">5</td></tr>
           </tbody>
         </table>
         </div>
-        <p class="tbl-note">Durate del PPTX, allungate dove la voce non ci sta a 1,8 parole al secondo. Le scene «34 bis» e «37 bis» sono le seconde «Scena 34» e «Scena 37» della sceneggiatura, che ha due slide con lo stesso numero.</p>
+        <p class="tbl-note">Durate del PPTX, allungate dove la voce non ci sta a 1,8 parole al secondo. Il 9 novembre sono state tolte, su commento di Federico Chiarello, le scene «Per il tavolo» (23, 26, 29, 32, 35, 38) e le due «bis» (34 bis, 37 bis): restano i dati, faccia per faccia, e le domande passano ai tavoli dal vivo.</p>
         <div class="credits">
           <h3 class="sec-h">Foto della Parte 3</h3>
           <div class="tw">
@@ -1458,7 +1166,6 @@ footer .fine{
               <tr><td><a href="https://www.magnific.com/app/creation/O6vPAJwynm">Studenti di spalle nel corridoio di una scuola (immagine AI, Nano Banana 2.1)</a></td><td>30</td><td>Magnific</td><td>Generata con AI</td></tr>
               <tr><td><a href="https://www.magnific.com/app/creation/9ZE6WikNYZ">Giovane agricoltore in un noccioleto della Tuscia (immagine AI, Nano Banana 2.1)</a></td><td>31</td><td>Magnific</td><td>Generata con AI</td></tr>
               <tr><td><a href="https://commons.wikimedia.org/wiki/File:Viterbo2013r.jpg">Vicolo sotto un arco nel quartiere di San Pellegrino, Viterbo</a></td><td>33</td><td>Ben Skála, Benfoto</td><td>CC BY-SA 3.0</td></tr>
-              <tr><td><a href="https://www.magnific.com/app/creation/ksVrJss16B">Un antico ospedale nel centro di Viterbo: NON è l&#x27;Ospedale Grande degli Infermi, immagine AI segnaposto (Nano Banana 2.1)</a></td><td>38</td><td>Magnific</td><td>Generata con AI</td></tr>
             </tbody>
           </table>
           </div>
@@ -1467,22 +1174,17 @@ footer .fine{
       <div>
         <h3 class="sec-h">Da correggere nel voiceover</h3>
         <ul class="fix">
-          <li><span class="w">Scena 21 · «per cento»</span>«valgono il quarantuno <del>per cento</del><ins>su cento</ins>, dove il resto del Lazio… vale cinquanta»: è un indice su 100, come dice la scena 27 («vale quarantatré su cento»)</li>
-          <li><span class="w">Scena 30 · maiuscola</span>«…e inclusione. <del>q</del><ins>Q</ins>uarantacinque comuni…»; e «Sul fronte di lavoro» → «Sul fronte del lavoro»</li>
-          <li><span class="w">Scena 23 · «già»</span>«Il Piano propone già un obiettivo» → nelle altre scene «Il Piano propone»: uniformare</li>
+          <li><span class="w">Corretto nella voce (10/11)</span>scena 21 «quarantuno <ins>su cento</ins>» (era «il quarantuno per cento»: è un indice su 100); scena 30 «Sul fronte <ins>del</ins> lavoro… <ins>Q</ins>uarantacinque comuni»</li>
         </ul>
         <h3 class="sec-h" style="margin-top:32px">Da verificare prima della produzione</h3>
         <ul class="fix">
-          <li><span class="w">Scene 34 e 37 doppie</span>la sceneggiatura ha due «Scena 34» e due «Scena 37» con tempi che si sovrappongono. Qui seguo l'ordine delle slide; ma «E pagano quasi tutto…» (37 bis) si lega al personale della scena 36: forse va subito dopo la 36</li>
-          <li><span class="w">Scena 34 bis · 8 € contro 538 €</span>accostamento non dello studio: si mostra solo dopo la conferma degli analisti</li>
           <li><span class="w">Scena 25 · bolla o barra</span>il VISUAL chiede una bolla che si riempie d'acqua, la nota di regia una barra: qui la bolla, in Lime</li>
           <li><span class="w">Scena 22 · i sette comuni</span>presi dall'area «produttiva» della tabella «Comuni» (Viterbo escluso): confermare che siano il distretto</li>
-          <li><span class="w">Scena 26 · i tre poli</span>lo studio nomina solo Civita Castellana: gli altri due restano «da individuare»</li>
           <li><span class="w">Scena 33 · −3,1%</span>il dato compare solo nella Faccia 5, senza grafico</li>
           <li><span class="w">Icone</span>borghi, turismo lento, paesaggio, sanità, scuola, trasporto e banda ultralarga non sono nel set del DS: disegnate nello stile delle icone della Parte 1</li>
           <li><span class="w">Conclusione</span>scene 39 e 40 («Dal dato all'indicatore, faccia per faccia» e il codino) sono un blocco a sé: non sono in questa pagina</li>
           
-          <li><span class="w">Immagini AI</span>le scene 22, 24, 25, 30 e 31 usano immagini generate (Nano Banana 2.1), senza volti riconoscibili; la 38 è un segnaposto AI che <strong>non</strong> mostra l'Ospedale Grande degli Infermi: serve una foto vera</li>
+          <li><span class="w">Immagini AI</span>le scene 22, 24, 25, 30 e 31 usano immagini generate (Nano Banana 2.1), senza volti riconoscibili</li>
         </ul>
       </div>
     </div>
@@ -1545,7 +1247,7 @@ footer .fine{
       r.className = 'r' + (hot ? ' hot lo' : '');
       r.innerHTML = '<span class="nm"></span><span class="row"><i class="b"></i><b class="v">' + fmt(Math.round(a[1])) + '</b></span>';
       r.querySelector('.nm').textContent = a[0];
-      var b = r.querySelector('.b'); b.style.setProperty('--v', a[1]); b.style.setProperty('--d', (d0 + i * 0.08).toFixed(2) + 's');
+      var b = r.querySelector('.b'); b.style.setProperty('--v', a[1]); r.style.setProperty('--d', (d0 + i * 0.08).toFixed(2) + 's');
       if (hot) b.style.setProperty('--d2', d2);
       box.appendChild(r);
     });
