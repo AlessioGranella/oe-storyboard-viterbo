@@ -464,6 +464,20 @@ footer .fine{
 /* ── Stacco ── */
 .end .lines{position:absolute;left:5cqw;bottom:4.4cqw;display:flex;flex-direction:column;gap:.9cqw;font-family:var(--mono);font-size:1.3cqw;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.74)}
 
+/* ── Numeroni: effetti diversi di scena in scena (12/11) ──
+   conta (21, 37) · colpo (24, 28) · maschera (25, 33) · messa a fuoco (27, 31) · cifra per cifra (30, 34) · glitch (36) */
+@keyframes slam{0%{opacity:0;transform:scale(1.7)}55%{opacity:1;transform:scale(.97)}100%{opacity:1;transform:none}}
+@keyframes mask{from{transform:translateY(100%);clip-path:inset(0 0 100% 0)}to{transform:none;clip-path:inset(0 0 0 0)}}
+@keyframes focus{from{opacity:0;filter:blur(1.4cqw);transform:scale(1.12)}to{opacity:1;filter:blur(0);transform:none}}
+@keyframes digit{from{opacity:0;transform:translateY(-.5em)}to{opacity:1;transform:none}}
+.a-slam{transform-origin:0 60%}
+.play .a-slam{animation:slam .55s var(--ease) var(--d,0s) both}
+.play .a-mask{animation:mask .8s var(--ease) var(--d,0s) both}
+.a-focus{transform-origin:0 60%}
+.play .a-focus{animation:focus 1s var(--ease) var(--d,0s) both}
+.a-digits .dg{display:inline-block}
+.play .a-digits .dg{animation:digit .45s var(--ease) calc(var(--d,0s) + var(--i,0) * .12s) both}
+
 /* ── Parte 3: cubo piccolo in alto a destra, con la faccia della scena accesa (croce della scena 16) ── */
 .mini{position:absolute;right:5cqw;top:4cqw;z-index:2;display:grid;grid-template-columns:repeat(4,1.5cqw);grid-template-rows:repeat(3,1.5cqw);gap:.22cqw}
 .mini i{display:block;box-sizing:border-box;border:.12cqw solid rgba(255,255,255,.6)}
@@ -791,7 +805,7 @@ footer .fine{
             <p class="chap a-up" style="--d:0.4s">Dimensione 2 · Transizione verde ed energia</p><div class="mini" data-f="2" aria-hidden="true"></div>
             <div class="veil a-fade" style="--d:4.5s"></div>
             <div class="tblock on-photo">
-              <p class="num a-up" style="--d:4.9s">6<small>su 26</small></p>
+              <p class="num a-slam" style="--d:4.9s">6<small>su 26</small></p>
               <p class="cap s a-up" style="--d:5.3s">comunità energetiche rinnovabili qualificate del Lazio sono in provincia di Viterbo</p>
             </div>
             <div class="side">
@@ -806,7 +820,7 @@ footer .fine{
           <dl>
             <div><dt>On-screen</dt><dd>Clip di un borgo della Tuscia con i pannelli solari sui tetti, ripreso dall'alto · su «Sei» la clip si vela di Bluette · chip «Dimensione 2 · Transizione verde ed energia» · numerone 6 «su 26» · etichetta «comunità energetiche rinnovabili qualificate del Lazio sono in provincia di Viterbo» · a destra 26 quadratini in griglia, 6 si accendono in Lime</dd></div>
             <div><dt>Voiceover · voce femminile</dt><dd class="vo">La seconda sfida riguarda transizione verde ed energia. Sei delle ventisei comunità energetiche rinnovabili qualificate del Lazio sono in provincia di Viterbo.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Il numerone entra su «Sei» (4.9 s). I 26 quadratini compaiono su «ventisei» (6.1 s) e i primi 6 passano al Lime subito dopo (6.6 s).</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Il numerone entra di colpo, grande, e si assesta su «Sei» (4.9 s). I 26 quadratini compaiono su «ventisei» (6.1 s) e i primi 6 passano al Lime subito dopo (6.6 s).</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Tetti con pannelli solari in un borgo della Tuscia (immagine AI, Nano Banana 2.1). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
             <div><dt>Nota</dt><dd class="note">Dato della Faccia 2 › Cosa dicono i dati: «6 delle 26 comunità energetiche rinnovabili qualificate del Lazio». Quadratini e non puntini: spigolo vivo come in tutto il DS. Immagine aggiunta il 6 novembre su richiesta (il PPTX prevede solo il numerone).</dd></div>
           </dl>
@@ -822,7 +836,7 @@ footer .fine{
             <p class="chap a-up" style="--d:0.4s">Dimensione 2 · Transizione verde ed energia</p><div class="mini" data-f="2" aria-hidden="true"></div>
             <div class="veil a-fade" style="--d:1.8s"></div>
             <div class="tblock on-photo">
-              <p class="num a-up" style="--d:7.2s"><span class="count" data-to="58" data-d="7.2" data-t="1.2">58</span>%</p>
+              <p class="num a-mask" style="--d:7.2s">58%</p>
               <p class="cap s a-up" style="--d:7.6s">fondi per transizione verde ed energia assegnati a un solo progetto</p>
               <p class="k sub-k a-up" style="--d:11.6s">Depurazione a Civita Castellana, Sutri e Vignanello</p>
             </div>
@@ -842,7 +856,7 @@ footer .fine{
           <dl>
             <div><dt>On-screen</dt><dd>Clip di un impianto di depurazione in campagna · su «finanziato» la clip si vela di Bluette · chip «Dimensione 2» · a destra una bolla bianca (100% = 47,9 milioni) che si riempie di Lime fino al 58% · numerone 58% «fondi per transizione verde ed energia assegnati a un solo progetto» · sotto: «Depurazione a Civita Castellana, Sutri e Vignanello»</dd></div>
             <div><dt>Voiceover · voce femminile</dt><dd class="vo">La coesione ha finanziato su questi temi quarantasette virgola nove milioni. Il cinquantotto per cento è un solo progetto: la depurazione a Civita Castellana, Sutri e Vignanello.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">La bolla vuota compare su «finanziato» (2.2 s) con l'etichetta dei 47,9 milioni. Su «cinquantotto per cento» si riempie fino al 58% e il numerone conta (7.2 s). Il nome del progetto entra su «depurazione» (11.6 s).</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">La bolla vuota compare su «finanziato» (2.2 s) con l'etichetta dei 47,9 milioni. Su «cinquantotto per cento» si riempie fino al 58% e il numerone sale da una linea, a maschera (7.2 s). Il nome del progetto entra su «depurazione» (11.6 s).</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Impianto di depurazione in campagna (immagine AI, Nano Banana 2.1). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
             <div><dt>Nota</dt><dd class="note">Il campo VISUAL del PPTX chiede la bolla che si riempie d'acqua, la nota di regia una barra intera: i due riferimenti non coincidono, qui c'è la bolla (il campo più recente). L'acqua è Lime perché il DS non ha un azzurro: da confermare. Progetto «Opere di collettamento e depurazione relativamente ai Poli di Civita Castellana, Sutri e Vignanello (I Lotto) – Adeguamento prezzi», 27,9 milioni su 47,9. Immagine aggiunta il 6 novembre su richiesta: è un depuratore generico, non quello dei tre comuni.</dd></div>
           </dl>
@@ -855,7 +869,7 @@ footer .fine{
           <div class="stage">
             <p class="chap a-up" style="--d:0.4s">Dimensione 3 · Infrastrutture e mobilità</p><div class="mini" data-f="3" aria-hidden="true"></div>
             <div class="tblock">
-              <p class="num a-up" style="--d:6.1s"><span class="count" data-to="43" data-d="6.1" data-t="1">43</span></p>
+              <p class="num a-focus" style="--d:6.1s">43</p>
               <p class="cap a-up" style="--d:6.5s">su 100</p>
               <p class="k amb-k a-up" style="--d:6.9s">Mobilità e trasporto pubblico</p>
             </div>
@@ -870,7 +884,7 @@ footer .fine{
           <dl>
             <div><dt>On-screen</dt><dd>Fondo bianco · chip «Dimensione 3 · Infrastrutture e mobilità» · cubo piccolo in alto a destra con la faccia 3 accesa · numerone 43 «su 100» · le 15 barre degli ambiti come nella scena 18, tutte grigie tranne «Mobilità e trasporto pubblico» (42,6) in Bluette · linea a 50 = resto del Lazio, Roma esclusa</dd></div>
             <div><dt>Voiceover · voce maschile</dt><dd class="vo">Passiamo alla terza dimensione. L&#x27;ambito mobilità e trasporto pubblico vale quarantatré su cento. La provincia dipende dall&#x27;auto più del resto del Lazio, Roma esclusa.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Le barre crescono in grigio all'inizio (1,2 s); nome e valore di ogni ambito entrano solo dopo la sua barra (commento del 9 novembre). Su «quarantatré» la barra «Mobilità e trasporto pubblico» passa al Bluette e il numerone conta fino a 43 (6.1 s). La linea a 50 compare su «dipende» (8.8 s).</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Le barre crescono in grigio all'inizio (1,2 s); nome e valore di ogni ambito entrano solo dopo la sua barra (commento del 9 novembre). Su «quarantatré» la barra «Mobilità e trasporto pubblico» passa al Bluette e il numerone 43 entra con una messa a fuoco, da sfocato a nitido (6.1 s). La linea a 50 compare su «dipende» (8.8 s).</dd></div>
             <div><dt>Nota</dt><dd class="note">Valore 43 della tabella «Ambiti OSL della faccia» (42,6 nel grafico). «Dipende dall'auto» viene da Faccia 3 › Cosa dicono i dati (783 autovetture ogni mille abitanti contro 732): il numero non si cita, a schermo resta la linea a 50 che compare su «dipende».</dd></div>
           </dl>
         </div>
@@ -884,7 +898,7 @@ footer .fine{
             <div class="shade"></div>
             <p class="chap a-up" style="--d:0.4s">Dimensione 3 · Infrastrutture e mobilità</p><div class="mini" data-f="3" aria-hidden="true"></div>
             <div class="tblock on-photo">
-              <p class="num a-up" style="--d:7.2s"><span class="count" data-to="56" data-d="7.2" data-t="1.2">56</span>%</p>
+              <p class="num a-slam" style="--d:7.2s">56%</p>
               <p class="cap s a-up" style="--d:7.6s">fondi per infrastrutture e mobilità assegnati a un'opera sola</p>
               <p class="k sub-k a-up" style="--d:11.1s">Il segnalamento della ferrovia Roma-Viterbo</p>
               <div class="stack dk a-fade" style="--d:4.4s">
@@ -900,7 +914,7 @@ footer .fine{
           <dl>
             <div><dt>On-screen</dt><dd>Foto della ferrovia Roma-Viterbo con movimento di camera ed effetto zoom punch · chip «Dimensione 3» · numerone 56% «fondi per infrastrutture e mobilità assegnati a un'opera sola» · «Il segnalamento della ferrovia Roma-Viterbo» · barra intera (100% = 165,4 milioni) con il 56% in Lime</dd></div>
             <div><dt>Voiceover · voce maschile</dt><dd class="vo">La coesione ha finanziato su questi temi centosessantacinque virgola quattro milioni. Il cinquantasei per cento è un&#x27;opera sola: il nuovo impianto di segnalamento della ferrovia Roma-Viterbo.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">La barra vuota entra su «centosessantacinque» (4.4 s). Poco prima di «cinquantasei per cento» la camera entra di scatto nella foto (zoom punch) e il numerone appare mentre la barra si riempie al 56% (7.2 s). Il nome dell'opera su «nuovo impianto di segnalamento» (11.1 s).</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">La barra vuota entra su «centosessantacinque» (4.4 s). Poco prima di «cinquantasei per cento» la camera entra di scatto nella foto (zoom punch) e il numerone entra di colpo, grande, e si assesta mentre la barra si riempie al 56% (7.2 s). Il nome dell'opera su «nuovo impianto di segnalamento» (11.1 s).</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Treno della ferrovia Roma-Civita Castellana-Viterbo in linea, foto di Falk2 (CC BY-SA 4.0). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
             <div><dt>Nota</dt><dd class="note">Opera «Ferrovia Roma-Viterbo – nuovo impianto di segnalamento di terra ERTMS-L2», 93,3 milioni su 165,4, in corso. Il VISUAL chiede numerone e zoom, la nota la barra: qui ci sono tutti e due. Per la foto in stazione serve il permesso del gestore.</dd></div>
           </dl>
@@ -916,7 +930,7 @@ footer .fine{
             <p class="chap a-up" style="--d:0.4s">Dimensione 4 · Lavoro, competenze e inclusione</p><div class="mini" data-f="4" aria-hidden="true"></div>
             <div class="veil a-fade" style="--d:4.0s"></div>
             <div class="tblock on-photo">
-              <p class="num a-up" style="--d:4.4s"><span class="count" data-to="45" data-d="4.4" data-t="1">45</span><small>su 60</small></p>
+              <p class="num a-digits" style="--d:4.4s"><span class="dg" style="--i:0">4</span><span class="dg" style="--i:1">5</span><small class="dg" style="--i:3">su 60</small></p>
               <p class="cap s a-up" style="--d:4.8s">comuni senza una scuola secondaria di secondo grado</p>
             </div>
             <div class="side"><div class="dots g60" id="d30" data-n="60" data-on="45" data-d="4.1" data-d2="4.4"></div></div>
@@ -928,7 +942,7 @@ footer .fine{
           <dl>
             <div><dt>On-screen</dt><dd>Video di una scuola o di studenti, senza volti riconoscibili, con movimento di camera · chip «Dimensione 4 · Lavoro, competenze e inclusione» · numerone 45 «su 60» «comuni senza una scuola secondaria di secondo grado» · a destra 60 quadratini, uno per comune: 45 si accendono in Lime</dd></div>
             <div><dt>Voiceover · voce femminile</dt><dd class="vo">Sul fronte del lavoro, competenze e inclusione. Quarantacinque comuni su sessanta non hanno una scuola secondaria di secondo grado.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Su «quarantacinque» la foto si vela, compaiono i 60 quadratini e 45 si accendono mentre il numerone conta (4.4 s).</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Su «quarantacinque» la foto si vela, compaiono i 60 quadratini e 45 si accendono mentre il numerone entra cifra per cifra (4.4 s).</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Studenti di spalle nel corridoio di una scuola (immagine AI, Nano Banana 2.1). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
             <div><dt>Nota</dt><dd class="note">Dato della Faccia 4: «In tutto sono 45 Comuni su 60 senza una scuola secondaria di II grado». I quadratini non sono una mappa: se serve sapere quali comuni, lo studio ha l'elenco nella pagina «Comuni». Se ci sono minori nella foto servono le liberatorie: meglio riprese di spalle.</dd></div>
           </dl>
@@ -943,7 +957,7 @@ footer .fine{
             <div class="shade"></div>
             <p class="chap a-up" style="--d:0.4s">Dimensione 4 · Lavoro, competenze e inclusione</p><div class="mini" data-f="4" aria-hidden="true"></div>
             <div class="lower a-up" style="--d:8.0s">
-              <p class="num"><span class="count" data-to="10.4" data-dec="1" data-d="8.3" data-t="1.2">10<span class="sep">,</span>4</span>%</p>
+              <p class="num a-focus" style="--d:8.3s">10<span class="sep">,</span>4%</p>
               <div class="lt">
                 <p class="cap s">aziende agricole guidate da un capo azienda con meno di 40 anni</p>
                 <p class="cmpl a-fade" style="--d:9.9s">Resto del Lazio, Roma esclusa · <b>10<span class="sep">,</span>0%</b></p>
@@ -958,7 +972,7 @@ footer .fine{
           <dl>
             <div><dt>On-screen</dt><dd>Foto di un giovane agricoltore al lavoro con movimento di camera · chip «Dimensione 4» · nel terzo inferiore, su fondo Bluette: numerone 10,4% «aziende agricole guidate da un capo azienda con meno di 40 anni» · in piccolo «Resto del Lazio, Roma esclusa · 10,0%» · etichetta «Proposta di regolamento 2028–2034»</dd></div>
             <div><dt>Voiceover · voce femminile</dt><dd class="vo">Il ricambio generazionale in agricoltura è in linea con il resto del Lazio. Il dieci virgola quattro per cento delle aziende ha un capo azienda con meno di quarant&#x27;anni. La proposta di regolamento lo tratta come priorità a sé, con una concentrazione obbligatoria di risorse.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Il fondo colorato e il numerone entrano su «dieci virgola quattro» (8.3 s). Il confronto in piccolo subito dopo. L'etichetta della proposta di regolamento su «priorità a sé» (20.5 s).</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Il fondo colorato entra su «dieci virgola quattro» e il numerone si mette a fuoco, da sfocato a nitido (8.3 s). Il confronto in piccolo subito dopo. L'etichetta della proposta di regolamento su «priorità a sé» (20.5 s).</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Giovane agricoltore in un noccioleto della Tuscia (immagine AI, Nano Banana 2.1). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
             <div><dt>Nota</dt><dd class="note">Il PPTX vuole il confronto «su in linea», cioè all'inizio della voce, prima del numerone: qui arriva dopo il numerone, perché un confronto senza il suo numero non si legge. Fonte: Istat, Censimento agricoltura 2020 (10,4% contro 10,0%); art. 22(1)(g)(i), proposta ancora in negoziato. Liberatoria della persona ripresa e dell'azienda agricola.</dd></div>
           </dl>
@@ -973,7 +987,7 @@ footer .fine{
             <div class="shade"></div>
             <p class="chap a-up" style="--d:0.4s">Dimensione 5 · Territori e coesione</p><div class="mini" data-f="5" aria-hidden="true"></div>
             <div class="tblock on-photo">
-              <p class="num a-up" style="--d:14.9s">−<span class="count" data-to="3.1" data-dec="1" data-d="14.9" data-t="1">3<span class="sep">,</span>1</span>%</p>
+              <p class="num a-mask" style="--d:14.9s">−3<span class="sep">,</span>1%</p>
               <p class="cap s a-up" style="--d:15.3s">popolazione dal 2015</p>
               <p class="cmpl a-fade" style="--d:18.8s">Resto del Lazio, Roma esclusa · <b>−0<span class="sep">,</span>2%</b></p>
             </div>
@@ -985,7 +999,7 @@ footer .fine{
           <dl>
             <div><dt>On-screen</dt><dd>Foto di un vicolo di borgo con movimento di camera · chip «Dimensione 5 · Territori e coesione» · numerone −3,1% «popolazione dal 2015» · in piccolo «Resto del Lazio, Roma esclusa · −0,2%»</dd></div>
             <div><dt>Voiceover · voce maschile</dt><dd class="vo">La quinta faccia del cubo riguarda territori e coesione. È qui che i servizi hanno più margini di miglioramento. Dal duemilaquindici la popolazione è calata del tre virgola uno per cento, contro lo zero virgola due nel resto del Lazio, Roma esclusa.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Il numerone entra su «tre virgola uno» (14.9 s), il confronto in piccolo su «zero virgola due» (18.8 s). Nessuna mappa: lo studio non ha un grafico su questo dato.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Il numerone sale da una linea, a maschera, su «tre virgola uno» (14.9 s), il confronto in piccolo su «zero virgola due» (18.8 s). Nessuna mappa: lo studio non ha un grafico su questo dato.</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Vicolo sotto un arco nel quartiere di San Pellegrino, Viterbo, foto di Ben Skála, Benfoto (CC BY-SA 3.0). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
             <div><dt>Nota</dt><dd class="note">Il dato compare solo nella Faccia 5 › Cosa dicono i dati, senza grafico né altra pagina che lo confermi: da far confermare (slide «Da verificare»). Nel testo «la popolazione è calata», mai «spopolamento».</dd></div>
           </dl>
@@ -999,7 +1013,7 @@ footer .fine{
             <p class="chap a-up" style="--d:0.4s">Dimensione 5 · Territori e coesione</p><div class="mini" data-f="5" aria-hidden="true"></div>
             <div class="colL">
               <div>
-                <p class="num a-up" style="--d:3.3s"><span class="count" data-to="53" data-d="3.3" data-t="1">53</span>%</p>
+                <p class="num a-digits" style="--d:3.3s"><span class="dg" style="--i:0">5</span><span class="dg" style="--i:1">3</span><span class="dg" style="--i:2">%</span></p>
                 <p class="cap s a-up" style="--d:3.7s">residenti in aree interne e montane</p>
               </div>
               <div class="swap">
@@ -1021,7 +1035,7 @@ footer .fine{
           <dl>
             <div><dt>On-screen</dt><dd>Fondo Bluette · chip «Dimensione 5» · a destra la mappa della provincia: si accendono in Bluette chiaro i 42 comuni delle aree interne · numerone 53% «residenti in aree interne e montane» · card OBIETTIVO «Strategia di valorizzazione del patrimonio per ogni area interna», entro il 2027, con quattro icone: borghi, filiere, turismo lento, paesaggio · poi la card esce e sulla mappa si accendono in Lime i cinque asset numerati, con l'elenco a sinistra: lago di Bolsena, lago di Vico, Civita di Bagnoregio, terme di Viterbo, necropoli di Tarquinia (Unesco)</dd></div>
             <div><dt>Voiceover · voce maschile</dt><dd class="vo">Dove investire in questo ambito? Più della metà dei residenti vive in aree interne e montane. Per queste aree il Piano propone, entro il duemilaventisette, una strategia di valorizzazione del patrimonio per ogni area interna: borghi, filiere, turismo lento, paesaggio. Gli asset ci sono già: i laghi di Bolsena e di Vico, Civita di Bagnoregio, le terme di Viterbo, la necropoli di Tarquinia.</dd></div>
-            <div><dt>Regia</dt><dd class="prompt">Tre momenti, come da nota del PPTX. 1) Su «aree interne e montane» si accendono i 42 comuni (7.2 s); il 53% entra su «più della metà» (3.3 s). 2) Su «il Piano propone» entra la card obiettivo (11.1 s); le icone si accendono sui nomi. 3) Su «Gli asset» la card esce (22.7 s) e i cinque asset si accendono sulla mappa uno per nome.</dd></div>
+            <div><dt>Regia</dt><dd class="prompt">Tre momenti, come da nota del PPTX. 1) Su «aree interne e montane» si accendono i 42 comuni (7.2 s); il 53% entra cifra per cifra su «più della metà» (3.3 s). 2) Su «il Piano propone» entra la card obiettivo (11.1 s); le icone si accendono sui nomi. 3) Su «Gli asset» la card esce (22.7 s) e i cinque asset si accendono sulla mappa uno per nome.</dd></div>
             <div><dt>Nota</dt><dd class="note">I 42 comuni sono quelli con area «interna» nella tabella «Comuni» dello studio (dashboard): pesano il 52,9% dei residenti, che torna con il 53% dell'Osservatorio. Gli asset sono posizionati sul comune (Bolsena, Caprarola, Bagnoregio, Viterbo, Tarquinia), non sul punto esatto. Le quattro icone sono disegnate nello stile di quelle della Parte 1: il set del DS non ha borghi, filiere, turismo lento e paesaggio. Nessun dato di spesa a schermo.</dd></div>
           </dl>
         </div>
