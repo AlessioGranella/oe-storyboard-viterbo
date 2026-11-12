@@ -450,7 +450,7 @@ footer .fine{
 .play .amb .nm{animation:fade .5s ease var(--d,0s) both}
 .play .amb .v{animation:fade .4s ease calc(var(--d,0s) + .6s) both}
 @keyframes toblu{from{background:var(--gray-300)}to{background:var(--bluette-700)}}
-.play .amb .r.lo .b{animation:growX .9s var(--ease) var(--d,0s) both,toblu .5s ease var(--d2,17.1s) both}
+.play .amb .r.lo .b{animation:growX .9s var(--ease) var(--d,0s) both,toblu .5s ease var(--d2,20s) both}
 .play .amb .r .b{animation:growX .9s var(--ease) var(--d,0s) both}
 
 /* ── Scena 20: dato → obiettivo → indicatore ── */
@@ -466,6 +466,10 @@ footer .fine{
 
 /* ── Numeroni: effetti diversi di scena in scena (12/11) ──
    conta (21, 37) · colpo (24, 28) · maschera (25, 33) · messa a fuoco (27, 31) · cifra per cifra (30, 34) · glitch (36) */
+.end .loghi{display:flex;align-items:center;justify-content:center;gap:6cqw}
+.end .l-oe{height:3.4cqw;width:auto;display:block}
+.end .l-anci{height:3.6cqw;width:auto;display:block}
+.end .l-lazio{height:5.2cqw;width:auto;display:block}
 @keyframes slam{0%{opacity:0;transform:scale(1.7)}55%{opacity:1;transform:scale(.97)}100%{opacity:1;transform:none}}
 @keyframes mask{from{transform:translateY(100%);clip-path:inset(0 0 100% 0)}to{transform:none;clip-path:inset(0 0 0 0)}}
 @keyframes focus{from{opacity:0;filter:blur(1.4cqw);transform:scale(1.12)}to{opacity:1;filter:blur(0);transform:none}}
@@ -959,7 +963,7 @@ footer .fine{
             <div class="lower a-up" style="--d:8.0s">
               <p class="num a-focus" style="--d:8.3s">10<span class="sep">,</span>4%</p>
               <div class="lt">
-                <p class="cap s">aziende agricole guidate da un capo azienda con meno di 40 anni</p>
+                <p class="cap s">aziende agricole guidate da un leader con meno di 40 anni</p>
                 <p class="cmpl a-fade" style="--d:9.9s">Resto del Lazio, Roma esclusa · <b>10<span class="sep">,</span>0%</b></p>
               </div>
               <p class="tag reg a-up" style="--d:20.5s">Proposta di regolamento 2028–2034</p>
@@ -970,7 +974,7 @@ footer .fine{
         <div class="info">
           <p class="idx">Scena 31 · Faccia 4: il ricambio generazionale <span class="chip">Dati reali</span> <span class="chip g">Foto da scegliere</span></p>
           <dl>
-            <div><dt>On-screen</dt><dd>Foto di un giovane agricoltore al lavoro con movimento di camera · chip «Dimensione 4» · nel terzo inferiore, su fondo Bluette: numerone 10,4% «aziende agricole guidate da un capo azienda con meno di 40 anni» · in piccolo «Resto del Lazio, Roma esclusa · 10,0%» · etichetta «Proposta di regolamento 2028–2034»</dd></div>
+            <div><dt>On-screen</dt><dd>Foto di un giovane agricoltore al lavoro con movimento di camera · chip «Dimensione 4» · nel terzo inferiore, su fondo Bluette: numerone 10,4% «aziende agricole guidate da un leader con meno di 40 anni» · in piccolo «Resto del Lazio, Roma esclusa · 10,0%» · etichetta «Proposta di regolamento 2028–2034»</dd></div>
             <div><dt>Voiceover · voce femminile</dt><dd class="vo">Il ricambio generazionale in agricoltura è in linea con il resto del Lazio. Il dieci virgola quattro per cento delle aziende risponde a un leader con meno di quarant&#x27;anni. La proposta di regolamento lo tratta come priorità a sé, con una concentrazione obbligatoria di risorse.</dd></div>
             <div><dt>Regia</dt><dd class="prompt">Il fondo colorato entra su «dieci virgola quattro» e il numerone si mette a fuoco, da sfocato a nitido (8.3 s). Il confronto in piccolo subito dopo. L'etichetta della proposta di regolamento su «priorità a sé» (20.5 s).</dd></div>
             <div><dt>Foto</dt><dd class="prompt">Giovane agricoltore in un noccioleto della Tuscia (immagine AI, Nano Banana 2.1). Clip AI di 12 s (Seedance 1.5 Pro, 1080p) a partire dall'immagine, con il trattamento di Rieti, come nella Parte 1.</dd></div>
@@ -1117,17 +1121,20 @@ footer .fine{
       <article class="beat">
         <div class="frame end" data-dur="6" tabindex="0" role="button" aria-label="Chiusura, rivedi animazione">
           <div class="stage">
-            <img class="logo a-fade" style="--d:.3s" src="assets/logo-white.svg" alt="OpenEconomics">
-            <p class="hl a-up" style="--d:1.6s">We measure what really matters</p>
+            <div class="loghi">
+              <img class="l-oe a-fade" style="--d:.3s" src="assets/logo-white.svg" alt="OpenEconomics">
+              <img class="l-anci a-fade" style="--d:.7s" src="assets/logo-anci-white.png" alt="ANCI">
+              <img class="l-lazio a-fade" style="--d:1.1s" src="assets/logo-regione-lazio-white.png" alt="Regione Lazio">
+            </div>
           </div>
           <span class="tc">Chiusura · 6 s</span><span class="replay">↻ Rivedi</span><div class="safe"></div>
         </div>
         <div class="info">
-          <p class="idx">Chiusura · Fine parte 3 <span class="chip">Codino OE</span></p>
+          <p class="idx">Chiusura · Fine parte 3 <span class="chip">Loghi</span></p>
           <dl>
-            <div><dt>On-screen</dt><dd>Logo OpenEconomics in dissolvenza al centro, poi il claim «We measure what really matters».</dd></div>
+            <div><dt>On-screen</dt><dd>Su una riga, tutti in bianco: logo OpenEconomics, logo ANCI, logo Regione Lazio, in dissolvenza uno dopo l'altro. Niente payoff.</dd></div>
             <div><dt>Voiceover</dt><dd class="vo">Nessuno: solo musica.</dd></div>
-            <div><dt>Nota</dt><dd class="note">Chiusura fissa dei video OE, come nel video di Rieti (commento dell'11 novembre: tolta la nota tecnica «Fine parte 3 · A seguire»). Qui il monogramma in basso a sinistra non c'è: con il logo intero al centro sarebbe un doppione.</dd></div>
+            <div><dt>Nota</dt><dd class="note">Richiesta del cliente (12 novembre): tolto il payoff «We measure what really matters», aggiunti ANCI e Regione Lazio. Il logo Regione Lazio in bianco è ricavato dal logo a colori (presentazione Civiqa–ANCI Lazio): da sostituire con la versione monocromatica ufficiale, se il cliente la fornisce.</dd></div>
           </dl>
         </div>
       </article>
